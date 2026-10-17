@@ -11,6 +11,7 @@ var Interpreter = preload("res://scripts/program_interpreter.gd")
 @onready var row_indicator = $row_indicator
 @onready var column_indicator = $column_indicator
 @onready var program = $program
+@onready var interpreter_cursor = $interpreter_cursor
 
 @onready var start_row_position = row_indicator.position
 @onready var start_column_position = column_indicator.position
@@ -99,7 +100,7 @@ func move_up():
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, 'position', start_tape_position - diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
-
+	
 func move_left():
 	column -= 1
 	if column == 4:
@@ -128,14 +129,17 @@ func punch():
 func set_interpreted_line(line_number): 
 	$interpreter_error.hide()
 	
-	print("SET LINE: " + str(line_number))
 	if line_number == null:
 		var tween = get_tree().create_tween()
 		tween.tween_property($interpreter_cursor, 'self_modulate', Color(1,1,1,0), 1)
 		return
 
-	$interpreter_cursor.self_modulate = Color(1,1,1,1)
-	$interpreter_cursor.position.y = start_row_position.y + line_number * ROW_HEIGHT
+	interpreter_cursor.self_modulate = Color(1,1,1,1)
+	var new_pos = Vector2(interpreter_cursor.position.x, start_row_position.y + line_number * ROW_HEIGHT)
+	var tween = get_tree().create_tween().set_trans(Tween.TRANS_EXPO)
+	tween.tween_property($interpreter_cursor, 'position', new_pos, 0.2)
+
+	move_to(line_number)
 
 func set_interpreter_error(line_number, message):
 	move_to(line_number)

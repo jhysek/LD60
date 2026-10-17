@@ -42,3 +42,9 @@ func _on_btn_play_pressed() -> void:
 	interpreter.init_program(parsed)
 	punch_tape.set_interpreted_line(0)
 	clock.start()
+
+
+func _on_btn_stop_pressed() -> void:
+	punch_tape.set_interpreted_line(null)
+	clock.stop()
+	

@@ -80,6 +80,9 @@ func interpret_instruction(line, instruction, argument):
 	if current_line >= current_program.size():
 		program_ended()
 
+func stop():
+	program_ended()
+	
 func program_ended():
 	emit_signal("on_program_ended")
 	ended = true
