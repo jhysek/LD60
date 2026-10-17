@@ -25,3 +25,8 @@ func value_at(column, row):
 	assert(row >= 0 && row < program.size(), "Program.punch_at: INVALID ROW " + str(row))
 	
 	return program[row][column]
+	
+func get_line(row):
+	assert(row >= 0 && row < program.size(), "Program.punch_at: INVALID ROW " + str(row))
+	return program[row]
+	

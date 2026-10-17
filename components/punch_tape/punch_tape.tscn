@@ -1,0 +1,215 @@
+[gd_scene format=3 uid="uid://dk2o0rblncq8g"]
+
+[ext_resource type="Texture2D" uid="uid://benb60haom305" path="res://components/punch_tape/tape.png" id="1_eurux"]
+[ext_resource type="Script" uid="uid://umdhsy81wd6r" path="res://scenes/punch_tape.gd" id="2_cx443"]
+[ext_resource type="Script" uid="uid://brt1io2pqs55f" path="res://scripts/program.gd" id="3_5ap7w"]
+[ext_resource type="Theme" uid="uid://dup7hpbuaswnl" path="res://assets/themes/punch_tape.tres" id="4_bwtkn"]
+[ext_resource type="Texture2D" uid="uid://10vehr1w2m61" path="res://components/punch_tape/whitehole.png" id="5_hrb7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0, 0, 0, 0.0627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0, 0, 0, 0.078431375)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
+bg_color = Color(0.16470589, 0.5411765, 0.23529412, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wcxm"]
+bg_color = Color(0.54509807, 0.1254902, 0.09803922, 0.16470589)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.54509807, 0.1254902, 0.09803922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PunchTape" type="TextureRect" unique_id=824950741]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = 307.0
+offset_right = -63.0
+offset_bottom = 789.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_eurux")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_cx443")
+
+[node name="program" type="Control" parent="." unique_id=1392658086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5ap7w")
+
+[node name="label_instruction" type="Label" parent="." unique_id=59118145]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 26.0
+offset_right = 98.0
+offset_bottom = 49.0
+theme = ExtResource("4_bwtkn")
+text = "instruction"
+uppercase = true
+
+[node name="label_argument" type="Label" parent="." unique_id=1561549202]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 26.0
+offset_right = 215.0
+offset_bottom = 49.0
+theme = ExtResource("4_bwtkn")
+text = "argument
+"
+uppercase = true
+
+[node name="column_indicator" type="Panel" parent="." unique_id=1917997818]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 45.0
+offset_right = 28.0
+offset_bottom = 890.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p57ef")
+
+[node name="row_indicator" type="Panel" parent="." unique_id=1996391472]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 45.0
+offset_right = 263.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
+
+[node name="0" type="Sprite2D" parent="row_indicator" unique_id=1802227963]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(43.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="1" type="Sprite2D" parent="row_indicator" unique_id=824745043]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(67.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="2" type="Sprite2D" parent="row_indicator" unique_id=637979121]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(89.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="3" type="Sprite2D" parent="row_indicator" unique_id=1285345042]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(112.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="5" type="Sprite2D" parent="row_indicator" unique_id=90354723]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(153.25, 12.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="6" type="Sprite2D" parent="row_indicator" unique_id=1477420425]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(175.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="7" type="Sprite2D" parent="row_indicator" unique_id=1311331027]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(196.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="8" type="Sprite2D" parent="row_indicator" unique_id=1189030949]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(218.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="9" type="Sprite2D" parent="row_indicator" unique_id=1556502128]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(239.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hrb7p")
+
+[node name="line_numbers" type="Label" parent="." unique_id=302295489]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 55.0
+offset_right = 64.0
+offset_bottom = 895.0
+scale = Vector2(0.98, 0.98)
+theme = ExtResource("4_bwtkn")
+theme_override_colors/font_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+theme_override_constants/line_spacing = 17
+text = "00
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31"
+
+[node name="interpreter_cursor" type="Panel" parent="." unique_id=2033615755]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -29.0
+offset_top = 44.0
+offset_right = 264.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0tnpc")
+
+[node name="interpreter_error" type="Panel" parent="." unique_id=1686942662]
+visible = false
+layout_mode = 0
+offset_left = -29.0
+offset_top = 44.0
+offset_right = 264.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7wcxm")
+
+[node name="message" type="Label" parent="interpreter_error" unique_id=2143667130]
+layout_mode = 0
+offset_left = -286.0
+offset_top = -13.0
+offset_right = -10.0
+offset_bottom = 43.0
+text = "ERROR"
+vertical_alignment = 1

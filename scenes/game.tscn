@@ -1,18 +1,29 @@
 [gd_scene format=3 uid="uid://dwjbxhs5gssqb"]
 
 [ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://benb60haom305" path="res://components/punch_tape/tape.png" id="2_yqjtg"]
-[ext_resource type="Script" uid="uid://umdhsy81wd6r" path="res://scenes/punch_tape.gd" id="3_iywne"]
-[ext_resource type="Theme" uid="uid://dup7hpbuaswnl" path="res://assets/themes/punch_tape.tres" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://brt1io2pqs55f" path="res://scripts/program.gd" id="4_gee14"]
-[ext_resource type="Texture2D" uid="uid://rpbk4xqjma7b" path="res://icon.svg" id="4_lbhrr"]
-[ext_resource type="Texture2D" uid="uid://10vehr1w2m61" path="res://components/punch_tape/whitehole.png" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://dk2o0rblncq8g" path="res://components/punch_tape/punch_tape.tscn" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://h4gtjbk350p8" path="res://components/control_panel/btn_dark.png" id="3_p57ef"]
+[ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="4_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
-bg_color = Color(0, 0, 0, 0.0627451)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
+bg_color = Color(0.5609549, 0.560955, 0.5609546, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
-bg_color = Color(0, 0, 0, 0.078431375)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0acx5"]
+bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_it4tp"]
+bg_color = Color(0.115136005, 0.14861703, 0.124646015, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
@@ -20,168 +31,72 @@ script = ExtResource("1_uwrxv")
 [node name="UI" type="CanvasLayer" parent="." unique_id=1035584148]
 layer = 2
 
-[node name="PunchTape" type="TextureRect" parent="UI" unique_id=1469230740]
-anchors_preset = 11
+[node name="PunchTape" parent="UI" unique_id=824950741 instance=ExtResource("2_iywne")]
+
+[node name="ControlPanel" type="Control" parent="UI" unique_id=2018270992]
+layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -313.0
-offset_top = 307.0
-offset_right = -63.0
-offset_bottom = 789.0
+offset_left = -322.0
+offset_right = -60.0
+offset_bottom = 175.0
 grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("2_yqjtg")
-expand_mode = 1
-stretch_mode = 4
-script = ExtResource("3_iywne")
 
-[node name="program" type="Control" parent="UI/PunchTape" unique_id=1719227419]
+[node name="Panel" type="Panel" parent="UI/ControlPanel" unique_id=344016960]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 258.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m72si")
+
+[node name="Hole" type="Panel" parent="UI/ControlPanel" unique_id=1965244254]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 113.0
+offset_right = 99.0
+offset_bottom = 143.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0acx5")
+
+[node name="BtnPlay" type="TextureButton" parent="UI/ControlPanel" unique_id=1704851493]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 110.0
+offset_right = 51.0
+offset_bottom = 150.0
+texture_normal = ExtResource("3_p57ef")
+
+[node name="RUN" type="Label" parent="UI/ControlPanel/BtnPlay" unique_id=732879031]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 51.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_gee14")
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 35.36
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 10
+text = "RUN"
 
-[node name="label_instruction" type="Label" parent="UI/PunchTape" unique_id=1286764137]
+[node name="Panel2" type="Panel" parent="UI/ControlPanel" unique_id=1542173807]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 26.0
-offset_right = 98.0
-offset_bottom = 49.0
-theme = ExtResource("3_lnu2h")
-text = "instruction"
-uppercase = true
-
-[node name="label_argument" type="Label" parent="UI/PunchTape" unique_id=1078000159]
-layout_mode = 0
-offset_left = 130.0
-offset_top = 26.0
-offset_right = 215.0
-offset_bottom = 49.0
-theme = ExtResource("3_lnu2h")
-text = "argument
-"
-uppercase = true
-
-[node name="column_indicator" type="Panel" parent="UI/PunchTape" unique_id=1304627818]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 45.0
-offset_right = 28.0
-offset_bottom = 890.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_p57ef")
-
-[node name="row_indicator" type="Panel" parent="UI/PunchTape" unique_id=148217665]
-layout_mode = 0
-offset_left = -27.0
-offset_top = 45.0
-offset_right = 263.0
-offset_bottom = 74.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
-
-[node name="0" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=970142648]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(43.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="1" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=421826967]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(67.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="2" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=871212564]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(89.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="3" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=886013346]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(112.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="5" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1912313654]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(153.25, 12.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="6" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=36017517]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(175.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="7" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=759602743]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(196.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="8" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1473019562]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(218.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="9" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1780656749]
-self_modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(239.25, 13.875)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_u5sy4")
-
-[node name="line_numbers" type="Label" parent="UI/PunchTape" unique_id=1700414072]
-layout_mode = 0
-offset_left = -21.0
-offset_top = 55.0
-offset_right = 64.0
-offset_bottom = 895.0
-scale = Vector2(0.98, 0.98)
-theme = ExtResource("3_lnu2h")
-theme_override_colors/font_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
-theme_override_constants/line_spacing = 17
-text = "00
-01
-02
-03
-04
-05
-06
-07
-08
-09
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31"
-
-[node name="Icon" type="Sprite2D" parent="." unique_id=53893435]
-position = Vector2(455, -218)
-texture = ExtResource("4_lbhrr")
+offset_left = 13.0
+offset_top = 11.0
+offset_right = 247.0
+offset_bottom = 87.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_it4tp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]
+
+[node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
+position = Vector2(0, -1)
+
+[node name="Actors" type="Node2D" parent="." unique_id=703376716]
+
+[node name="Actor" parent="Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
+
+[node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
+bpm = 180
+
+[connection signal="pressed" from="UI/ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://sojklgsrobys"]
+
+[ext_resource type="Script" uid="uid://c6vqev0ncc6ea" path="res://components/clock/clock.gd" id="1_wf1pf"]
+
+[node name="Clock" type="Node" unique_id=1382613830]
+script = ExtResource("1_wf1pf")
