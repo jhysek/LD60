@@ -107,3 +107,4 @@ func turn_left():
 	if direction_idx == -1:
 		direction_idx = 3
 	update_visual_rotation()
+	

@@ -23,7 +23,12 @@ bg_color = Color(0, 0, 0, 0.0627451)
 bg_color = Color(0, 0, 0, 0.078431375)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
-bg_color = Color(0.16470589, 0.5411765, 0.23529412, 0.3137255)
+bg_color = Color(0.32789895, 0.41551566, 0.17163691, 0.3137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19375536, 0.2800637, 0.11335937, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
 bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)

@@ -25,8 +25,11 @@ bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
 
 [sub_resource type="Environment" id="Environment_m72si"]
 background_mode = 3
-tonemap_mode = 3
 tonemap_white = 2.73
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.045
+adjustment_saturation = 0.88
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
