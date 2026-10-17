@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://byy2cqtwibtxt"]
+
+[ext_resource type="Shader" uid="uid://bmst1fbgucrxp" path="res://components/Transition/Transition.gdshader" id="1_dni86"]
+[ext_resource type="Script" uid="uid://1cyw48kwmrkc" path="res://components/Transition/transition.gd" id="1_xfsfi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uotwk"]
+shader = ExtResource("1_dni86")
+shader_parameter/in_color = Color(0.105882, 0.105882, 0.105882, 1)
+shader_parameter/out_color = Color(0.588235, 0.521569, 0.45098, 1)
+shader_parameter/in_out = 0.0
+shader_parameter/position = 1.0
+shader_parameter/size = Vector2(30, 30)
+
+[sub_resource type="Animation" id="Animation_pcj4n"]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg:material:shader_parameter/position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.378929, 1),
+"update": 0,
+"values": [1.0, -1.5]
+}
+
+[sub_resource type="Animation" id="Animation_lo0f6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg:material:shader_parameter/position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6w8qf"]
+_data = {
+&"Fade": SubResource("Animation_pcj4n"),
+&"RESET": SubResource("Animation_lo0f6")
+}
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("1_xfsfi")
+
+[node name="Bg" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uotwk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6w8qf")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

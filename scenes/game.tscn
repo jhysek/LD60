@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://dwjbxhs5gssqb"]
+
+[ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://benb60haom305" path="res://components/punch_tape/tape.png" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://umdhsy81wd6r" path="res://scenes/punch_tape.gd" id="3_iywne"]
+[ext_resource type="Theme" uid="uid://dup7hpbuaswnl" path="res://assets/themes/punch_tape.tres" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://brt1io2pqs55f" path="res://scripts/program.gd" id="4_gee14"]
+[ext_resource type="Texture2D" uid="uid://rpbk4xqjma7b" path="res://icon.svg" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://10vehr1w2m61" path="res://components/punch_tape/whitehole.png" id="6_u5sy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+bg_color = Color(0, 0, 0, 0.0627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+bg_color = Color(0, 0, 0, 0.078431375)
+
+[node name="Game" type="Node2D" unique_id=1322076777]
+script = ExtResource("1_uwrxv")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1035584148]
+layer = 2
+
+[node name="PunchTape" type="TextureRect" parent="UI" unique_id=1469230740]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -313.0
+offset_top = 307.0
+offset_right = -63.0
+offset_bottom = 789.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_yqjtg")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("3_iywne")
+
+[node name="program" type="Control" parent="UI/PunchTape" unique_id=1719227419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_gee14")
+
+[node name="label_instruction" type="Label" parent="UI/PunchTape" unique_id=1286764137]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 26.0
+offset_right = 98.0
+offset_bottom = 49.0
+theme = ExtResource("3_lnu2h")
+text = "instruction"
+uppercase = true
+
+[node name="label_argument" type="Label" parent="UI/PunchTape" unique_id=1078000159]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 26.0
+offset_right = 215.0
+offset_bottom = 49.0
+theme = ExtResource("3_lnu2h")
+text = "argument
+"
+uppercase = true
+
+[node name="column_indicator" type="Panel" parent="UI/PunchTape" unique_id=1304627818]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 45.0
+offset_right = 28.0
+offset_bottom = 890.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_p57ef")
+
+[node name="row_indicator" type="Panel" parent="UI/PunchTape" unique_id=148217665]
+layout_mode = 0
+offset_left = -27.0
+offset_top = 45.0
+offset_right = 263.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iywne")
+
+[node name="0" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=970142648]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(43.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="1" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=421826967]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(67.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="2" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=871212564]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(89.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="3" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=886013346]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(112.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="5" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1912313654]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(153.25, 12.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="6" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=36017517]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(175.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="7" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=759602743]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(196.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="8" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1473019562]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(218.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="9" type="Sprite2D" parent="UI/PunchTape/row_indicator" unique_id=1780656749]
+self_modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(239.25, 13.875)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_u5sy4")
+
+[node name="line_numbers" type="Label" parent="UI/PunchTape" unique_id=1700414072]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 55.0
+offset_right = 64.0
+offset_bottom = 895.0
+scale = Vector2(0.98, 0.98)
+theme = ExtResource("3_lnu2h")
+theme_override_colors/font_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+theme_override_constants/line_spacing = 17
+text = "00
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=53893435]
+position = Vector2(455, -218)
+texture = ExtResource("4_lbhrr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]

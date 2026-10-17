@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://dup7hpbuaswnl"]
+
+[ext_resource type="FontFile" uid="uid://jk6a7qi5rpri" path="res://assets/avant_pixel.ttf" id="1_qhy25"]
+
+[resource]
+Label/colors/font_color = Color(0.3817031, 0.3817033, 0.3817031, 1)
+Label/font_sizes/font_size = 10
+Label/fonts/font = ExtResource("1_qhy25")

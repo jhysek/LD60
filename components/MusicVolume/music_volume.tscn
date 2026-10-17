@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddg33gy842v6y"]
+
+[ext_resource type="Script" uid="uid://ngrmsf0phuby" path="res://components/MusicVolume/music_volume.gd" id="1_33i7a"]
+[ext_resource type="Texture2D" uid="uid://bl4b68r0l81ty" path="res://components/MusicVolume/icon.png" id="2_mbdau"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33i7a"]
+bg_color = Color(0.22130159, 0.22130162, 0.22130153, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="MusicVolume" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(19, 16)
+mouse_filter = 2
+script = ExtResource("1_33i7a")
+hover_color = Color(0.65378916, 0.6020006, 0.384178, 1)
+
+[node name="MusicVolumeControl" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -282.0
+offset_top = 3.0
+offset_right = -20.0
+offset_bottom = 31.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_33i7a")
+script = ExtResource("1_33i7a")
+
+[node name="HSlider" type="HSlider" parent="MusicVolumeControl"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 253.0
+offset_bottom = 22.0
+value = 80.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.49411765)
+layout_mode = 0
+offset_right = 28.0
+offset_bottom = 30.0
+toggle_mode = true
+texture_normal = ExtResource("2_mbdau")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="value_changed" from="MusicVolumeControl/HSlider" to="MusicVolumeControl" method="_on_h_slider_value_changed"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
