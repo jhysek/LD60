@@ -1,8 +1,22 @@
-[gd_scene format=3 uid="uid://ja2orts7itu5"]
+[gd_scene format=4 uid="uid://ja2orts7itu5"]
 
-[node name="World" type="Node2D" unique_id=1007485033]
+[ext_resource type="Texture2D" uid="uid://bv1hywfd84aht" path="res://components/world/tileset.png" id="1_x286i"]
+[ext_resource type="Script" uid="uid://bq08w7hcexxsr" path="res://components/world/world.gd" id="2_vl24i"]
 
-[node name="TileMap" type="TileMap" parent="." unique_id=1003088170]
-format = 2
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vl24i"]
+texture = ExtResource("1_x286i")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
-[node name="TileMapLayer" type="TileMapLayer" parent="TileMap" unique_id=1270890421]
+[sub_resource type="TileSet" id="TileSet_hrb7p"]
+tile_size = Vector2i(64, 51)
+sources/0 = SubResource("TileSetAtlasSource_vl24i")
+
+[node name="World" type="TileMapLayer" unique_id=1270890421]
+tile_map_data = PackedByteArray("AAD/////AAAEAAAAAAD+//7/AAAEAAAAAAD9//3/AAAEAAAAAAD8//z/AAAEAAAAAAD8//7/AAAEAAAAAAD+//z/AAAEAAAAAAD9////AAAEAAAAAAD///3/AAAEAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD+//3/AAADAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAA=")
+tile_set = SubResource("TileSet_hrb7p")
+script = ExtResource("2_vl24i")

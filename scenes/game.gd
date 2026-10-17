@@ -16,7 +16,7 @@ func _ready():
 	initialize_actors()
 		
 func initialize_actors():
-	for actor in $Actors.get_children():
+	for actor in get_tree().get_nodes_in_group("Actor"):
 		interpreter.on_actor_instruction.connect(actor.perform_instruction)
 
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
