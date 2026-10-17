@@ -84,13 +84,20 @@ func process_inputs():
 	if Input.is_action_just_pressed("ui_accept"):
 		punch()
 	
-func move_to(row):
+func move_to(_row):
+	row = _row
 	var diff = Vector2(0, row * ROW_HEIGHT)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, 'position', start_tape_position - diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
+	
+func move_to_column(_column):
+	column = _column
+	var diff = Vector2(column * COLUMN_WIDTH, 0)
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(column_indicator, 'position', start_column_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 		
 func move_down():
 	row += 1
@@ -227,3 +234,42 @@ func update_compiler_info():
 	$CompilerPanel/LineInfo/Instruction.text = str(interpreted.instruction)
 	$CompilerPanel/LineInfo/Argument.text = str(interpreted.argument)
 	$CompilerPanel/LineInfo/Description.text = str(interpreted.description)
+
+# Yeah I know... I attempted to code it like decent man but it didn't work and I had no time.. 
+# So it is what it is. Actually, it might be a bug in connecting function to pressed() signal on button. 
+
+func _on_button_0_pressed() -> void:
+	move_to_column(0)
+	punch()
+
+func _on_button_1_pressed() -> void:
+	move_to_column(1)
+	punch()
+
+func _on_button_2_pressed() -> void:
+	move_to_column(2)
+	punch()
+
+func _on_button_3_pressed() -> void:
+	move_to_column(3)
+	punch()
+
+func _on_button_5_pressed() -> void:
+	move_to_column(5)
+	punch()
+
+func _on_button_6_pressed() -> void:
+	move_to_column(6)
+	punch()
+
+func _on_button_7_pressed() -> void:
+	move_to_column(7)
+	punch()
+
+func _on_button_8_pressed() -> void:
+	move_to_column(8)
+	punch()
+	
+func _on_button_9_pressed() -> void:
+	move_to_column(9)
+	punch()

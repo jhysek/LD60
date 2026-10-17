@@ -331,7 +331,7 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="Right" type="Sprite2D" parent="Visual/Arrows" unique_id=1859916515]
 visible = false
 self_modulate = Color(0.45, 0.21059999, 0.07200001, 0.78431374)
-position = Vector2(105, -25)
+position = Vector2(85.00001, -25.000002)
 rotation = 4.712389
 scale = Vector2(0.6309966, 1)
 texture = ExtResource("8_qiijv")
@@ -339,7 +339,7 @@ texture = ExtResource("8_qiijv")
 [node name="Left" type="Sprite2D" parent="Visual/Arrows" unique_id=1178084821]
 visible = false
 self_modulate = Color(0.45, 0.21059999, 0.07200001, 0.78431374)
-position = Vector2(-92.5, -25)
+position = Vector2(-75.00001, -25.000002)
 rotation = 1.5707964
 scale = Vector2(0.6309966, 1)
 texture = ExtResource("8_qiijv")
@@ -347,14 +347,16 @@ texture = ExtResource("8_qiijv")
 [node name="Up" type="Sprite2D" parent="Visual/Arrows" unique_id=2119412884]
 visible = false
 self_modulate = Color(0.45, 0.21059999, 0.07200001, 0.78431374)
-position = Vector2(-9.521273e-13, -167.49998)
+position = Vector2(-4.7683716e-07, -180.00002)
 rotation = 3.1415927
+scale = Vector2(0.83582085, 1)
 texture = ExtResource("8_qiijv")
 
 [node name="Down" type="Sprite2D" parent="Visual/Arrows" unique_id=844496817]
 visible = false
 self_modulate = Color(0.45, 0.21059999, 0.07200001, 0.78431374)
-position = Vector2(0, 45.000004)
+position = Vector2(1.249999, 37.500004)
+scale = Vector2(0.79670334, 1)
 texture = ExtResource("8_qiijv")
 
 [node name="Body" type="Sprite2D" parent="Visual" unique_id=366936645]
