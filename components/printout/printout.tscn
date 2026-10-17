@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://lboux55tewvh"]
+
+[ext_resource type="Texture2D" uid="uid://btn4qd2366ppj" path="res://components/printout/paper.png" id="1_fw3wp"]
+[ext_resource type="Script" uid="uid://bokelk5dxonyf" path="res://components/printout/printout.gd" id="2_b1m83"]
+[ext_resource type="Theme" uid="uid://dup7hpbuaswnl" path="res://assets/themes/punch_tape.tres" id="2_sf6ht"]
+[ext_resource type="FontFile" uid="uid://wvb51chm01p6" path="res://assets/pixelmix.ttf" id="3_b1m83"]
+
+[node name="Printout" type="Node2D" unique_id=383271323]
+script = ExtResource("2_b1m83")
+
+[node name="Paper" type="Sprite2D" parent="." unique_id=2071356177]
+texture = ExtResource("1_fw3wp")
+offset = Vector2(0, -113)
+
+[node name="Objectives" type="Label" parent="Paper" unique_id=369153974]
+offset_left = -308.0
+offset_top = -212.0
+offset_right = 302.0
+offset_bottom = -25.0
+theme = ExtResource("2_sf6ht")
+theme_override_colors/font_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = ExtResource("3_b1m83")
+text = "BRIEFING
+
+- We have new piece of tech - a  computer. Learn  to  use  it.
+- Write  a  program to the punched tape and press START
+- Come  to  data  room  ( programatically  of  course!)"
+vertical_alignment = 2

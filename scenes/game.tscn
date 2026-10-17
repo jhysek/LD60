@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="8_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://lboux55tewvh" path="res://components/printout/printout.tscn" id="12_dinhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
 bg_color = Color(0.12, 0.11468, 0.0972, 1)
@@ -140,13 +141,15 @@ space - (un)punch"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
-position = Vector2(-128, 157)
-tile_map_data = PackedByteArray("AAD/////AAAEAAAAAAD+//7/AAAEAAAAAAD9//3/AAAEAAAAAAD8//z/AAAEAAAAAAD8//7/AAAEAAAAAAD+//z/AAAEAAAAAAD9////AAAEAAAAAAD///3/AAAEAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD+//3/AAADAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAD+/wAAAAAEAAAAAAD8/wAAAAAEAAAAAAD7////AAAEAAAAAAD7//3/AAAEAAAAAAAAAP7/AAAEAAAAAAABAPz/AAADAAAAAAAAAP3/AAADAAAAAAAAAP//AAADAAAAAAD//wAAAAADAAAAAAD9/wAAAAADAAAAAAD9//7/AAADAAAAAAD7//7/AAADAAAAAAD7/wAAAAADAAAAAAD7//z/AAADAAAAAAABAP3/AAAEAAAAAAABAP//AAAEAAAAAAAAAAAAAAAEAAAAAAABAAAAAAADAAAAAAABAP7/AAADAAAAAAAAAPz/AAAEAAAAAAA=")
+position = Vector2(-72, 72.00001)
+scale = Vector2(0.8, 0.8)
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+//7/AAAEAAAAAAD9//3/AAAEAAAAAAD8//z/AAAEAAAAAAD8//7/AAAEAAAAAAD+//z/AAAEAAAAAAD9////AAAEAAAAAAD///3/AAAEAAAAAAD+////AAAEAAAAAAD///7/AAADAAAAAAD+//3/AAAEAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAD+/wAAAAAEAAAAAAD8/wAAAAAEAAAAAAD7////AAAEAAAAAAD7//3/AAAEAAAAAAAAAP7/AAADAAAAAAABAPz/AAADAAAAAAAAAP3/AAAEAAAAAAAAAP//AAACAAAAAAD//wAAAAACAAAAAAD9/wAAAAADAAAAAAD9//7/AAADAAAAAAD7//7/AAADAAAAAAD7/wAAAAADAAAAAAD7//z/AAADAAAAAAABAP3/AAAEAAAAAAABAP//AAACAAAAAAAAAAAAAAAEAAAAAAABAAAAAAACAAAAAAABAP7/AAADAAAAAAAAAPz/AAAEAAAAAAACAAEAAAADAAAAAAACAAAAAAADAAAAAAACAP//AAADAAAAAAACAP7/AAADAAAAAAD+/wEAAAAEAAAAAAADAAIAAAAEAAAAAAADAAEAAAAEAAAAAAADAAAAAAAEAAAAAAADAP//AAAEAAAAAAADAP7/AAAEAAAAAAADAP3/AAAEAAAAAAACAP3/AAAEAAAAAAD+/wIAAAAEAAAAAAA=")
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
 
 [node name="Actor" parent="World/Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
+tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
 
 [node name="Label" type="Label" parent="World" unique_id=1457106321]
 offset_left = -314.0
@@ -160,6 +163,14 @@ text = "0x0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1802395953]
 environment = SubResource("Environment_m72si")
+
+[node name="Printout" parent="." unique_id=2071356177 instance=ExtResource("12_dinhu")]
+position = Vector2(-85, -356)
+objectives = "BRIEFING
+
+- We have new piece of tech - a  computer. Learn  to  use  it.
+- Write  a  program to the punched tape and press \\\"START\\\"
+- Come  to  data  room  ( programatically  of  course!)"
 
 [connection signal="pressed" from="UI/ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="UI/ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]

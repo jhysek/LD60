@@ -24,6 +24,7 @@ var row = 0
 var column = 0
 var parser = null
 var interpreter = null
+var last_row = 0
 
 func _ready():
 	parser = Parser.new()
@@ -144,10 +145,12 @@ func set_interpreted_line(line_number):
 	
 	if line_number == null:
 		show_editor_indicators()
+		move_to(last_row)
 		var tween = get_tree().create_tween()
 		tween.tween_property($interpreter_cursor, 'self_modulate', Color(1,1,1,0), 1)
 		return
 
+	last_row = line_number
 	interpreter_cursor.self_modulate = Color(1,1,1,1)
 	var new_pos = Vector2(interpreter_cursor.position.x, start_row_position.y + line_number * ROW_HEIGHT)
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_EXPO)

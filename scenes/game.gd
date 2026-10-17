@@ -14,7 +14,8 @@ func _ready():
 		
 	Transition.openScene()
 	initialize_actors()
-		
+	$Printout.start()
+	
 func initialize_actors():
 	for actor in get_tree().get_nodes_in_group("Actor"):
 		interpreter.on_actor_instruction.connect(actor.perform_instruction)
