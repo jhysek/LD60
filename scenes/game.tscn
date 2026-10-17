@@ -116,6 +116,19 @@ theme_override_fonts/font = ExtResource("6_0tnpc")
 text = ">  press start to run the simulation"
 vertical_alignment = 2
 
+[node name="Controls" type="Label" parent="UI/ControlPanel" unique_id=459181723]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 0
+offset_left = 125.0
+offset_top = 102.0
+offset_right = 409.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 10
+text = "controls:
+wasd  - move head
+space - (un)punch"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]

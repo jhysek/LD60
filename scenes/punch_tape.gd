@@ -12,10 +12,13 @@ var Interpreter = preload("res://scripts/program_interpreter.gd")
 @onready var column_indicator = $column_indicator
 @onready var program = $program
 @onready var interpreter_cursor = $interpreter_cursor
+@onready var interpreter_error = $interpreter_error
+@onready var compiler_panel = $CompilerPanel
 
 @onready var start_row_position = row_indicator.position
 @onready var start_column_position = column_indicator.position
 @onready var start_tape_position = position
+@onready var start_compiler_panel_position = compiler_panel.position
 
 var row = 0
 var column = 0
@@ -25,7 +28,7 @@ var interpreter = null
 func _ready():
 	parser = Parser.new()
 	interpreter = Interpreter.new()
-	
+	init_column_indicator()
 	init_row_indicator()
 	program.initialize_empty_program(MAX_ROWS)
 
@@ -54,7 +57,7 @@ func _process(delta):
 	
 func process_inputs():
 	if Input.is_action_just_pressed("ui_down"):
-		if row < MAX_ROWS:
+		if row < MAX_ROWS - 1:
 			move_down()
 		else: 
 			print("TODO: sound, you are already on bottom")
@@ -85,7 +88,8 @@ func move_to(row):
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, 'position', start_tape_position - diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
-	
+	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
+	update_compiler_info()
 		
 func move_down():
 	row += 1
@@ -93,13 +97,21 @@ func move_down():
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, 'position', start_tape_position - diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
-
+	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
+	update_compiler_info()
+		
 func move_up():
 	row -= 1
 	var diff = Vector2(0, row * ROW_HEIGHT)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(self, 'position', start_tape_position - diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
+	update_compiler_info()
+		
+func init_column_indicator():
+	column = 3 
+	column_indicator.position.x = column * COLUMN_WIDTH + 5
 	
 func move_left():
 	column -= 1
@@ -125,11 +137,13 @@ func punch():
 	interpreter.interpret_instruction(row, cmd.instruction, cmd.argument)
 	
 	redraw_program()
+	update_compiler_info()
 
 func set_interpreted_line(line_number): 
-	$interpreter_error.hide()
+	interpreter_error.hide()
 	
 	if line_number == null:
+		show_editor_indicators()
 		var tween = get_tree().create_tween()
 		tween.tween_property($interpreter_cursor, 'self_modulate', Color(1,1,1,0), 1)
 		return
@@ -143,17 +157,20 @@ func set_interpreted_line(line_number):
 
 func set_interpreter_error(line_number, message):
 	move_to(line_number)
-	$interpreter_cursor.self_modulate = Color(1,1,1,0)
-	$interpreter_error/message.text = message
-	$interpreter_error.position.y = start_row_position.y + line_number * ROW_HEIGHT
-	$interpreter_error.show()
 
+	$interpreter_cursor.self_modulate = Color(1,1,1,0)
+
+	interpreter_error.get_node("message").text = message
+	$interpreter_error.position.y = start_row_position.y + line_number * ROW_HEIGHT
+	interpreter_error.show()
+	move_to(line_number)
+	show_editor_indicators()
+	$CompilerPanel/LineInfo.hide()
+	
 func redraw_program():
 	var program_container = $program
+	var holes = PackedVector2Array()
 	
-	for hole in program_container.get_children():
-		hole.queue_free()
-			
 	for row in range(0, MAX_ROWS):
 		for column in range(0,10):
 			if !program.value_at(column, row):
@@ -161,14 +178,49 @@ func redraw_program():
 				
 			var coords = Vector2(start_column_position.x + column * COLUMN_WIDTH, 
 								 start_row_position.y + row * ROW_HEIGHT)
-								
-			var hole = Hole.instantiate()
-			program_container.add_child(hole)
-			hole.position = coords + Vector2(COLUMN_WIDTH/2, ROW_HEIGHT/2 - program_container.position.y)
-			hole.name = "hole_" + str(column) + "_" + str(row)
-			
+									
+			holes.append(coords + Vector2(COLUMN_WIDTH/2, ROW_HEIGHT/2))
+		
+	var shader_material := material as ShaderMaterial
+	shader_material.set_shader_parameter("holes", holes)
+	shader_material.set_shader_parameter("hole_count", holes.size())
+
+func hide_editor_indicators():
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(column_indicator, 'self_modulate', Color(1,1,1,0), 0.5)
+	tween.tween_property(row_indicator, 'self_modulate', Color(1,1,1,0), 0.5)
+	tween.tween_property(compiler_panel, 'self_modulate', Color(1,1,1,0), 0.5)
+		
+	
+func show_editor_indicators():
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(column_indicator, 'self_modulate', Color(1,1,1,1), 0.5)
+	tween.tween_property(row_indicator, 'self_modulate', Color(1,1,1,1), 0.5)
+	tween.tween_property(compiler_panel, 'self_modulate', Color(1,1,1,1), 0.5)
+	
 func init_row_indicator():
 	var x_offset = start_column_position.x - row_indicator.position.x + 6
 	for dot in row_indicator.get_children():
 		var coords = Vector2(start_column_position.x + int(dot.name) * COLUMN_WIDTH + x_offset, ROW_HEIGHT /2)
 		dot.position = coords
+
+func update_compiler_info():
+	$CompilerPanel/LineInfo.show()
+	var program_line = program.get_line(row)
+	var parsed_line = parser.parse_line(program_line)
+	var interpreted = interpreter.interpret_line_preview(parsed_line.instruction, parsed_line.argument)
+	
+	if interpreted.instruction == "INVALID":
+		$CompilerPanel/LineInfo/Instruction.set("theme_override_colors/font_color", Color("#8b2019"))
+		
+	else:
+		$CompilerPanel/LineInfo/Instruction.set("theme_override_colors/font_color", Color("#4d4d4d"))
+		
+	if interpreted.argument == "ERR":
+		$CompilerPanel/LineInfo/Argument.set("theme_override_colors/font_color", Color("#8b2019"))
+	else:
+		$CompilerPanel/LineInfo/Argument.set("theme_override_colors/font_color", Color("#4d4d4d"))
+		
+	$CompilerPanel/LineInfo/Instruction.text = str(interpreted.instruction)
+	$CompilerPanel/LineInfo/Argument.text = str(interpreted.argument)
+	$CompilerPanel/LineInfo/Description.text = str(interpreted.description)

@@ -10,3 +10,17 @@ const MUL  = 7    # multiply value in memory on given address with memory 0 and 
 const COMPARE = 8 # compare memory 0 with memory of given address and store result to memory 0 (0 = equal, 1 = smaller, 2 = greater)
 const JUMP = 9    # jumps on line
 const IF   = 10   # go to next line if memory 0 equals argument, otherwise skip next line
+
+const NAMES = {
+	NOOP: "NOOP",
+	STEP: "STEP",
+	TURN: "TURN",
+	JUMP: "JUMP"
+}
+
+const DESCRIPTIONS = {
+	NOOP: "No operation. This does nothing. Arguments are ignored.",
+	STEP: "One step forward.\nNo arguments.",
+	TURN: "Turn left or right.\nArguments: 0010 - left, 0001 - right",
+	JUMP: "Jump to program line.\nArgument: line number in binary"
+}

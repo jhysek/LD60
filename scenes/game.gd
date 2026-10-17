@@ -32,7 +32,6 @@ func _on_program_ended() -> void:
 func _on_program_error(line, message) -> void:
 	print("PROGRAM ERROR on line " + str(line) + ": " + message)
 	punch_tape.set_interpreter_error(line, message)
-	interpreter.stop()
 	clock.stop()
 
 
@@ -41,6 +40,7 @@ func _on_btn_play_pressed() -> void:
 	print(str(parsed))
 	interpreter.init_program(parsed)
 	punch_tape.set_interpreted_line(0)
+	punch_tape.hide_editor_indicators()
 	clock.start()
 
 

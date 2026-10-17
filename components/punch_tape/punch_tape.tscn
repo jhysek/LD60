@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://dk2o0rblncq8g"]
 
+[ext_resource type="Shader" uid="uid://ciwyausp7cln8" path="res://components/punch_tape/punch_tape.gdshader" id="1_cx443"]
 [ext_resource type="Texture2D" uid="uid://benb60haom305" path="res://components/punch_tape/tape.png" id="1_eurux"]
 [ext_resource type="Script" uid="uid://umdhsy81wd6r" path="res://scenes/punch_tape.gd" id="2_cx443"]
 [ext_resource type="Script" uid="uid://brt1io2pqs55f" path="res://scripts/program.gd" id="3_5ap7w"]
 [ext_resource type="Theme" uid="uid://dup7hpbuaswnl" path="res://assets/themes/punch_tape.tres" id="4_bwtkn"]
 [ext_resource type="Texture2D" uid="uid://10vehr1w2m61" path="res://components/punch_tape/whitehole.png" id="5_hrb7p"]
+[ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="7_5ap7w"]
+[ext_resource type="FontFile" uid="uid://jk6a7qi5rpri" path="res://assets/avant_pixel.ttf" id="7_hrb7p"]
+[ext_resource type="Texture2D" uid="uid://s34svr4e0akg" path="res://components/punch_tape/arrow.png" id="9_hrb7p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eurux"]
+shader = ExtResource("1_cx443")
+shader_parameter/holes = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/hole_count = 0
+shader_parameter/hole_radius = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
 bg_color = Color(0, 0, 0, 0.0627451)
@@ -14,6 +24,47 @@ bg_color = Color(0, 0, 0, 0.078431375)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tnpc"]
 bg_color = Color(0.16470589, 0.5411765, 0.23529412, 0.3137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
+bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+shadow_color = Color(0.103743516, 0.10374353, 0.103743516, 0.6)
+
+[sub_resource type="Animation" id="Animation_hrb7p"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.3535533, 2.1435468),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w1nhs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1nhs"]
+_data = {
+&"Idle": SubResource("Animation_hrb7p"),
+&"RESET": SubResource("Animation_w1nhs")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wcxm"]
 bg_color = Color(0.54509807, 0.1254902, 0.09803922, 0.16470589)
@@ -28,6 +79,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="PunchTape" type="TextureRect" unique_id=824950741]
+material = SubResource("ShaderMaterial_eurux")
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -196,6 +248,67 @@ offset_right = 264.0
 offset_bottom = 74.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0tnpc")
 
+[node name="CompilerPanel" type="Panel" parent="." unique_id=324151775]
+layout_mode = 0
+offset_left = -243.0
+offset_top = 31.0
+offset_right = -50.0
+offset_bottom = 91.0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_m72si")
+
+[node name="LineInfo" type="Control" parent="CompilerPanel" unique_id=1022551699]
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 48.0
+offset_bottom = 49.0
+
+[node name="Instruction" type="Label" parent="CompilerPanel/LineInfo" unique_id=28313495]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 42.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("7_hrb7p")
+theme_override_font_sizes/font_size = 13
+text = "NOOP"
+
+[node name="Argument" type="Label" parent="CompilerPanel/LineInfo" unique_id=1538845841]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("7_hrb7p")
+theme_override_font_sizes/font_size = 13
+text = "000"
+
+[node name="Description" type="Label" parent="CompilerPanel/LineInfo" unique_id=1131659034]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = -2.0
+offset_top = 21.0
+offset_right = 180.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+theme_override_fonts/font = ExtResource("7_5ap7w")
+theme_override_font_sizes/font_size = 7
+text = "No operation. This line does nothing."
+autowrap_mode = 2
+
+[node name="Arrow" type="Sprite2D" parent="CompilerPanel" unique_id=2000789098]
+self_modulate = Color(0.9529412, 0.93333334, 0.89411765, 1)
+position = Vector2(199, 30)
+texture = ExtResource("9_hrb7p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CompilerPanel" unique_id=85609947]
+libraries/ = SubResource("AnimationLibrary_w1nhs")
+autoplay = &"Idle"
+speed_scale = 0.3
+
 [node name="interpreter_error" type="Panel" parent="." unique_id=1686942662]
 visible = false
 layout_mode = 0
@@ -206,10 +319,15 @@ offset_bottom = 74.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7wcxm")
 
 [node name="message" type="Label" parent="interpreter_error" unique_id=2143667130]
+custom_minimum_size = Vector2(180, 50)
+custom_maximum_size = Vector2(180, 50)
 layout_mode = 0
-offset_left = -286.0
-offset_top = -13.0
-offset_right = -10.0
-offset_bottom = 43.0
+offset_left = -209.0
+offset_top = -8.0
+offset_right = -29.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.54509807, 0.1254902, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("7_5ap7w")
+theme_override_font_sizes/font_size = 11
 text = "ERROR"
-vertical_alignment = 1
+autowrap_mode = 2

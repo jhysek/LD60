@@ -29,7 +29,7 @@ func tick():
 		return
 	
 	interpret_current_line()
-	
+
 
 func interpret_current_line():
 	if ended:
@@ -59,7 +59,7 @@ func interpret_instruction(line, instruction, argument):
 		Instruction.TURN: 
 			print("TURN " + str(argument))
 			if argument != 1 && argument != 2:
-				emit_signal("on_program_error", line, "Invalid argument: " + str(argument) + ". Allowed: 0001, 0010")
+				emit_signal("on_program_error", line, "Invalid argument: " + str(argument) + ".\n Allowed: 0001, 0010")
 				return
 				
 			emit_signal("on_actor_instruction", instruction, argument)
@@ -100,3 +100,32 @@ func validate_instruction(instruction, argument):
 
 func decimal_to_binary(decimal):
 	pass
+	
+func interpret_line_preview(instruction, argument):
+	if Instruction.DESCRIPTIONS.has(instruction):
+		return {
+			instruction = Instruction.NAMES[instruction],
+			argument = argument_interpretation(instruction, argument),
+			description = Instruction.DESCRIPTIONS[instruction]
+		}
+	else:
+		return {
+			instruction = "INVALID",
+			argument = str(argument),
+			description = "Unknown instruction"
+		}
+		
+func argument_interpretation(instruction, argument):
+	if instruction == Instruction.TURN:
+		match argument:
+			1: return "RIGHT"
+			2: return "LEFT"
+			_: return "ERR"
+		return
+	
+	if instruction == Instruction.STEP:
+		if argument == 0:
+			return "FORWARD"
+		return "ERR"
+		
+	return str(argument)
