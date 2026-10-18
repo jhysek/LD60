@@ -57,6 +57,7 @@ func perform_instruction(instruction, parameter):
 			if looking_at && looking_at.group == "DataSource":
 				var value = looking_at.node.get_value()
 				print("ACTOR: got value ", value, " ... emitting")
+				Sfx.play("Read")
 				emit_signal("memory_store_request", parameter, value)
 			
 		Instruction.WRITE:
@@ -64,6 +65,7 @@ func perform_instruction(instruction, parameter):
 			print("looking at: ", looking_at)
 			if looking_at && looking_at.group == "DataSource":
 				print("Changing value of data source")
+				Sfx.play("Write")
 				looking_at.node.set_value(parameter)
 
 func update_visual_rotation():
@@ -114,12 +116,14 @@ func step():
 	if !map.can_jump_to(new_map_pos):
 		$Bubble.show()
 		print("ERROR: NEMUZU TAM SKOCIT!")
+		Sfx.play("Nope")
 		return
 		
 	anim.play("Jump")
 	map_pos = new_map_pos
 	var tween = create_tween()
 	tween.tween_property(self, "position", map.map_to_world(new_map_pos), 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	Sfx.play("Jump")
 	
 	check_objects()
 
@@ -142,6 +146,7 @@ func turn_right():
 	direction_idx = (direction_idx + 1) % 4
 	update_visual_rotation()
 	check_objects()
+	Sfx.play("Turn")
 	
 func turn_left():
 	direction_idx = (direction_idx - 1) % 4
@@ -149,4 +154,5 @@ func turn_left():
 		direction_idx = 3
 	update_visual_rotation()
 	check_objects()
+	Sfx.play("Turn")
 	

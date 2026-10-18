@@ -11,15 +11,18 @@ var stats = {
 }
 
 func _on_btn_play_pressed() -> void:
+	Sfx.play("BtnClick")
 	hide_man()
 	emit_signal("on_btn_play")
 
 
 func _on_btn_step_pressed() -> void:
+	Sfx.play("BtnClick")
 	emit_signal("on_btn_step")
 
 
 func _on_btn_stop_pressed() -> void:
+	Sfx.play("BtnClick")
 	show_man()
 	emit_signal("on_btn_stop")
 	

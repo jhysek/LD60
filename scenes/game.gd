@@ -77,21 +77,23 @@ func exit_reached(actor):
 		failed()
 
 func failed():
+	Sfx.play("Nope")
 	_on_btn_stop_pressed()
 
 func won():
 	print("WON")
 	var stats = $UI.stats
 	clock.stop()
+	Sfx.play("Finished")
 	LevelSwitcher.set_score(LevelSwitcher.current_level, stats.ticks, stats.lines)
 	$LeaveTimer.start()
 	
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
+	Sfx.play("Tick")
 	$UI.update_ticks_stats(ticks)
 	if win_condition_satisfied():
-
 		won()
 	
 func _on_program_ended() -> void:
@@ -106,6 +108,7 @@ func _on_program_ended() -> void:
 		won()
 
 func _on_program_error(line, message) -> void:
+	Sfx.play("Nope")
 	print("PROGRAM ERROR on line " + str(line) + ": " + message)
 	punch_tape.set_interpreter_error(line, message)
 	clock.stop()

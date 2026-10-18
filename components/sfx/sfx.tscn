@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dxjrdg33ojkv5"]
+
+[ext_resource type="Script" uid="uid://g7f2fvucqj3n" path="res://components/sfx/sfx.gd" id="1_t5aw8"]
+[ext_resource type="AudioStream" uid="uid://dh8wkgiok51xj" path="res://assets/sfx/click5.wav" id="2_uv8us"]
+[ext_resource type="AudioStream" uid="uid://cuamfgi7arc13" path="res://assets/sfx/click4.wav" id="3_dktqr"]
+[ext_resource type="AudioStream" uid="uid://dafbceelkvq8w" path="res://assets/sfx/nope.wav" id="3_uv8us"]
+[ext_resource type="AudioStream" uid="uid://1dn42egno5wm" path="res://assets/sfx/victory.wav" id="4_uv8us"]
+
+[node name="Sfx" type="Node" unique_id=1822213266]
+script = ExtResource("1_t5aw8")
+
+[node name="Write" type="AudioStreamPlayer" parent="." unique_id=1138140779]
+stream = ExtResource("2_uv8us")
+
+[node name="Read" type="AudioStreamPlayer" parent="." unique_id=2135712148]
+stream = ExtResource("3_dktqr")
+
+[node name="Nope" type="AudioStreamPlayer" parent="." unique_id=85078674]
+stream = ExtResource("3_uv8us")
+
+[node name="Finished" type="AudioStreamPlayer" parent="." unique_id=1113963761]
+stream = ExtResource("4_uv8us")
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=2085031980]
+
+[node name="Turn" type="AudioStreamPlayer" parent="." unique_id=1452653878]
+
+[node name="BtnClick" type="AudioStreamPlayer" parent="." unique_id=82356683]
+
+[node name="Tick" type="AudioStreamPlayer" parent="." unique_id=566258480]
+
+[node name="Punch" type="AudioStreamPlayer" parent="." unique_id=1927840902]
+
+[node name="TapeMove" type="AudioStreamPlayer" parent="." unique_id=1647669438]
+
+[node name="Printer" type="AudioStreamPlayer" parent="." unique_id=657103945]

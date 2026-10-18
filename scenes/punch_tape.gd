@@ -95,6 +95,7 @@ func move_to(_row):
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
+	Sfx.play("TapeMove")
 	
 func move_to_column(_column):
 	column = _column
@@ -110,6 +111,7 @@ func move_down():
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
+	Sfx.play("TapeMove")
 		
 func move_up():
 	row -= 1
@@ -119,6 +121,7 @@ func move_up():
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
+	Sfx.play("TapeMove")
 		
 func init_column_indicator():
 	column = 3 
@@ -150,7 +153,7 @@ func punch():
 	redraw_program()
 	update_compiler_info()
 	var parsed_prog = parse_program()
-	
+	Sfx.play("Punch")
 	emit_signal("on_program_updated", size_without_empty_lines(parsed_prog))
 	
 func size_without_empty_lines(prog):
