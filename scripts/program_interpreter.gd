@@ -115,10 +115,11 @@ func interpret_instruction(line, instruction, argument):
 				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
 				return
 				
+			print("CALLING WRITE")
 			emit_signal("on_actor_instruction", instruction, memory[argument])
 			current_line += 1
 		
-		Instruction.COMPARE:
+		Instruction.CMP:
 			if argument > MAX_USER_MEM:
 				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
 				return
@@ -202,7 +203,7 @@ func update_memory(address, value, line):
 		return
 				
 	memory[address] = value
-	emit_signal("on_memory_updated", memory.slice(0,8))
+	emit_signal("on_memory_updated", memory.slice(0,8), memory[COMPARE_RESULT_ADDRESS], memory[CALL_RETURN_ADDRESS])
 
 func stop():
 	program_ended()

@@ -14,6 +14,7 @@ var parsed_program = []
 var stepping = false
 
 func win_condition_satisfied():
+	print("CHECKING CONDITION FOR LEVEL: ", LevelSwitcher.current_level)
 	match LevelSwitcher.current_level:
 		0: return false
 		1: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value
@@ -27,6 +28,7 @@ func _ready():
 		
 	Transition.openScene()
 	initialize_actors()
+	initialize_objects()
 	$UI/Printout/Paper/Objectives.text = briefing
 	$UI/Printout.start()
 	
@@ -39,6 +41,11 @@ func initialize_actors():
 		actor.on_exit_reached.connect(exit_reached)
 		actor.memory_store_request.connect(interpreter.store_to_memory)
 	
+func initialize_objects():
+	for obj in get_tree().get_nodes_in_group("Objects"):
+		if obj.is_in_group("DataSource"):
+			obj.on_value_updated.connect(_on_data_source_updated)
+		
 func exit_reached(actor):
 	actor.fade_out()
 	won()
@@ -72,7 +79,6 @@ func _on_program_error(line, message) -> void:
 	punch_tape.set_interpreter_error(line, message)
 	clock.stop()
 
-
 func _on_btn_play_pressed() -> void:
 	var parsed = punch_tape.parse_program()
 	interpreter.init_program(parsed)
@@ -105,5 +111,10 @@ func _on_btn_step_pressed() -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
 	
-func _on_memory_updated(memory):
-	$UI.refresh_memory(memory)
+func _on_memory_updated(memory, cmp, ret):
+	$UI.refresh_memory(memory, cmp, ret)
+	
+func _on_data_source_updated(new_value):
+	print("DATA SOURCE UPDATED TO: ", new_value)
+	if win_condition_satisfied():
+		won()

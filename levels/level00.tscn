@@ -1,14 +1,12 @@
-[gd_scene format=4 uid="uid://dwjbxhs5gssqb"]
+[gd_scene format=4 uid="uid://jql0itoc0g7e"]
 
 [ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_ir15t"]
 [ext_resource type="PackedScene" uid="uid://d168o0evbp2yt" path="res://components/ui/ui.tscn" id="3_dinhu"]
-[ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="4_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
-[ext_resource type="PackedScene" uid="uid://dtfym3aw0fngi" path="res://components/exit/exit.tscn" id="12_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
@@ -62,28 +60,28 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
 position = Vector2(-88, 114)
-tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+//7/AAACAAAAAAD9//3/AAACAAAAAAD8//z/AAACAAAAAAD8//7/AAACAAAAAAD+//z/AAACAAAAAAD9////AAACAAAAAAD///3/AAACAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD+//3/AAADAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAD9//7/AAADAAAAAAD+/wAAAAACAAAAAAD8/wAAAAACAAAAAAD7////AAACAAAAAAD7//3/AAACAAAAAAAAAP7/AAACAAAAAAABAPz/AAADAAAAAAAAAP3/AAADAAAAAAAAAP//AAADAAAAAAD//wAAAAADAAAAAAD9/wAAAAADAAAAAAD7//7/AAADAAAAAAD7/wAAAAADAAAAAAD7//z/AAADAAAAAAABAP3/AAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAADAAAAAAABAP7/AAADAAAAAAAAAPz/AAACAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD8//z/AAADAAAAAAD8//7/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD8//3/AAAEAAAAAAD8////AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAD8/wAAAAADAAAAAAD7////AAADAAAAAAD7//3/AAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAD9/wAAAAAEAAAAAAD7//7/AAAEAAAAAAD7/wAAAAAEAAAAAAD7//z/AAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAA=")
 
 [node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
 position = Vector2(0, -29.999996)
 scale = Vector2(0.99999976, 0.99999976)
-tile_map_data = PackedByteArray("AAD9//3/AwAAAAAAAAD+//3/AwADAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwACAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
 tile_set = SubResource("TileSet_ir15t")
 
 [node name="Objects" type="Node2D" parent="World" unique_id=858827583]
 scale = Vector2(0.9999997, 0.9999997)
 
-[node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("12_rysoc")]
-position = Vector2(-157.50005, -236.25008)
-
 [node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
-position = Vector2(-34.00001, -228.00008)
+position = Vector2(-32.00003, -232.00005)
 scale = Vector2(0.4, 0.4)
+randomized = false
 
 [node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
 position = Vector2(31.000008, -27.000008)
 scale = Vector2(0.4, 0.4)
 type = "Computer"
+rnd_min = 1
+rnd_max = 15
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
@@ -102,18 +100,8 @@ offset_bottom = 167.74994
 text = "0x0
 "
 
-[node name="DataRoom" type="Label" parent="World" unique_id=47260181]
-offset_left = -178.75
-offset_top = -285.0
-offset_right = -116.75
-offset_bottom = -262.0
-theme_override_colors/font_color = Color(0.08875313, 0.123221, 0.03688032, 1)
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 7
-text = "DATA ROOM"
-
 [node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-157, -204.00002)
+position = Vector2(-33, -196)
 rotation = -3.1415925
 
 [node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
@@ -127,5 +115,8 @@ playback_mode = 1
 idle_timeout = 1.0
 idle_fade_duration = 1.0
 
+[connection signal="on_btn_play" from="UI" to="." method="_on_btn_play_pressed"]
+[connection signal="on_btn_step" from="UI" to="." method="_on_btn_step_pressed"]
+[connection signal="on_btn_stop" from="UI" to="." method="_on_btn_stop_pressed"]
 [connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]

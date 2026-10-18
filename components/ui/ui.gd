@@ -27,11 +27,14 @@ func update_ticks_stats(ticks):
 	stats.ticks = ticks
 	refresh_stats()
 
-func refresh_memory(memory):
+func refresh_memory(memory, cmp, ret):
 	for i in range(8):
 		var node_name = "%02d" % i
 		if $ControlPanel/Memory.has_node(node_name):
 			$ControlPanel/Memory.get_node(node_name).text = "%02d: %d" % [i, memory[i]]
+			
+	$ControlPanel/Memory/CMP.text = "CMP: " + str(cmp)
+	$ControlPanel/Memory/RET.text = "RET: %2d" % ret
 	
 func _on_punch_tape_on_program_updated(lines: Variant) -> void:
 	stats.lines = lines

@@ -60,7 +60,10 @@ func perform_instruction(instruction, parameter):
 				emit_signal("memory_store_request", parameter, value)
 			
 		Instruction.WRITE:
+			print("ACTOR: WRITING...")
+			print("looking at: ", looking_at)
 			if looking_at && looking_at.group == "DataSource":
+				print("Changing value of data source")
 				looking_at.node.set_value(parameter)
 
 func update_visual_rotation():

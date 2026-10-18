@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d168o0evbp2yt"]
 
+[ext_resource type="Script" uid="uid://0fi4dcdq75gw" path="res://components/ui/ui.gd" id="1_fsg0l"]
 [ext_resource type="PackedScene" uid="uid://dk2o0rblncq8g" path="res://components/punch_tape/punch_tape.tscn" id="1_qlad5"]
 [ext_resource type="Texture2D" uid="uid://h4gtjbk350p8" path="res://components/control_panel/btn_dark.png" id="2_fsg0l"]
 [ext_resource type="Texture2D" uid="uid://djdktgyq36bkf" path="res://components/control_panel/btn-pressed.png" id="3_g5qrr"]
@@ -24,6 +25,7 @@ bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=776066984]
 layer = 2
+script = ExtResource("1_fsg0l")
 
 [node name="PunchTape" parent="." unique_id=824950741 instance=ExtResource("1_qlad5")]
 
@@ -245,6 +247,28 @@ theme_override_fonts/font = ExtResource("4_o61sl")
 theme_override_font_sizes/font_size = 11
 text = "07: 0"
 
+[node name="CMP" type="Label" parent="ControlPanel/Memory" unique_id=388936657]
+self_modulate = Color(0.34025678, 0.6354495, 0.69592375, 1)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 81.0
+offset_right = 194.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "CMP: 0"
+
+[node name="RET" type="Label" parent="ControlPanel/Memory" unique_id=1282123899]
+self_modulate = Color(0.391335, 0.5472961, 0.32062328, 1)
+layout_mode = 0
+offset_left = 202.0
+offset_top = 81.0
+offset_right = 247.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "RET:  0"
+
 [node name="Vignette" parent="." unique_id=543236073 instance=ExtResource("7_4ar2h")]
 offset_left = 4.0
 offset_top = 1.0
@@ -407,3 +431,8 @@ position = Vector2(-1, 19)
 points = PackedVector2Array(15, 70, 529, 70)
 width = 1.0
 default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[connection signal="on_program_updated" from="PunchTape" to="." method="_on_punch_tape_on_program_updated"]
+[connection signal="pressed" from="ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="ControlPanel/BtnStep" to="." method="_on_btn_step_pressed"]
+[connection signal="pressed" from="ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal on_value_updated(new_value)
+
 @export var randomized = true
 @export var value = 0
 @export var type = "WallTerminal"
@@ -28,10 +30,12 @@ func _ready():
 		$Timer.start()
 
 func set_value(_value):
+	print("SETTING VALUE TO: ", value)
 	$Timer.stop()
 	value = _value
 	randomized = false 
 	number.text = str(value)
+	emit_signal("on_value_updated", value)
 	
 func get_value():
 	$Timer.stop()

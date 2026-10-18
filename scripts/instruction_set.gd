@@ -58,10 +58,16 @@ const DESCRIPTIONS = {
 	STEP: "One step forward.\nNo arguments.",
 	TURN: "Turn left or right.\nArguments: 0010 - left, 0001 - right",
 	JUMP: "Jump to program line.\nArgument: line number in binary",
-	
-	READ: "Read value from computer in front and store it in memory.\nArgument: target address of memory (0 - 15)",
-	ADD: "Adds value in MEM to value in address 0 and store result to addres 0.\nArgument: MEM - address of memory (0 - 15)",
-	SET: "Sets value to MEM.\nArgument: MEM - address of memory (0 - 15)",
-	COPY: "Copy value in address 0 to MEM.\nArgument: MEM - address of memory (0 - 15)",
-	WRITE: "Write value in MEM to terminal in front of me.\nArgument: MEM - address of memory (0 - 15)"
+	READ: "Read value from computer in front and store it in memory.\nArgument: target address of memory (0 - 7)",
+	ADD: "Adds value in MEM to value in address 0 and store result to addres 0.\nArgument: MEM - address of memory (0 - 7)",
+	SET: "Sets value to MEM.\nArgument: MEM - address of memory (0 - 7)",
+	COPY: "Copy value in address 0 to MEM.\nArgument: MEM - address of memory (0 - 7)",
+	WRITE: "Write value in MEM to terminal in front of me.\nArgument: MEM - address of memory (0 - 7)",
+	CMP: "Compares memory 0 and MEM.\nArguments: MEM - address of memory to compare.",
+	JEQ: "If last compared numbers were equal, jump to MEM.\n Arguments: MEM - address to jump.",
+	JNE: "If last compared numbers were NOT equal, jump to MEM.\n Arguments: MEM - address to jump.",
+	JGE: "If value on last compared address was greater or equal to value on mem 0, jump to MEM.\n Arguments: MEM - address to jump.",
+	JL: "If value on last compared address was smaller than value on mem 0, jump to MEM.\n Arguments: MEM - address to jump.",
+	CALL: "Calls a procedure. Arguments:\n MEM - address where procedure starts.",
+	RET: "Returns from procedure - to address after the CALL instruction.\n No argumens."
 }

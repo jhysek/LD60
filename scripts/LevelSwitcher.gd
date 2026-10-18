@@ -6,6 +6,7 @@ var opened_levels: int = 0
 
 var levels = [
 	"res://levels/level00.tscn",
+	"res://levels/level01.tscn",
 	"res://levels/finished.tscn"
 ]
 
