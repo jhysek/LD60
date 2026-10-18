@@ -3,24 +3,31 @@ extends Node2D
 var ProgramInterpreter = preload("res://scripts/program_interpreter.gd")
 var interpreter = null
 var parsed_program = []
-var stats = {
-	lines = 0,
-	ticks = 0
-}
+
 
 @onready var punch_tape = $UI/PunchTape
 @onready var clock = $Clock
 @onready var bg = $Bg
 @onready var run_music = $TrackrPlayer
+@export_multiline var briefing = ""
+
 var stepping = false
 
+func win_condition_satisfied():
+	match LevelSwitcher.current_level:
+		0: return false
+		1: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value
+	return false
+	
 func _ready():
 	interpreter = ProgramInterpreter.new()
 	interpreter.on_program_ended.connect(_on_program_ended)
 	interpreter.on_program_error.connect(_on_program_error)
+	interpreter.on_memory_updated.connect(_on_memory_updated)
 		
 	Transition.openScene()
 	initialize_actors()
+	$UI/Printout/Paper/Objectives.text = briefing
 	$UI/Printout.start()
 	
 func _process(delta):
@@ -34,16 +41,20 @@ func initialize_actors():
 	
 func exit_reached(actor):
 	actor.fade_out()
+	won()
+
+func won():
 	_on_program_ended()
+	var stats = $UI.stats
 	LevelSwitcher.set_score(LevelSwitcher.current_level, stats.ticks, stats.lines)
 	LevelSwitcher.next_level()
-
 	
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
-	update_stats_ticks()
-	print("TICK #" + str(ticks))
+	$UI.update_ticks_stats(ticks)
+	if win_condition_satisfied():
+		won()
 	
 func _on_program_ended() -> void:
 	if stepping: 
@@ -52,6 +63,9 @@ func _on_program_ended() -> void:
 	print("PROGRAM FINISHED")
 	punch_tape.set_interpreted_line(null)
 	clock.stop()
+	
+	if win_condition_satisfied():
+		won()
 
 func _on_program_error(line, message) -> void:
 	print("PROGRAM ERROR on line " + str(line) + ": " + message)
@@ -67,18 +81,7 @@ func _on_btn_play_pressed() -> void:
 	$World.reset()
 	run_music.start_external()
 	clock.start()
-
-func update_stats_lines(lines):
-	stats.lines = lines
-	refresh_stats()
-	
-func update_stats_ticks():
-	stats.ticks = clock.ticks
-	refresh_stats()
-	
-func refresh_stats():
-	$UI/ControlPanel/Screen/Stats.text = "LINES: " + str(stats.lines) + "\n\nTICKS: " + str(stats.ticks)
-
+			
 func _on_btn_stop_pressed() -> void:
 	run_music.stop()
 	punch_tape.set_interpreted_line(null)
@@ -86,10 +89,6 @@ func _on_btn_stop_pressed() -> void:
 	clock.stop()
 	stepping = false
 	
-func _on_punch_tape_on_program_updated(lines: Variant) -> void:
-	update_stats_lines(lines)
-	
-
 func _on_clock_on_mid_tick() -> void:
 	run_music.tick()
 
@@ -99,8 +98,12 @@ func _on_btn_step_pressed() -> void:
 		interpreter.init_program(parsed)
 		punch_tape.set_interpreted_line(0)
 		punch_tape.hide_editor_indicators()
+		interpreter.clear_memory()
 		$World.reset()
 		stepping = true
 		
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
+	
+func _on_memory_updated(memory):
+	$UI.refresh_memory(memory)

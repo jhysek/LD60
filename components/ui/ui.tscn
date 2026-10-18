@@ -1,0 +1,409 @@
+[gd_scene format=3 uid="uid://d168o0evbp2yt"]
+
+[ext_resource type="PackedScene" uid="uid://dk2o0rblncq8g" path="res://components/punch_tape/punch_tape.tscn" id="1_qlad5"]
+[ext_resource type="Texture2D" uid="uid://h4gtjbk350p8" path="res://components/control_panel/btn_dark.png" id="2_fsg0l"]
+[ext_resource type="Texture2D" uid="uid://djdktgyq36bkf" path="res://components/control_panel/btn-pressed.png" id="3_g5qrr"]
+[ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="4_o61sl"]
+[ext_resource type="Texture2D" uid="uid://ddur33gfau3al" path="res://components/screen/screen.png" id="5_oxa44"]
+[ext_resource type="FontFile" uid="uid://jk6a7qi5rpri" path="res://assets/avant_pixel.ttf" id="6_lddvr"]
+[ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="7_4ar2h"]
+[ext_resource type="PackedScene" uid="uid://lboux55tewvh" path="res://components/printout/printout.tscn" id="8_2r1r0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
+bg_color = Color(0.12, 0.11468, 0.0972, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0acx5"]
+bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
+bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=776066984]
+layer = 2
+
+[node name="PunchTape" parent="." unique_id=824950741 instance=ExtResource("1_qlad5")]
+
+[node name="ControlPanel" type="Control" parent="." unique_id=356845517]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -318.0
+offset_right = -56.0
+offset_bottom = 175.0
+grow_horizontal = 0
+
+[node name="Panel" type="Panel" parent="ControlPanel" unique_id=1462683850]
+layout_mode = 0
+offset_top = -11.0
+offset_right = 258.0
+offset_bottom = 156.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m72si")
+
+[node name="Hole" type="Panel" parent="ControlPanel" unique_id=316255264]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 113.0
+offset_right = 115.0
+offset_bottom = 143.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0acx5")
+
+[node name="BtnPlay" type="TextureButton" parent="ControlPanel" unique_id=1746598617]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 110.0
+offset_right = 51.0
+offset_bottom = 150.0
+focus_mode = 0
+texture_normal = ExtResource("2_fsg0l")
+texture_pressed = ExtResource("3_g5qrr")
+
+[node name="RUN" type="Label" parent="ControlPanel/BtnPlay" unique_id=463841707]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "START"
+
+[node name="BtnStep" type="TextureButton" parent="ControlPanel" unique_id=1595425398]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 110.0
+offset_right = 86.0
+offset_bottom = 150.0
+focus_mode = 0
+texture_normal = ExtResource("2_fsg0l")
+texture_pressed = ExtResource("3_g5qrr")
+
+[node name="RUN" type="Label" parent="ControlPanel/BtnStep" unique_id=1416312538]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 6.0
+offset_top = -13.0
+offset_right = 38.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "STEP"
+
+[node name="BtnStop" type="TextureButton" parent="ControlPanel" unique_id=1222413035]
+self_modulate = Color(1, 0.44, 0.44, 1)
+layout_mode = 0
+offset_left = 81.0
+offset_top = 110.0
+offset_right = 121.0
+offset_bottom = 150.0
+focus_mode = 0
+texture_normal = ExtResource("2_fsg0l")
+texture_pressed = ExtResource("3_g5qrr")
+
+[node name="STOP" type="Label" parent="ControlPanel/BtnStop" unique_id=649192787]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 5.0
+offset_top = -13.0
+offset_right = 36.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "STOP"
+
+[node name="Screen" type="Sprite2D" parent="ControlPanel" unique_id=1740311048]
+self_modulate = Color(0.2592937, 0.2592937, 0.25929365, 1)
+position = Vector2(80.000015, 40.000004)
+scale = Vector2(0.23518968, 0.24973758)
+texture = ExtResource("5_oxa44")
+
+[node name="Stats" type="Label" parent="ControlPanel/Screen" unique_id=1975448471]
+offset_left = -195.5868
+offset_top = -76.07988
+offset_right = 326.09875
+offset_bottom = 64.92012
+theme_override_colors/font_color = Color(0.48412004, 0.98, 0.33319998, 1)
+theme_override_fonts/font = ExtResource("6_lddvr")
+theme_override_font_sizes/font_size = 50
+text = "LINES: 0
+
+TICKS: 0"
+vertical_alignment = 2
+
+[node name="Controls" type="Label" parent="ControlPanel" unique_id=220407053]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 0
+offset_left = 127.0
+offset_top = 113.0
+offset_right = 411.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 10
+text = "wasd  - move head
+space - (un)punch"
+
+[node name="Memory" type="Control" parent="ControlPanel" unique_id=1131351071]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="ControlPanel/Memory" unique_id=860721741]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 6.0
+offset_right = 197.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 10
+text = "MEMORY"
+
+[node name="00" type="Label" parent="ControlPanel/Memory" unique_id=1220621434]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 23.0
+offset_right = 197.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "00: 0"
+
+[node name="01" type="Label" parent="ControlPanel/Memory" unique_id=354631010]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 37.0
+offset_right = 197.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "01: 0"
+
+[node name="02" type="Label" parent="ControlPanel/Memory" unique_id=798273391]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 51.0
+offset_right = 197.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "02: 0"
+
+[node name="03" type="Label" parent="ControlPanel/Memory" unique_id=706679944]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 63.0
+offset_right = 197.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "03: 0"
+
+[node name="04" type="Label" parent="ControlPanel/Memory" unique_id=1149642625]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 23.0
+offset_right = 249.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "04: 0"
+
+[node name="05" type="Label" parent="ControlPanel/Memory" unique_id=714086800]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 36.0
+offset_right = 250.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "05: 0"
+
+[node name="06" type="Label" parent="ControlPanel/Memory" unique_id=1346169616]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 49.0
+offset_right = 250.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "06: 0"
+
+[node name="07" type="Label" parent="ControlPanel/Memory" unique_id=732120892]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 63.0
+offset_right = 250.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 11
+text = "07: 0"
+
+[node name="Vignette" parent="." unique_id=543236073 instance=ExtResource("7_4ar2h")]
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
+
+[node name="Printout" parent="." unique_id=383271323 instance=ExtResource("8_2r1r0")]
+position = Vector2(545, 6)
+objectives = "BRIEFING
+
+- We have new piece of tech - a  computer. Learn  to  use  it.
+- Write  a  program to the punched tape and press \\\"START\\\"
+- Come  to  data  room  ( programatically  of  course!)"
+
+[node name="Manual" type="Panel" parent="." unique_id=2119718791]
+offset_left = 48.0
+offset_top = 534.0
+offset_right = 599.0
+offset_bottom = 815.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rysoc")
+
+[node name="title" type="Label" parent="Manual" unique_id=1705156653]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 7.0
+offset_right = 358.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 14
+text = "Instruction set"
+
+[node name="INSTRUCTION" type="Label" parent="Manual" unique_id=451968176]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 41.0
+offset_right = 181.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 10
+text = "INSTRUCTION"
+
+[node name="ARGUMENT" type="Label" parent="Manual" unique_id=1989193107]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 41.0
+offset_right = 324.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 10
+text = "ARGUMENT"
+
+[node name="DESCRIPTION" type="Label" parent="Manual" unique_id=813025326]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 41.0
+offset_right = 547.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 10
+text = "DESCRIPTION"
+
+[node name="instructions" type="Label" parent="Manual" unique_id=305971202]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 58.0
+offset_right = 181.0
+offset_bottom = 322.0
+theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "STEP     ....  ○○○●
+TURN     ....  ○○●○
+READ     ....  ○○●●
+ADD      ....  ○●○○
+COPY     ....  ○●○●
+WRITE    ....  ○●●○
+ADD      ....  ○●●●
+COMPARE  ....  ●○○○
+JUMP_IF_EQ ..  ●○○●
+JUMP_NOT_EQ.. ●○●○
+JUMP_IF_GE .. ●○●●
+JUMP_IF_LESS .. ●●○○
+JUMP .. ●●○●
+CALL .. ●●●○
+RET .. ●●●●
+"
+
+[node name="descriptions" type="Label" parent="Manual" unique_id=1124038204]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 61.0
+offset_right = 548.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "one step forward
+turn left or right
+jump to given program line"
+
+[node name="arguments" type="Label" parent="Manual" unique_id=1298708741]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 60.0
+offset_right = 321.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "no argument
+○○○● - right, ○○●○ - left
+line number (binary)
+"
+
+[node name="Line2D" type="Line2D" parent="Manual" unique_id=20097524]
+position = Vector2(-3, 0)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual" unique_id=1563695278]
+position = Vector2(-1, 14)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual/Line2D2" unique_id=1183877905]
+position = Vector2(-1, 15)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2" unique_id=1513158250]
+position = Vector2(-1, 19)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2" unique_id=346481002]
+position = Vector2(-1, 19)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=202112808]
+position = Vector2(-1, 19)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+
+[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=1981358733]
+position = Vector2(-1, 19)
+points = PackedVector2Array(15, 70, 529, 70)
+width = 1.0
+default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)

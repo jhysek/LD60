@@ -2,35 +2,16 @@
 
 [ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_ir15t"]
-[ext_resource type="PackedScene" uid="uid://dk2o0rblncq8g" path="res://components/punch_tape/punch_tape.tscn" id="2_iywne"]
-[ext_resource type="Texture2D" uid="uid://h4gtjbk350p8" path="res://components/control_panel/btn_dark.png" id="3_p57ef"]
+[ext_resource type="PackedScene" uid="uid://d168o0evbp2yt" path="res://components/ui/ui.tscn" id="3_dinhu"]
 [ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="4_u5sy4"]
-[ext_resource type="Texture2D" uid="uid://djdktgyq36bkf" path="res://components/control_panel/btn-pressed.png" id="4_vtaks"]
-[ext_resource type="Texture2D" uid="uid://ddur33gfau3al" path="res://components/screen/screen.png" id="5_gee14"]
-[ext_resource type="FontFile" uid="uid://jk6a7qi5rpri" path="res://assets/avant_pixel.ttf" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
-[ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
-[ext_resource type="PackedScene" uid="uid://lboux55tewvh" path="res://components/printout/printout.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dtfym3aw0fngi" path="res://components/exit/exit.tscn" id="12_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
-bg_color = Color(0.12, 0.11468, 0.0972, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0acx5"]
-bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
-bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
 texture = ExtResource("11_kvuet")
@@ -74,309 +55,7 @@ texture = ExtResource("2_ir15t")
 expand_mode = 2
 stretch_mode = 1
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=1035584148]
-layer = 2
-
-[node name="PunchTape" parent="UI" unique_id=824950741 instance=ExtResource("2_iywne")]
-
-[node name="ControlPanel" type="Control" parent="UI" unique_id=2018270992]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -318.0
-offset_right = -56.0
-offset_bottom = 175.0
-grow_horizontal = 0
-
-[node name="Panel" type="Panel" parent="UI/ControlPanel" unique_id=344016960]
-layout_mode = 0
-offset_top = -11.0
-offset_right = 258.0
-offset_bottom = 156.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_m72si")
-
-[node name="Hole" type="Panel" parent="UI/ControlPanel" unique_id=1965244254]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 113.0
-offset_right = 115.0
-offset_bottom = 143.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0acx5")
-
-[node name="BtnPlay" type="TextureButton" parent="UI/ControlPanel" unique_id=1704851493]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 110.0
-offset_right = 51.0
-offset_bottom = 150.0
-focus_mode = 0
-texture_normal = ExtResource("3_p57ef")
-texture_pressed = ExtResource("4_vtaks")
-
-[node name="RUN" type="Label" parent="UI/ControlPanel/BtnPlay" unique_id=732879031]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.216
-offset_left = 3.0
-offset_top = -13.0
-offset_right = 35.36
-offset_bottom = 10.0
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "START"
-
-[node name="BtnStep" type="TextureButton" parent="UI/ControlPanel" unique_id=2133052946]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 110.0
-offset_right = 86.0
-offset_bottom = 150.0
-focus_mode = 0
-texture_normal = ExtResource("3_p57ef")
-texture_pressed = ExtResource("4_vtaks")
-
-[node name="RUN" type="Label" parent="UI/ControlPanel/BtnStep" unique_id=1960956233]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.216
-offset_left = 6.0
-offset_top = -13.0
-offset_right = 38.36
-offset_bottom = 10.0
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "STEP"
-
-[node name="BtnStop" type="TextureButton" parent="UI/ControlPanel" unique_id=1793955548]
-self_modulate = Color(1, 0.44, 0.44, 1)
-layout_mode = 0
-offset_left = 81.0
-offset_top = 110.0
-offset_right = 121.0
-offset_bottom = 150.0
-focus_mode = 0
-texture_normal = ExtResource("3_p57ef")
-texture_pressed = ExtResource("4_vtaks")
-
-[node name="STOP" type="Label" parent="UI/ControlPanel/BtnStop" unique_id=957390931]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.216
-offset_left = 5.0
-offset_top = -13.0
-offset_right = 36.36
-offset_bottom = 10.0
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "STOP"
-
-[node name="Screen" type="Sprite2D" parent="UI/ControlPanel" unique_id=216671650]
-self_modulate = Color(0.2592937, 0.2592937, 0.25929365, 1)
-position = Vector2(80.000015, 40.000004)
-scale = Vector2(0.23518968, 0.24973758)
-texture = ExtResource("5_gee14")
-
-[node name="Stats" type="Label" parent="UI/ControlPanel/Screen" unique_id=1230117936]
-offset_left = -195.5868
-offset_top = -76.07988
-offset_right = 326.09875
-offset_bottom = 64.92012
-theme_override_colors/font_color = Color(0.48412004, 0.98, 0.33319998, 1)
-theme_override_fonts/font = ExtResource("6_0tnpc")
-theme_override_font_sizes/font_size = 50
-text = "LINES: 0
-
-TICKS: 0"
-vertical_alignment = 2
-
-[node name="Controls" type="Label" parent="UI/ControlPanel" unique_id=459181723]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 0
-offset_left = 125.0
-offset_top = 102.0
-offset_right = 409.0
-offset_bottom = 177.0
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 10
-text = "controls:
-wasd  - move head
-space - (un)punch"
-
-[node name="Memory" type="Control" parent="UI/ControlPanel" unique_id=1539199030]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="00" type="Label" parent="UI/ControlPanel/Memory" unique_id=625253950]
-layout_mode = 0
-offset_left = 157.0
-offset_top = 5.0
-offset_right = 197.0
-offset_bottom = 28.0
-
-[node name="Vignette" parent="UI" unique_id=543236073 instance=ExtResource("8_kvpfn")]
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 4.0
-offset_bottom = 1.0
-
-[node name="Printout" parent="UI" unique_id=2071356177 instance=ExtResource("12_dinhu")]
-position = Vector2(545, 6)
-objectives = "BRIEFING
-
-- We have new piece of tech - a  computer. Learn  to  use  it.
-- Write  a  program to the punched tape and press \\\"START\\\"
-- Come  to  data  room  ( programatically  of  course!)"
-
-[node name="Manual" type="Panel" parent="UI" unique_id=832862962]
-offset_left = 48.0
-offset_top = 534.0
-offset_right = 599.0
-offset_bottom = 815.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rysoc")
-
-[node name="title" type="Label" parent="UI/Manual" unique_id=163132374]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 7.0
-offset_right = 358.0
-offset_bottom = 30.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 14
-text = "Instruction set"
-
-[node name="INSTRUCTION" type="Label" parent="UI/Manual" unique_id=293928390]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 41.0
-offset_right = 181.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 10
-text = "INSTRUCTION"
-
-[node name="ARGUMENT" type="Label" parent="UI/Manual" unique_id=1626698567]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 41.0
-offset_right = 324.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 10
-text = "ARGUMENT"
-
-[node name="DESCRIPTION" type="Label" parent="UI/Manual" unique_id=495522322]
-layout_mode = 0
-offset_left = 383.0
-offset_top = 41.0
-offset_right = 547.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 10
-text = "DESCRIPTION"
-
-[node name="instructions" type="Label" parent="UI/Manual" unique_id=1659003646]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 58.0
-offset_right = 181.0
-offset_bottom = 322.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "STEP     ....  ○○○●
-TURN     ....  ○○●○
-READ     ....  ○○●●
-ADD      ....  ○●○○
-COPY     ....  ○●○●
-WRITE    ....  ○●●○
-ADD      ....  ○●●●
-COMPARE  ....  ●○○○
-JUMP_IF_EQ ..  ●○○●
-JUMP_NOT_EQ.. ●○●○
-JUMP_IF_GE .. ●○●●
-JUMP_IF_LESS .. ●●○○
-JUMP .. ●●○●
-CALL .. ●●●○
-RET .. ●●●●
-"
-
-[node name="descriptions" type="Label" parent="UI/Manual" unique_id=1626373812]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 61.0
-offset_right = 548.0
-offset_bottom = 86.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "one step forward
-turn left or right
-jump to given program line"
-
-[node name="arguments" type="Label" parent="UI/Manual" unique_id=1485635728]
-layout_mode = 0
-offset_left = 159.0
-offset_top = 60.0
-offset_right = 321.0
-offset_bottom = 101.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_u5sy4")
-theme_override_font_sizes/font_size = 8
-text = "no argument
-○○○● - right, ○○●○ - left
-line number (binary)
-"
-
-[node name="Line2D" type="Line2D" parent="UI/Manual" unique_id=1798987764]
-position = Vector2(-3, 0)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual" unique_id=1707716513]
-position = Vector2(-1, 14)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual/Line2D2" unique_id=725946124]
-position = Vector2(-1, 15)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual/Line2D2/Line2D2" unique_id=1266388435]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual/Line2D2/Line2D2/Line2D2" unique_id=1999924286]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=975263587]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="UI/Manual/Line2D2/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=108173023]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+[node name="UI" parent="." unique_id=776066984 instance=ExtResource("3_dinhu")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]
 zoom = Vector2(0.8, 0.8)
@@ -402,7 +81,7 @@ position = Vector2(-34.00001, -228.00008)
 scale = Vector2(0.4, 0.4)
 
 [node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
-position = Vector2(95.00003, -26.99997)
+position = Vector2(31.000008, -27.000008)
 scale = Vector2(0.4, 0.4)
 type = "Computer"
 
@@ -410,11 +89,12 @@ type = "Computer"
 position = Vector2(0, 1)
 
 [node name="Actor" parent="World/Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
-position = Vector2(25, -26.000013)
+position = Vector2(-33, -25.999998)
 scale = Vector2(0.3, 0.3)
 tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
 
 [node name="Label" type="Label" parent="World" unique_id=1457106321]
+visible = false
 offset_left = -332.5
 offset_top = 118.74994
 offset_right = -134.5
@@ -447,9 +127,5 @@ playback_mode = 1
 idle_timeout = 1.0
 idle_fade_duration = 1.0
 
-[connection signal="on_program_updated" from="UI/PunchTape" to="." method="_on_punch_tape_on_program_updated"]
-[connection signal="pressed" from="UI/ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
-[connection signal="pressed" from="UI/ControlPanel/BtnStep" to="." method="_on_btn_step_pressed"]
-[connection signal="pressed" from="UI/ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]
 [connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]

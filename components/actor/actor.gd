@@ -61,7 +61,7 @@ func perform_instruction(instruction, parameter):
 			
 		Instruction.WRITE:
 			if looking_at && looking_at.group == "DataSource":
-				looking_at.set_value(parameter)
+				looking_at.node.set_value(parameter)
 
 func update_visual_rotation():
 	for arrow in $Visual/Arrows.get_children():

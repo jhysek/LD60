@@ -3,6 +3,8 @@ extends Node2D
 @export var randomized = true
 @export var value = 0
 @export var type = "WallTerminal"
+@export var rnd_min = 0
+@export var rnd_max = 16
 
 @onready var number = get_node(type + "/Number")
 
@@ -38,5 +40,5 @@ func get_value():
 
 func _on_timer_timeout() -> void:
 	if randomized:
-		value = randi_range(0,16)
+		value = randi_range(rnd_min, rnd_max)
 		number.text = str(value)

@@ -1,28 +1,57 @@
+# 1  STEP     ....  ○○○●
+# 2  TURN     ....  ○○●○
+# 3  READ     ....  ○○●●
+# 4  ADD      ....  ○●○○
+# 5  COPY     ....  ○●○●
+# 6  WRITE    ....  ○●●○
+# 7  SET      ....  ○●●●
+# 8  COMPARE   ...  ●○○○
+# 9  JUMP_IF_EQ ..  ●○○●
+# 10 JUMP_NOT_EQ .. ●○●○
+# 11 JUMP_IF_GE ... ●○●●
+# 12 JUMP_IF_LESS . ●●○○
+# 13 JUMP      .... ●●○●
+# 14 CALL      .... ●●●○
+# 15 RET       .... ●●●●
+
+
 const NOOP = 0 # no operation
 const STEP = 1 # jump one cell forward
 const TURN = 2 # turn left/right; arguments: 0001 - turn right, 0010 - turn left
 const READ = 3 # read value in front of me, store it to memory; argument: memory address
 const ADD  = 4 # picks item in front of me
-const SET  = 5 
-const COPY = 6  
-const WRITE = 7
-
-# TODO: conditions
-const COMPARE = 8 # compare memory 0 with memory of given address and store result to memory 0 (0 = equal, 1 = smaller, 2 = greater)
-const JUMP = 9    # jumps on line
-const IF   = 10   # go to next line if memory 0 equals argument, otherwise skip next line
+const COPY = 5 
+const WRITE = 6
+const SET  = 7
+const CMP  = 8
+const JEQ  = 9
+const JNE  = 10
+const JGE  = 11
+const JL   = 12 
+const JUMP = 13
+const CALL = 14
+const RET = 15
 
 const NAMES = {
 	NOOP: "NOOP",
 	STEP: "STEP",
 	TURN: "TURN",
-	JUMP: "JUMP",
 	READ: "READ",
 	ADD: "ADD",
-	SET: "SET",
 	COPY: "COPY",
-	WRITE: "WRITE"
+	WRITE: "WRITE",
+	SET: "SET",
+	CMP: "COMPARE",
+	JEQ: "JUMP IF EQUAL",
+	JNE: "JUMP IF NOT EQUAL",
+	JGE: "JUMP IF GREATER OR EQUAL",
+	JL: "JUMP IF LESS",
+	JUMP: "JUMP",
+	CALL: "CALL",
+	RET: "RET"
 }
+	
+
 
 const DESCRIPTIONS = {
 	NOOP: "No operation. This does nothing. Arguments are ignored.",
