@@ -31,8 +31,13 @@ func win_condition_satisfied():
 			var sum = 0
 			for obj in $World/Objects.get_children():
 				if obj.is_in_group("DataSource"):
+					print("comp " + obj.name + " -> ", obj.value)
 					sum += obj.value
-			return sum == 0
+					
+			print("SUM: ", sum)
+			print("STANDING ON: ", $World/Actors/Actor.standing_on)
+			
+			return sum == 0 && $World/Actors/Actor.standing_on && $World/Actors/Actor.standing_on.group == "Exit"
 	return false
 	
 func _ready():
@@ -75,6 +80,7 @@ func failed():
 	_on_btn_stop_pressed()
 
 func won():
+	print("WON")
 	var stats = $UI.stats
 	clock.stop()
 	LevelSwitcher.set_score(LevelSwitcher.current_level, stats.ticks, stats.lines)
@@ -150,4 +156,5 @@ func _on_bpm_changed(new_bpm):
 	clock.set_bpm(new_bpm)
 
 func _on_leave_timer_timeout() -> void:
+	print("NEXT LEVEL....")
 	LevelSwitcher.next_level()

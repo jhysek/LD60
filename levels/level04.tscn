@@ -44,7 +44,8 @@ briefing = "DAY 5
 
 - Management wants to count our expences, they’re suspicious of something.
 - Sum up numbers from all computers and save it to the terminal 
-- notice you can use procedures - check CALL and RET"
+- Notice you can use procedures - check CALL and RET.
+  Who should read your spaghetti tape!"
 metadata/_edit_horizontal_guides_ = [583.0]
 
 [node name="Bg" type="TextureRect" parent="." unique_id=948443508]
