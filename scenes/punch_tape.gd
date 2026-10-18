@@ -34,6 +34,7 @@ func _ready():
 	init_column_indicator()
 	init_row_indicator()
 	program.initialize_empty_program(MAX_ROWS)
+	redraw_program()
 
 func parse_program():
 	var parsed = []

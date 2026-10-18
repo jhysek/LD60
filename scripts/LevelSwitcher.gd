@@ -51,7 +51,7 @@ func next_level():
 		
 func set_score(level, ticks, lines):
 	var key = "level" + str(level)
-	if best.has(key):
+	if !best.has(key):
 		best[key] = { ticks = 9999, lines = 9999}
 
 	if best[key].ticks > ticks:

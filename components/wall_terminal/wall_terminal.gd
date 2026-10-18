@@ -7,6 +7,7 @@ signal on_value_updated(new_value)
 @export var type = "WallTerminal"
 @export var rnd_min = 0
 @export var rnd_max = 16
+@export var hide_number = false
 
 @onready var number = get_node(type + "/Number")
 
@@ -25,6 +26,9 @@ func _ready():
 	$WallTerminal.hide()
 	$Computer.hide()
 	get_node(type).show()
+	
+	if hide_number:
+		number.hide()
 	
 	if randomized:
 		$Timer.start()

@@ -4,12 +4,12 @@ var ProgramInterpreter = preload("res://scripts/program_interpreter.gd")
 var interpreter = null
 var parsed_program = []
 
-
 @onready var punch_tape = $UI/PunchTape
 @onready var clock = $Clock
 @onready var bg = $Bg
 @onready var run_music = $TrackrPlayer
 @export_multiline var briefing = ""
+@export var current_level = 0
 
 var stepping = false
 
@@ -51,10 +51,10 @@ func exit_reached(actor):
 	won()
 
 func won():
-	_on_program_ended()
 	var stats = $UI.stats
+	clock.stop()
 	LevelSwitcher.set_score(LevelSwitcher.current_level, stats.ticks, stats.lines)
-	LevelSwitcher.next_level()
+	$LeaveTimer.start()
 	
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
@@ -118,3 +118,6 @@ func _on_data_source_updated(new_value):
 	print("DATA SOURCE UPDATED TO: ", new_value)
 	if win_condition_satisfied():
 		won()
+
+func _on_leave_timer_timeout() -> void:
+	LevelSwitcher.next_level()

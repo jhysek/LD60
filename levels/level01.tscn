@@ -115,8 +115,12 @@ playback_mode = 1
 idle_timeout = 1.0
 idle_fade_duration = 1.0
 
+[node name="LeaveTimer" type="Timer" parent="." unique_id=1022463149]
+one_shot = true
+
 [connection signal="on_btn_play" from="UI" to="." method="_on_btn_play_pressed"]
 [connection signal="on_btn_step" from="UI" to="." method="_on_btn_step_pressed"]
 [connection signal="on_btn_stop" from="UI" to="." method="_on_btn_stop_pressed"]
 [connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]
+[connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]

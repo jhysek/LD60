@@ -1,9 +1,10 @@
-[gd_scene format=4 uid="uid://jql0itoc0g7e"]
+[gd_scene format=4 uid="uid://dwjbxhs5gssqb"]
 
 [ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_ir15t"]
 [ext_resource type="PackedScene" uid="uid://d168o0evbp2yt" path="res://components/ui/ui.tscn" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dtfym3aw0fngi" path="res://components/exit/exit.tscn" id="7_b6lsn"]
 [ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
@@ -60,21 +61,16 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
 position = Vector2(-88, 114)
-tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD8//z/AAADAAAAAAD8//7/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD8//3/AAAEAAAAAAD8////AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAD8/wAAAAADAAAAAAD7////AAADAAAAAAD7//3/AAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAD9/wAAAAAEAAAAAAD7//7/AAAEAAAAAAD7/wAAAAAEAAAAAAD7//z/AAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAD9/wAAAAAEAAAAAAD8/wAAAAAHAAAAAAD///v/AAAAAAAAAAA=")
 
 [node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
 position = Vector2(0, -29.999996)
 scale = Vector2(0.99999976, 0.99999976)
-tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwACAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwADAAAAAAD///3/AwAAAAAAAAAAAP3/AwADAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD8//3/AwAIAAAAAAD8//7/AwAIAAAAAAD8////AwAIAAAAAAD8/wAAAwAIAAAAAAA=")
 tile_set = SubResource("TileSet_ir15t")
 
 [node name="Objects" type="Node2D" parent="World" unique_id=858827583]
 scale = Vector2(0.9999997, 0.9999997)
-
-[node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
-position = Vector2(-32.00003, -232.00005)
-scale = Vector2(0.4, 0.4)
-randomized = false
 
 [node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
 position = Vector2(31.000008, -27.000008)
@@ -82,6 +78,10 @@ scale = Vector2(0.4, 0.4)
 type = "Computer"
 rnd_min = 1
 rnd_max = 15
+hide_number = true
+
+[node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("7_b6lsn")]
+position = Vector2(-32.00001, -231.00006)
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
@@ -115,8 +115,12 @@ playback_mode = 1
 idle_timeout = 1.0
 idle_fade_duration = 1.0
 
+[node name="LeaveTimer" type="Timer" parent="." unique_id=871059447]
+one_shot = true
+
 [connection signal="on_btn_play" from="UI" to="." method="_on_btn_play_pressed"]
 [connection signal="on_btn_step" from="UI" to="." method="_on_btn_step_pressed"]
 [connection signal="on_btn_stop" from="UI" to="." method="_on_btn_stop_pressed"]
 [connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]
+[connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]
