@@ -60,7 +60,7 @@ const DESCRIPTIONS = {
 	JUMP: "Jump to program line.\nArgument: line number in binary",
 	READ: "Read value from computer in front and store it in memory.\nArgument: target address of memory (0 - 7)",
 	ADD: "Adds value in MEM to value in address 0 and store result to addres 0.\nArgument: MEM - address of memory (0 - 7)",
-	SET: "Sets value to MEM.\nArgument: MEM - address of memory (0 - 7)",
+	SET: "Sets memory 0 to given VAL.\nArgument: VAL - binary number",
 	COPY: "Copy value in address 0 to MEM.\nArgument: MEM - address of memory (0 - 7)",
 	WRITE: "Write value in MEM to terminal in front of me.\nArgument: MEM - address of memory (0 - 7)",
 	CMP: "Compares memory 0 and MEM.\nArguments: MEM - address of memory to compare.",

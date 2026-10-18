@@ -9,3 +9,6 @@ func _ready():
 	map = get_parent().get_parent()
 	map_pos = Vector2(map.world_to_map(position))
 	position = map.map_to_world(map_pos)
+
+func reset():
+	pass

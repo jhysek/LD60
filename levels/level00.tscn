@@ -41,6 +41,11 @@ adjustment_saturation = 0.6
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
+briefing = "BRIEFING
+
+- We have new piece of tech - a  computer. Learn  to  use  it.
+- Write  a  program to the punched tape and press START
+- Come  to  data  room  ( programatically  of  course!)"
 metadata/_edit_horizontal_guides_ = [583.0]
 
 [node name="Bg" type="TextureRect" parent="." unique_id=948443508]
@@ -79,6 +84,7 @@ type = "Computer"
 rnd_min = 1
 rnd_max = 15
 hide_number = true
+readonly = true
 
 [node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("7_b6lsn")]
 position = Vector2(-32.00001, -231.00006)

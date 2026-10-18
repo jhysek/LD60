@@ -18,9 +18,11 @@ func win_condition_satisfied():
 	match LevelSwitcher.current_level:
 		0: return false
 		1: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value
+		2: return $World/Objects/ComputerA.value + $World/Objects/ComputerB.value == $World/Objects/TargetComputer.value
 	return false
 	
 func _ready():
+	randomize()
 	interpreter = ProgramInterpreter.new()
 	interpreter.on_program_ended.connect(_on_program_ended)
 	interpreter.on_program_error.connect(_on_program_error)
@@ -29,8 +31,7 @@ func _ready():
 	Transition.openScene()
 	initialize_actors()
 	initialize_objects()
-	$UI/Printout/Paper/Objectives.text = briefing
-	$UI/Printout.start()
+	$UI/Printout.start(briefing)
 	
 func _process(delta):
 	bg.rotation += delta * 0.02

@@ -277,11 +277,6 @@ offset_bottom = 1.0
 
 [node name="Printout" parent="." unique_id=383271323 instance=ExtResource("8_2r1r0")]
 position = Vector2(545, 6)
-objectives = "BRIEFING
-
-- We have new piece of tech - a  computer. Learn  to  use  it.
-- Write  a  program to the punched tape and press \\\"START\\\"
-- Come  to  data  room  ( programatically  of  course!)"
 
 [node name="Manual" type="Panel" parent="." unique_id=2119718791]
 offset_left = 48.0

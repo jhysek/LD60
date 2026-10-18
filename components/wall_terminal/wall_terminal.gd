@@ -8,8 +8,12 @@ signal on_value_updated(new_value)
 @export var rnd_min = 0
 @export var rnd_max = 16
 @export var hide_number = false
+@export var readonly = false 
 
 @onready var number = get_node(type + "/Number")
+
+var initial_value
+var initial_randomized
 
 var blocking = true
 var map_pos: Vector2 
@@ -23,6 +27,9 @@ func _ready():
 	randomize()
 	number.text = str(value)
 	
+	initial_value = value
+	initial_randomized = randomized
+	
 	$WallTerminal.hide()
 	$Computer.hide()
 	get_node(type).show()
@@ -33,8 +40,18 @@ func _ready():
 	if randomized:
 		$Timer.start()
 
+func reset():
+	value = initial_value
+	randomized = initial_randomized
+	if randomized:
+		$Timer.start()
+
 func set_value(_value):
-	print("SETTING VALUE TO: ", value)
+	if readonly:
+		# Sfx.play("nono")
+		return
+		
+	# Sfx.play("entered")
 	$Timer.stop()
 	value = _value
 	randomized = false 

@@ -7,6 +7,11 @@ var opened_levels: int = 0
 var levels = [
 	"res://levels/level00.tscn",
 	"res://levels/level01.tscn",
+	"res://levels/level02.tscn",
+	"res://levels/level03.tscn",
+	"res://levels/level04.tscn",
+	"res://levels/level05.tscn",
+	"res://levels/level06.tscn",
 	"res://levels/finished.tscn"
 ]
 
@@ -48,7 +53,7 @@ func next_level():
 		if opened_levels < current_level + 1:
 			opened_levels = current_level + 1
 		start_level()
-		
+
 func set_score(level, ticks, lines):
 	var key = "level" + str(level)
 	if !best.has(key):
@@ -56,6 +61,6 @@ func set_score(level, ticks, lines):
 
 	if best[key].ticks > ticks:
 		best[key].ticks = ticks
-		
+
 	if best[key].lines > ticks:
 		best[key].lines = ticks

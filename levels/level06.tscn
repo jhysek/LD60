@@ -1,0 +1,126 @@
+[gd_scene format=4 uid="uid://bv8nc5jtllnfn"]
+
+[ext_resource type="Script" uid="uid://yc4ucoj10ohv" path="res://scenes/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_ir15t"]
+[ext_resource type="PackedScene" uid="uid://d168o0evbp2yt" path="res://components/ui/ui.tscn" id="3_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
+[ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
+[ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
+texture = ExtResource("11_kvuet")
+texture_region_size = Vector2i(64, 90)
+1:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+0:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/next_alternative_id = 2
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ir15t"]
+tile_size = Vector2i(64, 90)
+sources/3 = SubResource("TileSetAtlasSource_trtic")
+
+[sub_resource type="Environment" id="Environment_m72si"]
+background_mode = 3
+tonemap_exposure = 1.39
+tonemap_white = 2.73
+adjustment_enabled = true
+adjustment_brightness = 1.01
+adjustment_contrast = 1.06
+adjustment_saturation = 0.6
+
+[node name="Game" type="Node2D" unique_id=1322076777]
+script = ExtResource("1_uwrxv")
+metadata/_edit_horizontal_guides_ = [583.0]
+
+[node name="Bg" type="TextureRect" parent="." unique_id=948443508]
+self_modulate = Color(0.78775924, 0.78775924, 0.78775924, 0.8392157)
+offset_left = -972.0
+offset_top = -832.0
+offset_right = 964.0
+offset_bottom = 1047.0
+pivot_offset = Vector2(971, 832)
+texture = ExtResource("2_ir15t")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="UI" parent="." unique_id=776066984 instance=ExtResource("3_dinhu")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1582103064]
+zoom = Vector2(0.8, 0.8)
+
+[node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
+position = Vector2(-88, 114)
+tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD8//z/AAADAAAAAAD8//7/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD8//3/AAAEAAAAAAD8////AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAD8/wAAAAADAAAAAAD7////AAADAAAAAAD7//3/AAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAD9/wAAAAAEAAAAAAD7//7/AAAEAAAAAAD7/wAAAAAEAAAAAAD7//z/AAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAA=")
+
+[node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
+position = Vector2(0, -29.999996)
+scale = Vector2(0.99999976, 0.99999976)
+tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwACAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
+tile_set = SubResource("TileSet_ir15t")
+
+[node name="Objects" type="Node2D" parent="World" unique_id=858827583]
+scale = Vector2(0.9999997, 0.9999997)
+
+[node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
+position = Vector2(-32.00003, -232.00005)
+scale = Vector2(0.4, 0.4)
+randomized = false
+
+[node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
+position = Vector2(31.000008, -27.000008)
+scale = Vector2(0.4, 0.4)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Actors" type="Node2D" parent="World" unique_id=703376716]
+position = Vector2(0, 1)
+
+[node name="Actor" parent="World/Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
+position = Vector2(-33, -25.999998)
+scale = Vector2(0.3, 0.3)
+tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
+
+[node name="Label" type="Label" parent="World" unique_id=1457106321]
+visible = false
+offset_left = -332.5
+offset_top = 118.74994
+offset_right = -134.5
+offset_bottom = 167.74994
+text = "0x0
+"
+
+[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
+position = Vector2(-33, -196)
+rotation = -3.1415925
+
+[node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1802395953]
+environment = SubResource("Environment_m72si")
+
+[node name="TrackrPlayer" parent="." unique_id=166022097 instance=ExtResource("18_ssvqc")]
+sequence_file = "res://assets/run_music.zip"
+playback_mode = 1
+idle_timeout = 1.0
+idle_fade_duration = 1.0
+
+[node name="LeaveTimer" type="Timer" parent="." unique_id=1022463149]
+one_shot = true
+
+[connection signal="on_btn_play" from="UI" to="." method="_on_btn_play_pressed"]
+[connection signal="on_btn_step" from="UI" to="." method="_on_btn_step_pressed"]
+[connection signal="on_btn_stop" from="UI" to="." method="_on_btn_stop_pressed"]
+[connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
+[connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]
+[connection signal="timeout" from="LeaveTimer" to="." method="_on_leave_timer_timeout"]

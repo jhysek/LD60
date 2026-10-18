@@ -30,6 +30,8 @@ func object_at(map_position):
 func reset():
 	for actor in $Actors.get_children():
 		actor.reset()
+	for object in $Obects.get_children():
+		object.reset()
 		
 func world_to_map(local_position):
 	return local_to_map(local_position)
