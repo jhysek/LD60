@@ -386,7 +386,7 @@ text = "NOOP"
 
 [node name="Argument" type="Label" parent="CompilerPanel/LineInfo" unique_id=1538845841]
 layout_mode = 0
-offset_left = 122.0
+offset_left = 108.0
 offset_top = 1.0
 offset_right = 170.0
 offset_bottom = 24.0

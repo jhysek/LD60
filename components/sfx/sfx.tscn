@@ -5,6 +5,12 @@
 [ext_resource type="AudioStream" uid="uid://cuamfgi7arc13" path="res://assets/sfx/click4.wav" id="3_dktqr"]
 [ext_resource type="AudioStream" uid="uid://dafbceelkvq8w" path="res://assets/sfx/nope.wav" id="3_uv8us"]
 [ext_resource type="AudioStream" uid="uid://1dn42egno5wm" path="res://assets/sfx/victory.wav" id="4_uv8us"]
+[ext_resource type="AudioStream" uid="uid://dmnoahenh1l72" path="res://assets/sfx/btn_click.wav" id="6_5co4y"]
+[ext_resource type="AudioStream" uid="uid://oo8vgkvp3s8l" path="res://assets/sfx/jump.wav" id="6_vswlg"]
+[ext_resource type="AudioStream" uid="uid://cllfqucxg0mvo" path="res://assets/sfx/tape_move2.wav" id="7_nopq5"]
+[ext_resource type="AudioStream" uid="uid://ds0acc5y58n6t" path="res://assets/sfx/turn.wav" id="7_vswlg"]
+[ext_resource type="AudioStream" uid="uid://bs1kfebrlw80m" path="res://assets/sfx/punch2.wav" id="8_os41f"]
+[ext_resource type="AudioStream" uid="uid://clct3x5knep2p" path="res://assets/sfx/printer.wav" id="9_63sgt"]
 
 [node name="Sfx" type="Node" unique_id=1822213266]
 script = ExtResource("1_t5aw8")
@@ -20,17 +26,26 @@ stream = ExtResource("3_uv8us")
 
 [node name="Finished" type="AudioStreamPlayer" parent="." unique_id=1113963761]
 stream = ExtResource("4_uv8us")
+volume_db = -9.474
 
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=2085031980]
+stream = ExtResource("6_vswlg")
 
 [node name="Turn" type="AudioStreamPlayer" parent="." unique_id=1452653878]
+stream = ExtResource("7_vswlg")
 
 [node name="BtnClick" type="AudioStreamPlayer" parent="." unique_id=82356683]
+stream = ExtResource("6_5co4y")
 
 [node name="Tick" type="AudioStreamPlayer" parent="." unique_id=566258480]
 
 [node name="Punch" type="AudioStreamPlayer" parent="." unique_id=1927840902]
+stream = ExtResource("8_os41f")
+volume_db = -9.053
 
 [node name="TapeMove" type="AudioStreamPlayer" parent="." unique_id=1647669438]
+stream = ExtResource("7_nopq5")
+volume_db = -2.737
 
 [node name="Printer" type="AudioStreamPlayer" parent="." unique_id=657103945]
+stream = ExtResource("9_63sgt")

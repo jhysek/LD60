@@ -16,6 +16,7 @@ var Interpreter = preload("res://scripts/program_interpreter.gd")
 @onready var interpreter_cursor = $interpreter_cursor
 @onready var interpreter_error = $interpreter_error
 @onready var compiler_panel = $CompilerPanel
+@export var preview_mode = false
 
 @onready var start_row_position = row_indicator.position
 @onready var start_column_position = column_indicator.position
@@ -35,6 +36,11 @@ func _ready():
 	init_row_indicator()
 	program.initialize_empty_program(MAX_ROWS)
 	redraw_program()
+	
+	if preview_mode:
+		$CompilerPanel.hide()
+		$row_indicator.hide()
+		$column_indicator.hide()
 
 func parse_program():
 	var parsed = []
@@ -95,7 +101,7 @@ func move_to(_row):
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
-	Sfx.play("TapeMove")
+	Sfx.play("TapeMove", 1.1 - randf_range(0, 0.2))
 	
 func move_to_column(_column):
 	column = _column
@@ -111,7 +117,7 @@ func move_down():
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
-	Sfx.play("TapeMove")
+	Sfx.play("TapeMove", 1.1 - randf_range(0, 0.2))
 		
 func move_up():
 	row -= 1
@@ -121,7 +127,7 @@ func move_up():
 	tween.tween_property(row_indicator, 'position', start_row_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
-	Sfx.play("TapeMove")
+	Sfx.play("TapeMove", 1.1 - randf_range(0, 0.2))
 		
 func init_column_indicator():
 	column = 3 
@@ -153,7 +159,7 @@ func punch():
 	redraw_program()
 	update_compiler_info()
 	var parsed_prog = parse_program()
-	Sfx.play("Punch")
+	Sfx.play("Punch", 1.1 - randf_range(0, 0.2))
 	emit_signal("on_program_updated", size_without_empty_lines(parsed_prog))
 	
 func size_without_empty_lines(prog):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bbtu817owtl7n"]
 
-[ext_resource type="Script" path="res://addons/trackr/trackr_player.gd" id="1"]
+[ext_resource type="Script" uid="uid://ca6xc028qeklb" path="res://addons/trackr/trackr_player.gd" id="1"]
 
-[node name="TrackrPlayer" type="Node"]
+[node name="TrackrPlayer" type="Node" unique_id=686976412]
 script = ExtResource("1")
+volume_db = -6.900000000000006
