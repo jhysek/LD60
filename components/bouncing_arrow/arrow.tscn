@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://symqg3qhdvv0"]
+
+[ext_resource type="Texture2D" uid="uid://lxid6hc4bb6b" path="res://components/actor/arrow.png" id="1_g38f3"]
+[ext_resource type="Script" uid="uid://mdhkn7kyexk" path="res://components/bouncing_arrow/arrow.gd" id="2_gla7q"]
+
+[sub_resource type="Animation" id="Animation_tswdk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gla7q"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.30778602, 2.4622889),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tswdk"]
+_data = {
+&"RESET": SubResource("Animation_tswdk"),
+&"bounce": SubResource("Animation_gla7q")
+}
+
+[node name="Arrow" type="Sprite2D" unique_id=113796670]
+self_modulate = Color(0.37759998, 0.59, 0.40592, 1)
+scale = Vector2(0.20968585, 0.3498135)
+texture = ExtResource("1_g38f3")
+script = ExtResource("2_gla7q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=593055912]
+libraries/ = SubResource("AnimationLibrary_tswdk")
+autoplay = &"bounce"

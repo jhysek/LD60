@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtfym3aw0fngi"]
+
+[ext_resource type="Script" uid="uid://4o2r4i58pyam" path="res://components/exit/exit.gd" id="1_23m2b"]
+
+[node name="Exit" type="Marker2D" unique_id=1199357601 groups=["Exit"]]
+scale = Vector2(1.0000004, 1.0000004)
+script = ExtResource("1_23m2b")

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bl6j2vqcugaxi" path="res://components/actor/hand.png" id="5_qgwdw"]
 [ext_resource type="Texture2D" uid="uid://b4von7kp6ot6e" path="res://components/actor/foot.png" id="6_5dogw"]
 [ext_resource type="Texture2D" uid="uid://lxid6hc4bb6b" path="res://components/actor/arrow.png" id="8_qiijv"]
+[ext_resource type="Texture2D" uid="uid://0indklwa5vrq" path="res://components/actor/bubble.png" id="9_qgwdw"]
 
 [sub_resource type="Animation" id="Animation_secr1"]
 resource_name = "Idle"
@@ -398,3 +399,8 @@ texture = ExtResource("6_5dogw")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=114513695]
 libraries/ = SubResource("AnimationLibrary_8vlaf")
 autoplay = &"Idle"
+
+[node name="Bubble" type="Sprite2D" parent="." unique_id=650346693]
+visible = false
+position = Vector2(19.999998, -229.99998)
+texture = ExtResource("9_qgwdw")

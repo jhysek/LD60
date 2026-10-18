@@ -1,5 +1,7 @@
 extends Node2D
 
+signal on_exit_reached(actor)
+
 @onready var anim = $AnimationPlayer
 var map
 var interpreter = null
@@ -12,6 +14,8 @@ var map_pos: Vector2
 var initial_map_pos: Vector2
 var initial_direction_idx: int = 0
 
+var standing_on = null
+var looking_at = null
 
 func _ready():
 	# !! Must be laced in TilemapLayer -> Actors
@@ -29,9 +33,11 @@ func reset():
 	map_pos = initial_map_pos
 	position = map.map_to_world(map_pos)
 	update_visual_rotation()
+	$Bubble.hide()
 	
 # some instructions are actions that can be performed by actors
 func perform_instruction(instruction, parameter):
+	$Bubble.hide()
 	print("ACTOR " + str(name) + " has instruction: " + str(instruction) + "(" + str(parameter) + ")")
 	match instruction:
 		Instruction.STEP:
@@ -46,8 +52,7 @@ func perform_instruction(instruction, parameter):
 func update_visual_rotation():
 	for arrow in $Visual/Arrows.get_children():
 		arrow.hide()
-		
-	print("DIRECTION IDX: " + str(direction_idx))
+
 	match direction_idx:
 		0: # right
 			print("-> RIGHT")
@@ -88,8 +93,9 @@ func update_visual_rotation():
 func step():
 	var direction = directions[direction_idx]
 	var new_map_pos = map_pos + direction 
-	
+	print("SKACU NA " + str(new_map_pos))
 	if !map.can_jump_to(new_map_pos):
+		$Bubble.show()
 		print("ERROR: NEMUZU TAM SKOCIT!")
 		return
 		
@@ -97,14 +103,31 @@ func step():
 	map_pos = new_map_pos
 	var tween = create_tween()
 	tween.tween_property(self, "position", map.map_to_world(new_map_pos), 0.5).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	
+	check_objects()
 
+func check_objects():
+	# Object on current map pos
+	standing_on = map.object_at(map_pos)
+	if standing_on && standing_on.group == "Exit":
+		emit_signal("on_exit_reached", self)
+		
+	# Object in front of me
+	looking_at = map.object_at(map_pos + directions[direction_idx])
+	
+func fade_out():
+	var tween = create_tween()
+	tween.tween_property(self, "opacity", Color(1,1,1,0), 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	
 func turn_right():
 	direction_idx = (direction_idx + 1) % 4
 	update_visual_rotation()
+	check_objects()
 	
 func turn_left():
 	direction_idx = (direction_idx - 1) % 4
 	if direction_idx == -1:
 		direction_idx = 3
 	update_visual_rotation()
+	check_objects()
 	

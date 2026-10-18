@@ -91,6 +91,19 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="Animation" id="Animation_do4f7"]
+resource_name = "Punch"
+length = 0.19999999999999998
+
+[sub_resource type="Animation" id="Animation_ce1p4"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ce1p4"]
+_data = {
+&"Punch": SubResource("Animation_do4f7"),
+&"RESET": SubResource("Animation_ce1p4")
+}
+
 [node name="PunchTape" type="TextureRect" unique_id=824950741]
 material = SubResource("ShaderMaterial_eurux")
 anchors_preset = 11
@@ -427,6 +440,9 @@ theme_override_fonts/font = ExtResource("7_5ap7w")
 theme_override_font_sizes/font_size = 11
 text = "ERROR"
 autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1733215782]
+libraries/ = SubResource("AnimationLibrary_ce1p4")
 
 [connection signal="pressed" from="row_indicator/0/Button0" to="." method="_on_button_0_pressed"]
 [connection signal="pressed" from="row_indicator/1/Button1" to="." method="_on_button_1_pressed"]

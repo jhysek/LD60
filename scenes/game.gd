@@ -6,6 +6,7 @@ var parsed_program = []
 
 @onready var punch_tape = $UI/PunchTape
 @onready var clock = $Clock
+@onready var bg = $Bg
 
 func _ready():
 	interpreter = ProgramInterpreter.new()
@@ -14,12 +15,21 @@ func _ready():
 		
 	Transition.openScene()
 	initialize_actors()
-	$Printout.start()
+	$UI/Printout.start()
+	
+func _process(delta):
+	bg.rotation += delta * 0.02
 	
 func initialize_actors():
 	for actor in get_tree().get_nodes_in_group("Actor"):
 		interpreter.on_actor_instruction.connect(actor.perform_instruction)
-
+		actor.on_exit_reached.connect(exit_reached)
+	
+func exit_reached(actor):
+	actor.fade_out()
+	print("LEVEL FINISHED")
+	_on_program_ended()
+	
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
@@ -42,10 +52,12 @@ func _on_btn_play_pressed() -> void:
 	interpreter.init_program(parsed)
 	punch_tape.set_interpreted_line(0)
 	punch_tape.hide_editor_indicators()
+	$World.reset()
 	clock.start()
 
 
 func _on_btn_stop_pressed() -> void:
 	punch_tape.set_interpreted_line(null)
+	$World.reset()
 	clock.stop()
 	

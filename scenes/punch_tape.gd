@@ -146,6 +146,8 @@ func punch():
 	
 	redraw_program()
 	update_compiler_info()
+	
+	
 
 func set_interpreted_line(line_number): 
 	interpreter_error.hide()
