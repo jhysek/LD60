@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://bbtu817owtl7n" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
 texture = ExtResource("11_kvuet")
@@ -45,7 +45,7 @@ briefing = "DAY 6
 
 Oh crap!
 
-- Management found out we were faking the data. I blamed it all on you ¯\\_(ツ)_/¯
+- Management found out we were faking the data. I blamed it all on you ¯\\_(o.o)_/¯
 - You'd better delete all computers (set them to 0) and leg it!
 "
 metadata/_edit_horizontal_guides_ = [583.0]

@@ -37,6 +37,7 @@ func clear_memory():
 		0, 0, 0, 0,  0, 0, 0, 0,
 		0, 0, 0, 0,  0, 0, 0, 0
 	]
+	emit_signal("on_memory_updated", memory.slice(0,8), 0, 0, 0)
 	
 func tick():
 	print("INTERPRETER TICK")

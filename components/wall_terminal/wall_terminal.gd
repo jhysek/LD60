@@ -44,7 +44,6 @@ func _ready():
 		$Timer.start()
 
 func reset():
-	print("RESETING")
 	if !initial_randomized:
 		value = initial_value
 	randomized = initial_randomized
@@ -53,10 +52,9 @@ func reset():
 
 func set_value(_value):
 	if readonly:
-		# Sfx.play("nono")
+		Sfx.play("nono")
 		return
 		
-	# Sfx.play("entered")
 	$Timer.stop()
 	value = _value
 	randomized = false 
@@ -66,11 +64,9 @@ func set_value(_value):
 func get_value():
 	$Timer.stop()
 	randomized = false 
-	print("CMP: gettting value: ", value)
 	return value
 
 func _on_timer_timeout() -> void:
 	if randomized:
-		print("CHANGIG COMPUTER VALEU TO : ", value)
 		value = randi_range(rnd_min, rnd_max)
 		number.text = str(value)

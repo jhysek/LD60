@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by2r04xntgtt8" path="res://components/manual/manual.gd" id="1_0bmn5"]
 [ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="1_7b8fv"]
+[ext_resource type="FontFile" uid="uid://bjnenvt24ulv6" path="res://assets/LiberationSans-Regular.ttf" id="3_fg2ix"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
 bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
@@ -55,7 +56,7 @@ offset_top = 8.0
 offset_right = 136.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_fonts/font = ExtResource("3_fg2ix")
 theme_override_font_sizes/font_size = 10
 
 [node name="Description" type="Label" parent="Panel" unique_id=1830146589]
@@ -65,16 +66,16 @@ offset_top = 27.0
 offset_right = 190.0
 offset_bottom = 210.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_7b8fv")
-theme_override_font_sizes/font_size = 7
+theme_override_fonts/font = ExtResource("3_fg2ix")
+theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 
 [node name="ItemList" type="ItemList" parent="." unique_id=1150994466]
 layout_mode = 0
 offset_left = 9.0
-offset_top = 250.0
+offset_top = 255.0
 offset_right = 189.0
-offset_bottom = 538.0
+offset_bottom = 543.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hovered_color = Color(0.30588236, 0.105882354, 0.09803922, 1)
@@ -82,25 +83,25 @@ theme_override_colors/font_hovered_selected_color = Color(0.30588236, 0.10588235
 theme_override_colors/font_selected_color = Color(0.30452645, 0.107751094, 0.09992244, 1)
 theme_override_colors/guide_color = Color(0.7, 0.7, 0.7, 0.25)
 theme_override_constants/v_separation = 6
-theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_fonts/font = ExtResource("3_fg2ix")
 theme_override_font_sizes/font_size = 10
 theme_override_styles/panel = SubResource("StyleBoxEmpty_0bmn5")
 allow_search = false
 item_count = 15
-item_0/text = "○○○●  STEP"
-item_1/text = "○○●○  TURN"
-item_2/text = "○○●●  READ"
-item_3/text = "○●○○  ADD"
-item_4/text = "○●○●  COPY"
-item_5/text = "○●●○  WRITE"
-item_6/text = "○●●●  SET COUNTER"
-item_7/text = "●○○○  SET"
+item_0/text = "○○○●   STEP"
+item_1/text = "○○●○  TURN  VAL"
+item_2/text = "○○●●  READ  MEM"
+item_3/text = "○●○○  ADD  MEM"
+item_4/text = "○●○●  COPY MEM"
+item_5/text = "○●●○  WRITE  MEM"
+item_6/text = "○●●●  SET_COUNTER  MEM"
+item_7/text = "●○○○  SET VAL"
 item_8/text = "●○○●  REPEAT"
-item_9/text = "●○●○  COMPARE"
-item_10/text = "●○●●  JUMP IF EQUALS"
-item_11/text = "●●○○  JUMP IF LESS"
+item_9/text = "●○●○  COMPARE  MEM"
+item_10/text = "●○●●  JUMP_IF_EQUALS MEM"
+item_11/text = "●●○○  JUMP_IF_LESS MEM"
 item_12/text = "●●○●  JUMP"
-item_13/text = "●●●○  CALL"
+item_13/text = "●●●○  CALL  MEM"
 item_14/text = "●●●●  RETURN"
 
 [node name="Button" type="Button" parent="." unique_id=1643476240]

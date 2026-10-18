@@ -69,5 +69,5 @@ const DESCRIPTIONS = {
 	JL: "If value on last compared address was smaller than value on mem 0, jump to MEM.\nArgument: MEM - address to jump.",
 	CALL: "Calls a procedure.\n\nArgument: MEM - address where procedure starts.",
 	RET: "Returns from procedure - to address after the CALL instruction.\nNo argument.",
-	REP: "If value in mem <COUNTER> is bigger than.\n\nArgument: MEM - address to jump.\n\nExample:\n1: SET 0100  ; save 5 to #0\n2: COPY 0010  ; copy 4 from #0 to #2\n3: SET_COUNTER 0010  ; counter is in #2\n4: STEP\n5: REPEAT 0100  ; decrease counter and if counter > 0 go to line 4\n\nRepeats step 4x, counter is stored in address 0100.",
+	REP: "If value in mem <COUNTER> is bigger than.\n\nArgument: MEM - address to jump.\n\nExample:\n1: SET 0100  ; save 4 to #0\n2: STEP\n3: REPEAT 0010  ; decrease counter and if counter > 0 go to line 2\n\nRepeats STEP 4x, using MEM #0 as counter.",
 }

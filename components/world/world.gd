@@ -32,6 +32,7 @@ func reset():
 		actor.reset()
 	for object in $Objects.get_children():
 		object.reset()
+	initialize_objects()
 		
 func world_to_map(local_position):
 	return local_to_map(local_position)
@@ -40,6 +41,7 @@ func map_to_world(map_position):
 	return map_to_local(map_position) #+ Vector2(tile_set.tile_size / 2)
 
 func initialize_objects():
+	map_objects = {}
 	for object in $Objects.get_children():
 		map_objects[object.map_pos] = {
 			node = object,

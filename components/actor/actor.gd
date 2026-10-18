@@ -36,6 +36,7 @@ func reset():
 	position = map.map_to_world(map_pos)
 	update_visual_rotation()
 	$Bubble.hide()
+	check_objects()
 	
 # some instructions are actions that can be performed by actors
 func perform_instruction(instruction, parameter):
