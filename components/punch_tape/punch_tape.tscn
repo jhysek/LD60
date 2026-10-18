@@ -386,7 +386,7 @@ text = "NOOP"
 
 [node name="Argument" type="Label" parent="CompilerPanel/LineInfo" unique_id=1538845841]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 122.0
 offset_top = 1.0
 offset_right = 170.0
 offset_bottom = 24.0
@@ -407,6 +407,8 @@ theme_override_fonts/font = ExtResource("7_5ap7w")
 theme_override_font_sizes/font_size = 7
 text = "No operation. This line does nothing."
 autowrap_mode = 2
+clip_text = true
+text_overrun_behavior = 5
 
 [node name="Arrow" type="Sprite2D" parent="CompilerPanel" unique_id=2000789098]
 self_modulate = Color(0.9529412, 0.93333334, 0.89411765, 1)

@@ -4,7 +4,7 @@ class_name ProgramInterpreter
 signal on_program_error(line, message)
 signal on_actor_instruction(command, argument)
 signal on_program_ended
-signal on_memory_updated(user_memory)
+signal on_memory_updated(user_memory, cmp, rep, counter_idx)
 
 const MAX_USER_MEM = 8
 const TOTAL_INSTRUCTIONS = 16
@@ -20,11 +20,13 @@ var memory = [
 
 var current_line = 0
 var current_program = []
+var counter_address = 0
 
 var ended = true
 var last_memory_write_line = 0
 
 func init_program(program):
+	counter_address = 0
 	ended = false
 	clear_memory()
 	current_line = 0
@@ -45,6 +47,7 @@ func tick():
 	interpret_current_line()
 	
 func store_to_memory(address, value):
+	print("REQUEST TO STORE: ", value, " to address: ", address)
 	update_memory(address, value, last_memory_write_line)
 
 func interpret_current_line():
@@ -72,8 +75,8 @@ func interpret_instruction(line, instruction, argument):
 			current_line += 1
 			
 		Instruction.TURN: 
-			if argument != 1 && argument != 2:
-				emit_signal("on_program_error", line, "Invalid argument: " + str(argument) + ".\n Allowed: 0001, 0010")
+			if argument != 0 && argument != 1:
+				emit_signal("on_program_error", line, "Invalid argument: " + str(argument) + ".\n Allowed: 0000, 0001")
 				return
 				
 			emit_signal("on_actor_instruction", instruction, argument)
@@ -146,25 +149,28 @@ func interpret_instruction(line, instruction, argument):
 			else:
 				current_line = current_line + 1
 				
-		Instruction.JNE:
+		Instruction.SET_COUNTER:
+			if argument > MAX_USER_MEM:
+				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
+				return
+				
+			counter_address = argument	
+			emit_signal("on_memory_updated", memory.slice(0,8), memory[COMPARE_RESULT_ADDRESS], memory[CALL_RETURN_ADDRESS], counter_address)
+			
+			current_line += 1 
+				
+		Instruction.REP:
 			if argument > current_program.size():
 				emit_signal("on_program_ended")
 				return
 				
-			if memory[COMPARE_RESULT_ADDRESS] != 0:
-				current_line = argument
-			else:
+			update_memory(0, memory[0] - 1, line)
+			
+			if memory[0] == 0:
 				current_line = current_line + 1
-				
-		Instruction.JGE:
-			if argument > current_program.size():
-				emit_signal("on_program_ended")
-				return
-				
-			if memory[COMPARE_RESULT_ADDRESS] == 0 || memory[COMPARE_RESULT_ADDRESS] == 2:
-				current_line = argument
 			else:
-				current_line = current_line + 1			
+				current_line = argument
+				
 		
 		Instruction.JL:
 			if argument > current_program.size():
@@ -204,7 +210,8 @@ func update_memory(address, value, line):
 		return
 				
 	memory[address] = value
-	emit_signal("on_memory_updated", memory.slice(0,8), memory[COMPARE_RESULT_ADDRESS], memory[CALL_RETURN_ADDRESS])
+	print("MEMORY UPDATED: ", memory.slice(0,8))
+	emit_signal("on_memory_updated", memory.slice(0,8), memory[COMPARE_RESULT_ADDRESS], memory[CALL_RETURN_ADDRESS], counter_address)
 
 func stop():
 	program_ended()
@@ -240,7 +247,7 @@ func argument_interpretation(instruction, argument):
 	if instruction == Instruction.TURN:
 		match argument:
 			1: return "RIGHT"
-			2: return "LEFT"
+			0: return "LEFT"
 			_: return "ERR"
 		return
 	

@@ -40,7 +40,8 @@ adjustment_saturation = 0.6
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
-briefing = "BRIEFING
+briefing = "DAY 3
+
 - management is not happy about the numbers we deliver
 - Copy number from computer, but before you report it to the terminal, add 10 to it. 
   ... that should make them happy."
@@ -84,10 +85,15 @@ randomized = false
 [node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
 position = Vector2(31.000008, -27.000008)
 scale = Vector2(0.4, 0.4)
+value = 2
 type = "Computer"
-rnd_min = 1
-rnd_max = 15
+rnd_min = 2
+rnd_max = 13
 readonly = true
+
+[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
+position = Vector2(-33, -196)
+rotation = -3.1415925
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
@@ -105,10 +111,6 @@ offset_right = -134.5
 offset_bottom = 167.74994
 text = "0x0
 "
-
-[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-33, -196)
-rotation = -3.1415925
 
 [node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
 

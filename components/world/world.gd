@@ -19,7 +19,7 @@ func update_mouse_pos(event):
 func can_jump_to(map_position):
 	var cell_id = get_cell_source_id(map_position)
 	var blocking_object = map_objects.has(map_position) && map_objects[map_position].blocking
-	return cell_id >= 0 || blocking_object
+	return cell_id >= 0 && !blocking_object
 	
 func object_at(map_position):
 	if map_objects.has(map_position):
@@ -30,7 +30,7 @@ func object_at(map_position):
 func reset():
 	for actor in $Actors.get_children():
 		actor.reset()
-	for object in $Obects.get_children():
+	for object in $Objects.get_children():
 		object.reset()
 		
 func world_to_map(local_position):

@@ -40,6 +40,11 @@ adjustment_saturation = 0.6
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
+briefing = "DAY 5
+
+- Management wants to count our expences, they’re suspicious of something.
+- Sum up numbers from all computers and save it to the terminal 
+- notice you can use procedures - check CALL and RET"
 metadata/_edit_horizontal_guides_ = [583.0]
 
 [node name="Bg" type="TextureRect" parent="." unique_id=948443508]
@@ -65,14 +70,14 @@ tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAA
 [node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
 position = Vector2(0, -29.999996)
 scale = Vector2(0.99999976, 0.99999976)
-tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwACAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwAFAAAAAAD8//3/AwAEAAAAAAD///3/AwACAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAEAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
 tile_set = SubResource("TileSet_ir15t")
 
 [node name="Objects" type="Node2D" parent="World" unique_id=858827583]
 scale = Vector2(0.9999997, 0.9999997)
 
 [node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
-position = Vector2(-32.00003, -232.00005)
+position = Vector2(-95.00004, -232.00006)
 scale = Vector2(0.4, 0.4)
 randomized = false
 
@@ -82,13 +87,44 @@ scale = Vector2(0.4, 0.4)
 type = "Computer"
 rnd_min = 1
 rnd_max = 15
+readonly = true
+
+[node name="Computer2" parent="World/Objects" unique_id=264217018 instance=ExtResource("14_264po")]
+position = Vector2(-32.00001, -136.00005)
+scale = Vector2(0.4, 0.4)
+type = "ComputerFront"
+rnd_min = 1
+rnd_max = 15
+readonly = true
+
+[node name="Computer3" parent="World/Objects" unique_id=142184819 instance=ExtResource("14_264po")]
+position = Vector2(-162.00006, -90.00003)
+scale = Vector2(0.4, 0.4)
+type = "ComputerRight"
+rnd_min = 1
+rnd_max = 15
+readonly = true
+
+[node name="Computer4" parent="World/Objects" unique_id=159063948 instance=ExtResource("14_264po")]
+position = Vector2(-96.00004, 25.000011)
+scale = Vector2(0.4, 0.4)
+type = "ComputerBack"
+rnd_min = 1
+rnd_max = 15
+readonly = true
+
+[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
+position = Vector2(-33, -196)
+rotation = -3.1415925
+scale = Vector2(0.20968583, 0.3498135)
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
 
 [node name="Actor" parent="World/Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
-position = Vector2(-33, -25.999998)
+position = Vector2(-101, -80)
 scale = Vector2(0.3, 0.3)
+direction_idx = 1
 tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
 
 [node name="Label" type="Label" parent="World" unique_id=1457106321]
@@ -99,10 +135,6 @@ offset_right = -134.5
 offset_bottom = 167.74994
 text = "0x0
 "
-
-[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-33, -196)
-rotation = -3.1415925
 
 [node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
 

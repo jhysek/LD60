@@ -2,9 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="1_1rerr"]
 [ext_resource type="Script" uid="uid://cr4lu0rx3wqnr" path="res://scenes/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_con2f"]
 
 [node name="Menu" type="Node2D" unique_id=1735688023]
 script = ExtResource("1_xhh6f")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=196877318]
+self_modulate = Color(0.78775924, 0.78775924, 0.78775924, 0.8392157)
+offset_left = -972.0
+offset_top = -832.0
+offset_right = 964.0
+offset_bottom = 1047.0
+pivot_offset = Vector2(971, 832)
+texture = ExtResource("2_con2f")
+expand_mode = 2
+stretch_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=811404589]
 
@@ -29,7 +41,7 @@ offset_top = -243.0
 offset_right = 574.0
 offset_bottom = -125.0
 theme_override_font_sizes/font_size = 60
-text = "NAME OF THE GAME"
+text = "WEEK IN "
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=32377058]

@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://jk6a7qi5rpri" path="res://assets/avant_pixel.ttf" id="6_lddvr"]
 [ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="7_4ar2h"]
 [ext_resource type="PackedScene" uid="uid://lboux55tewvh" path="res://components/printout/printout.tscn" id="8_2r1r0"]
+[ext_resource type="PackedScene" uid="uid://ca1eutpm3s4rw" path="res://components/manual/manual.tscn" id="10_g5qrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
 bg_color = Color(0.12, 0.11468, 0.0972, 1)
@@ -20,8 +21,8 @@ corner_radius_bottom_left = 10
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0acx5"]
 bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
-bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5qrr"]
+bg_color = Color(0.45044625, 0.4689589, 0.42442915, 1)
 
 [node name="UI" type="CanvasLayer" unique_id=776066984]
 layer = 2
@@ -267,7 +268,31 @@ offset_right = 247.0
 offset_bottom = 104.0
 theme_override_fonts/font = ExtResource("4_o61sl")
 theme_override_font_sizes/font_size = 11
-text = "RET:  0"
+text = "RET: 0"
+
+[node name="HSlider" type="HSlider" parent="ControlPanel" unique_id=175802010]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 11.0
+offset_top = 153.0
+offset_right = 223.0
+offset_bottom = 169.0
+focus_mode = 0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_g5qrr")
+min_value = 30.0
+max_value = 180.0
+step = 10.0
+value = 90.0
+
+[node name="Label" type="Label" parent="ControlPanel/HSlider" unique_id=138983236]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 5.0
+offset_right = 254.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("4_o61sl")
+theme_override_font_sizes/font_size = 8
+text = "90 BPM"
 
 [node name="Vignette" parent="." unique_id=543236073 instance=ExtResource("7_4ar2h")]
 offset_left = 4.0
@@ -278,156 +303,10 @@ offset_bottom = 1.0
 [node name="Printout" parent="." unique_id=383271323 instance=ExtResource("8_2r1r0")]
 position = Vector2(545, 6)
 
-[node name="Manual" type="Panel" parent="." unique_id=2119718791]
-offset_left = 48.0
-offset_top = 534.0
-offset_right = 599.0
-offset_bottom = 815.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rysoc")
-
-[node name="title" type="Label" parent="Manual" unique_id=1705156653]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 7.0
-offset_right = 358.0
-offset_bottom = 30.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 14
-text = "Instruction set"
-
-[node name="INSTRUCTION" type="Label" parent="Manual" unique_id=451968176]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 41.0
-offset_right = 181.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 10
-text = "INSTRUCTION"
-
-[node name="ARGUMENT" type="Label" parent="Manual" unique_id=1989193107]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 41.0
-offset_right = 324.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 10
-text = "ARGUMENT"
-
-[node name="DESCRIPTION" type="Label" parent="Manual" unique_id=813025326]
-layout_mode = 0
-offset_left = 383.0
-offset_top = 41.0
-offset_right = 547.0
-offset_bottom = 64.0
-theme_override_colors/font_color = Color(0.6686285, 0.6686285, 0.6686285, 1)
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 10
-text = "DESCRIPTION"
-
-[node name="instructions" type="Label" parent="Manual" unique_id=305971202]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 58.0
-offset_right = 181.0
-offset_bottom = 322.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 8
-text = "STEP     ....  ○○○●
-TURN     ....  ○○●○
-READ     ....  ○○●●
-ADD      ....  ○●○○
-COPY     ....  ○●○●
-WRITE    ....  ○●●○
-ADD      ....  ○●●●
-COMPARE  ....  ●○○○
-JUMP_IF_EQ ..  ●○○●
-JUMP_NOT_EQ.. ●○●○
-JUMP_IF_GE .. ●○●●
-JUMP_IF_LESS .. ●●○○
-JUMP .. ●●○●
-CALL .. ●●●○
-RET .. ●●●●
-"
-
-[node name="descriptions" type="Label" parent="Manual" unique_id=1124038204]
-layout_mode = 0
-offset_left = 384.0
-offset_top = 61.0
-offset_right = 548.0
-offset_bottom = 86.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 8
-text = "one step forward
-turn left or right
-jump to given program line"
-
-[node name="arguments" type="Label" parent="Manual" unique_id=1298708741]
-layout_mode = 0
-offset_left = 159.0
-offset_top = 60.0
-offset_right = 321.0
-offset_bottom = 101.0
-theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
-theme_override_constants/line_spacing = 4
-theme_override_fonts/font = ExtResource("4_o61sl")
-theme_override_font_sizes/font_size = 8
-text = "no argument
-○○○● - right, ○○●○ - left
-line number (binary)
-"
-
-[node name="Line2D" type="Line2D" parent="Manual" unique_id=20097524]
-position = Vector2(-3, 0)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual" unique_id=1563695278]
-position = Vector2(-1, 14)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual/Line2D2" unique_id=1183877905]
-position = Vector2(-1, 15)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2" unique_id=1513158250]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2" unique_id=346481002]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=202112808]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
-
-[node name="Line2D2" type="Line2D" parent="Manual/Line2D2/Line2D2/Line2D2/Line2D2/Line2D2" unique_id=1981358733]
-position = Vector2(-1, 19)
-points = PackedVector2Array(15, 70, 529, 70)
-width = 1.0
-default_color = Color(0.6073019, 0.6073016, 0.60730165, 1)
+[node name="Manual" parent="." unique_id=577356843 instance=ExtResource("10_g5qrr")]
 
 [connection signal="on_program_updated" from="PunchTape" to="." method="_on_punch_tape_on_program_updated"]
 [connection signal="pressed" from="ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="ControlPanel/BtnStep" to="." method="_on_btn_step_pressed"]
 [connection signal="pressed" from="ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]
+[connection signal="value_changed" from="ControlPanel/HSlider" to="." method="_on_h_slider_value_changed"]

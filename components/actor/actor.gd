@@ -48,7 +48,7 @@ func perform_instruction(instruction, parameter):
 		Instruction.TURN:
 			if parameter == 1:
 				turn_right()
-			if parameter == 2:
+			if parameter == 0:
 				turn_left()
 				
 		Instruction.READ:

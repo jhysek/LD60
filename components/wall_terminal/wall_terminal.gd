@@ -32,6 +32,9 @@ func _ready():
 	
 	$WallTerminal.hide()
 	$Computer.hide()
+	$ComputerFront.hide()
+	$ComputerBack.hide()
+	$ComputerRight.hide()
 	get_node(type).show()
 	
 	if hide_number:
@@ -41,7 +44,9 @@ func _ready():
 		$Timer.start()
 
 func reset():
-	value = initial_value
+	print("RESETING")
+	if !initial_randomized:
+		value = initial_value
 	randomized = initial_randomized
 	if randomized:
 		$Timer.start()
@@ -61,9 +66,11 @@ func set_value(_value):
 func get_value():
 	$Timer.stop()
 	randomized = false 
+	print("CMP: gettting value: ", value)
 	return value
 
 func _on_timer_timeout() -> void:
 	if randomized:
+		print("CHANGIG COMPUTER VALEU TO : ", value)
 		value = randi_range(rnd_min, rnd_max)
 		number.text = str(value)

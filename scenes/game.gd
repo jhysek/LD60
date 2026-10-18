@@ -15,14 +15,28 @@ var stepping = false
 
 func win_condition_satisfied():
 	print("CHECKING CONDITION FOR LEVEL: ", LevelSwitcher.current_level)
+	
 	match LevelSwitcher.current_level:
-		0: return false
-		1: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value
-		2: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value + 10
-		3: return $World/Objects/ComputerA.value + $World/Objects/ComputerB.value == $World/Objects/TargetComputer.value
+		0: 
+			return null
+		1: 
+			return $World/Objects/WallTerminal.value == $World/Objects/Computer.value && $World/Objects/WallTerminal.value != 0
+		2: 
+			return $World/Objects/WallTerminal.value == ($World/Objects/Computer.value + 10) && $World/Objects/WallTerminal.value != 0
+		3: 
+			return $World/Objects/ComputerA.value + $World/Objects/ComputerB.value == $World/Objects/TargetComputer.value && $World/Objects/TargetComputer.value != 0
+		4:
+			return $World/Objects/WallTerminal.value == ($World/Objects/Computer.value + $World/Objects/Computer2.value + $World/Objects/Computer3.value + $World/Objects/Computer4.value) && $World/Objects/WallTerminal.value != 0
+		5:
+			var sum = 0
+			for obj in $World/Objects.get_children():
+				if obj.is_in_group("DataSource"):
+					sum += obj.value
+			return sum == 0
 	return false
 	
 func _ready():
+	$LeaveTimer.wait_time = 2
 	randomize()
 	interpreter = ProgramInterpreter.new()
 	interpreter.on_program_ended.connect(_on_program_ended)
@@ -33,6 +47,7 @@ func _ready():
 	initialize_actors()
 	initialize_objects()
 	$UI/Printout.start(briefing)
+	$UI.on_bpm_changed.connect(_on_bpm_changed)
 	
 func _process(delta):
 	bg.rotation += delta * 0.02
@@ -49,8 +64,15 @@ func initialize_objects():
 			obj.on_value_updated.connect(_on_data_source_updated)
 		
 func exit_reached(actor):
-	actor.fade_out()
-	won()
+	var win = win_condition_satisfied()
+	if win == null || win:
+		actor.fade_out()
+		won()
+	else:
+		failed()
+
+func failed():
+	_on_btn_stop_pressed()
 
 func won():
 	var stats = $UI.stats
@@ -63,6 +85,7 @@ func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	interpreter.tick()
 	$UI.update_ticks_stats(ticks)
 	if win_condition_satisfied():
+
 		won()
 	
 func _on_program_ended() -> void:
@@ -113,13 +136,18 @@ func _on_btn_step_pressed() -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
 	
-func _on_memory_updated(memory, cmp, ret):
-	$UI.refresh_memory(memory, cmp, ret)
+func _on_memory_updated(memory, cmp, ret, counter_idx):
+	print("UPDATED MEMORY")
+	$UI.refresh_memory(memory, cmp, ret, counter_idx)
 	
 func _on_data_source_updated(new_value):
 	print("DATA SOURCE UPDATED TO: ", new_value)
 	if win_condition_satisfied():
 		won()
+		
+func _on_bpm_changed(new_bpm):
+	print("CLOCK NEW BPM: ", new_bpm)
+	clock.set_bpm(new_bpm)
 
 func _on_leave_timer_timeout() -> void:
 	LevelSwitcher.next_level()

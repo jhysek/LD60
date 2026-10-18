@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ca1eutpm3s4rw"]
+
+[ext_resource type="Script" uid="uid://by2r04xntgtt8" path="res://components/manual/manual.gd" id="1_0bmn5"]
+[ext_resource type="FontFile" uid="uid://4ke2y4gteywp" path="res://assets/F25_Bank_Printer.ttf" id="1_7b8fv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysoc"]
+bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b8fv"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bmn5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bmn5"]
+bg_color = Color(0.9529412, 0.93333334, 0.89411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fg2ix"]
+bg_color = Color(0.95, 0.86766666, 0.703, 1)
+
+[node name="Manual" type="Panel" unique_id=577356843]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -545.0
+offset_right = 204.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rysoc")
+script = ExtResource("1_0bmn5")
+
+[node name="title" type="Label" parent="." unique_id=1718974817]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 197.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
+theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_font_sizes/font_size = 12
+text = "Instruction set"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1698794346]
+self_modulate = Color(1, 1, 1, 0.34117648)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 35.0
+offset_right = 196.0
+offset_bottom = 251.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7b8fv")
+
+[node name="Instruction" type="Label" parent="Panel" unique_id=690742749]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_font_sizes/font_size = 10
+
+[node name="Description" type="Label" parent="Panel" unique_id=1830146589]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 27.0
+offset_right = 190.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_font_sizes/font_size = 7
+autowrap_mode = 2
+
+[node name="ItemList" type="ItemList" parent="." unique_id=1150994466]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 250.0
+offset_right = 189.0
+offset_bottom = 538.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hovered_color = Color(0.30588236, 0.105882354, 0.09803922, 1)
+theme_override_colors/font_hovered_selected_color = Color(0.30588236, 0.105882354, 0.09803922, 1)
+theme_override_colors/font_selected_color = Color(0.30452645, 0.107751094, 0.09992244, 1)
+theme_override_colors/guide_color = Color(0.7, 0.7, 0.7, 0.25)
+theme_override_constants/v_separation = 6
+theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0bmn5")
+allow_search = false
+item_count = 15
+item_0/text = "○○○●  STEP"
+item_1/text = "○○●○  TURN"
+item_2/text = "○○●●  READ"
+item_3/text = "○●○○  ADD"
+item_4/text = "○●○●  COPY"
+item_5/text = "○●●○  WRITE"
+item_6/text = "○●●●  SET COUNTER"
+item_7/text = "●○○○  SET"
+item_8/text = "●○○●  REPEAT"
+item_9/text = "●○●○  COMPARE"
+item_10/text = "●○●●  JUMP IF EQUALS"
+item_11/text = "●●○○  JUMP IF LESS"
+item_12/text = "●●○●  JUMP"
+item_13/text = "●●●○  CALL"
+item_14/text = "●●●●  RETURN"
+
+[node name="Button" type="Button" parent="." unique_id=1643476240]
+layout_mode = 0
+offset_left = 204.0
+offset_right = 265.0
+offset_bottom = 45.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7b8fv")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_0bmn5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fg2ix")
+text = "manual"
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

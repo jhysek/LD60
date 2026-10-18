@@ -155,8 +155,8 @@ func punch():
 	
 func size_without_empty_lines(prog):
 	var count = 0
-	for line in prog:
-		if prog.instruction != Instruction.NOOP:
+	for line in prog: 
+		if line.instruction != Instruction.NOOP:
 			count = count + 1
 	return count
 	

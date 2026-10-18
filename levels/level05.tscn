@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_ir15t"]
 [ext_resource type="PackedScene" uid="uid://d168o0evbp2yt" path="res://components/ui/ui.tscn" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://ja2orts7itu5" path="res://components/world/world.tscn" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://dtfym3aw0fngi" path="res://components/exit/exit.tscn" id="7_cj3ca"]
 [ext_resource type="PackedScene" uid="uid://bakqlmo845i36" path="res://components/actor/actor.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://sojklgsrobys" path="res://components/clock/clock.tscn" id="8_gee14"]
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
@@ -40,6 +41,13 @@ adjustment_saturation = 0.6
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
+briefing = "DAY 6
+
+Oh crap!
+
+- Management found out we were faking the data. I blamed it all on you ¯\\_(ツ)_/¯
+- You'd better delete all computers (set them to 0) and leg it!
+"
 metadata/_edit_horizontal_guides_ = [583.0]
 
 [node name="Bg" type="TextureRect" parent="." unique_id=948443508]
@@ -60,35 +68,88 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
 position = Vector2(-88, 114)
-tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD8//z/AAADAAAAAAD8//7/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD8//3/AAAEAAAAAAD8////AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAD8/wAAAAADAAAAAAD7////AAADAAAAAAD7//3/AAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAD9/wAAAAAEAAAAAAD7//7/AAAEAAAAAAD7/wAAAAAEAAAAAAD7//z/AAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAADAAAAAAD+//7/AAADAAAAAAD9//3/AAADAAAAAAD8//z/AAADAAAAAAD8//7/AAADAAAAAAD+//z/AAADAAAAAAD9////AAADAAAAAAD///3/AAADAAAAAAD+////AAAEAAAAAAD///7/AAAEAAAAAAD+//3/AAAEAAAAAAD///z/AAAEAAAAAAD9//z/AAAEAAAAAAD8//3/AAAEAAAAAAD8////AAAEAAAAAAD9//7/AAAEAAAAAAD+/wAAAAADAAAAAAD8/wAAAAADAAAAAAD7////AAADAAAAAAD7//3/AAADAAAAAAAAAP7/AAADAAAAAAABAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP//AAAEAAAAAAD//wAAAAAEAAAAAAD9/wAAAAAEAAAAAAD7//7/AAAEAAAAAAD7/wAAAAAEAAAAAAD7//z/AAAEAAAAAAABAP3/AAADAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAP7/AAAEAAAAAAAAAPz/AAADAAAAAAD9//v/AAAEAAAAAAACAAAAAAAFAAAAAAD6/wAAAAAIAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAADAAAAAAAAAAEAAAAEAAAAAAD+/wEAAAAEAAAAAAD8/wEAAAAEAAAAAAD7/wEAAAADAAAAAAD9/wEAAAADAAAAAAD//wEAAAADAAAAAAABAAEAAAADAAAAAAACAAEAAAAGAAAAAAD6/wEAAAAHAAAAAAA=")
 
 [node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
 position = Vector2(0, -29.999996)
 scale = Vector2(0.99999976, 0.99999976)
-tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwACAAAAAAD8//3/AwADAAAAAAD///3/AwAFAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAFAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AwAFAAAAAAD+//3/AwAEAAAAAAD8//3/AwAEAAAAAAD///3/AwAAAAAAAAD7//3/AwAFAAAAAAAAAP3/AwAEAAAAAAABAP3/AwAFAAAAAAACAP3/AwAGAAAAAAD6//3/AwAIAAAAAAA=")
 tile_set = SubResource("TileSet_ir15t")
 
 [node name="Objects" type="Node2D" parent="World" unique_id=858827583]
 scale = Vector2(0.9999997, 0.9999997)
 
-[node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
-position = Vector2(-32.00003, -232.00005)
-scale = Vector2(0.4, 0.4)
-randomized = false
-
-[node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
-position = Vector2(31.000008, -27.000008)
-scale = Vector2(0.4, 0.4)
+[node name="Computer3" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
+position = Vector2(32.000008, -135.00003)
+scale = Vector2(0.4, 0.35)
 type = "Computer"
 rnd_min = 1
 rnd_max = 15
+
+[node name="Computer2" parent="World/Objects" unique_id=625314851 instance=ExtResource("14_264po")]
+position = Vector2(31.000008, -81.00003)
+scale = Vector2(0.39999998, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer" parent="World/Objects" unique_id=850250643 instance=ExtResource("14_264po")]
+position = Vector2(31.000008, -27.000008)
+scale = Vector2(0.4, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer4" parent="World/Objects" unique_id=1238374045 instance=ExtResource("14_264po")]
+position = Vector2(-94.000015, -136.00005)
+scale = Vector2(0.4, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer5" parent="World/Objects" unique_id=1205492312 instance=ExtResource("14_264po")]
+position = Vector2(-95.000015, -82.000046)
+scale = Vector2(0.39999998, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer6" parent="World/Objects" unique_id=1169173810 instance=ExtResource("14_264po")]
+position = Vector2(-95.000015, -28.000023)
+scale = Vector2(0.4, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer7" parent="World/Objects" unique_id=812596481 instance=ExtResource("14_264po")]
+position = Vector2(31.000015, 25)
+scale = Vector2(0.4, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Computer8" parent="World/Objects" unique_id=1375514236 instance=ExtResource("14_264po")]
+position = Vector2(-96.00003, 32)
+scale = Vector2(0.39999998, 0.35)
+type = "Computer"
+rnd_min = 1
+rnd_max = 15
+
+[node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("7_cj3ca")]
+position = Vector2(-29.00001, -228.00008)
+
+[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
+position = Vector2(-33, -196)
+rotation = -3.1415925
+scale = Vector2(0.20968583, 0.3498135)
 
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
 
 [node name="Actor" parent="World/Actors" unique_id=1319325055 instance=ExtResource("7_u5sy4")]
-position = Vector2(-33, -25.999998)
+position = Vector2(-31, 79)
 scale = Vector2(0.3, 0.3)
+direction_idx = 3
 tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
 
 [node name="Label" type="Label" parent="World" unique_id=1457106321]
@@ -99,10 +160,6 @@ offset_right = -134.5
 offset_bottom = 167.74994
 text = "0x0
 "
-
-[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-33, -196)
-rotation = -3.1415925
 
 [node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
 

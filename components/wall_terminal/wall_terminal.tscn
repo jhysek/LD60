@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c1f6lj8bn6pis" path="res://components/wall_terminal/terminal.png" id="1_amu5g"]
 [ext_resource type="FontFile" uid="uid://wvb51chm01p6" path="res://assets/pixelmix.ttf" id="3_3tmvk"]
 [ext_resource type="Texture2D" uid="uid://h4m0b70n7huh" path="res://components/computer/comuter.png" id="4_mhkk8"]
+[ext_resource type="Texture2D" uid="uid://i5gxsq8htv7" path="res://components/wall_terminal/computer_front.png" id="5_1kw6j"]
+[ext_resource type="Texture2D" uid="uid://28u5ghituwhw" path="res://components/wall_terminal/computer_back.png" id="6_kl001"]
+[ext_resource type="Texture2D" uid="uid://byjsbvr6wg7pn" path="res://components/wall_terminal/computer_right.png" id="7_i1no0"]
 
 [node name="Terminal" type="Node2D" unique_id=1296731364 groups=["DataSource"]]
 script = ExtResource("1_a5edh")
@@ -25,6 +28,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="Computer" type="Sprite2D" parent="." unique_id=1030972022]
+visible = false
 texture = ExtResource("4_mhkk8")
 offset = Vector2(1, -49)
 
@@ -32,6 +36,53 @@ offset = Vector2(1, -49)
 offset_left = -30.0
 offset_top = -18.0
 offset_right = 25.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
+theme_override_fonts/font = ExtResource("3_3tmvk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="ComputerFront" type="Sprite2D" parent="." unique_id=1544718485]
+texture = ExtResource("5_1kw6j")
+offset = Vector2(1, -49)
+
+[node name="Number" type="Label" parent="ComputerFront" unique_id=143055849]
+offset_left = -35.0
+offset_top = -100.0
+offset_right = 20.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
+theme_override_fonts/font = ExtResource("3_3tmvk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="ComputerBack" type="Sprite2D" parent="." unique_id=1457236173]
+visible = false
+texture = ExtResource("6_kl001")
+offset = Vector2(1, -49)
+
+[node name="Number" type="Label" parent="ComputerBack" unique_id=1868155980]
+offset_left = -30.0
+offset_top = -26.0
+offset_right = 25.0
+offset_bottom = 8.0
+theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
+theme_override_fonts/font = ExtResource("3_3tmvk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="ComputerRight" type="Sprite2D" parent="." unique_id=11347339]
+visible = false
+texture = ExtResource("7_i1no0")
+offset = Vector2(1, -49)
+
+[node name="Number" type="Label" parent="ComputerRight" unique_id=1012373291]
+offset_left = -24.0
+offset_top = -18.0
+offset_right = 31.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
 theme_override_fonts/font = ExtResource("3_3tmvk")

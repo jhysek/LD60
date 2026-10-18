@@ -41,7 +41,7 @@ adjustment_saturation = 0.6
 
 [node name="Game" type="Node2D" unique_id=1322076777]
 script = ExtResource("1_uwrxv")
-briefing = "BRIEFING
+briefing = "DAY 1
 
 - We have new piece of tech - a  computer. Learn  to  use  it.
 - Write  a  program to the punched tape and press START
@@ -89,6 +89,11 @@ readonly = true
 [node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("7_b6lsn")]
 position = Vector2(-32.00001, -231.00006)
 
+[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
+position = Vector2(-33, -196)
+rotation = -3.1415925
+scale = Vector2(0.20968583, 0.3498135)
+
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
 
@@ -105,10 +110,6 @@ offset_right = -134.5
 offset_bottom = 167.74994
 text = "0x0
 "
-
-[node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-33, -196)
-rotation = -3.1415925
 
 [node name="Clock" parent="." unique_id=1382613830 instance=ExtResource("8_gee14")]
 

@@ -6,3 +6,6 @@ func _ready():
 
 func _on_button_pressed() -> void:
 	LevelSwitcher.start_level()
+
+func _process(delta):
+	$Bg.rotation += delta * 0.02
