@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://denue0mh3kp5k"]
 
 [ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="1_1rerr"]
-[ext_resource type="Script" uid="uid://cr4lu0rx3wqnr" path="res://scenes/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://crcmvxwkcs4if" path="res://levels/finished.gd" id="1_h1ef5"]
 [ext_resource type="Texture2D" uid="uid://bhhpx5t5ofdr1" path="res://assets/bg.png" id="2_con2f"]
 [ext_resource type="FontFile" uid="uid://6a3v7nogop7p" path="res://assets/F25_Bank_Printer_Bold.ttf" id="4_mhnvy"]
 [ext_resource type="PackedScene" uid="uid://dk2o0rblncq8g" path="res://components/punch_tape/punch_tape.tscn" id="5_4ytvr"]
@@ -14,8 +14,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmwmt"]
 bg_color = Color(0.09048235, 0.09048236, 0.0904823, 1)
 
-[node name="Menu" type="Node2D" unique_id=1735688023]
-script = ExtResource("1_xhh6f")
+[node name="Finished" type="Node2D" unique_id=1735688023]
+script = ExtResource("1_h1ef5")
 
 [node name="Bg" type="TextureRect" parent="." unique_id=196877318]
 self_modulate = Color(0.78775924, 0.78775924, 0.78775924, 0.8392157)
@@ -175,7 +175,7 @@ offset_right = 35.36
 offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("13_5ti5v")
 theme_override_font_sizes/font_size = 8
-text = "START"
+text = "MENU"
 
 [node name="BtnStep" type="TextureButton" parent="ControlPanel" unique_id=1000085024]
 layout_mode = 0
