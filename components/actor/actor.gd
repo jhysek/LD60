@@ -1,6 +1,7 @@
 extends Node2D
 
 signal on_exit_reached(actor)
+signal memory_store_request(address, value)
 
 @onready var anim = $AnimationPlayer
 var map
@@ -20,13 +21,14 @@ var looking_at = null
 func _ready():
 	# !! Must be laced in TilemapLayer -> Actors
 	map = get_parent().get_parent()
-	
+	map.initialize_objects()
 	map_pos = Vector2(map.world_to_map(position))
 	position = map.map_to_world(map_pos)
 	initial_map_pos = map_pos
 	initial_direction_idx = direction_idx
 	update_visual_rotation()
 	$Visual/Body/Tie.self_modulate = tie_color
+	check_objects()
 	
 func reset():
 	direction_idx = initial_direction_idx
@@ -48,6 +50,18 @@ func perform_instruction(instruction, parameter):
 				turn_right()
 			if parameter == 2:
 				turn_left()
+				
+		Instruction.READ:
+			print("ACTOR: READING...")
+			print("looking at: ", looking_at)
+			if looking_at && looking_at.group == "DataSource":
+				var value = looking_at.node.get_value()
+				print("ACTOR: got value ", value, " ... emitting")
+				emit_signal("memory_store_request", parameter, value)
+			
+		Instruction.WRITE:
+			if looking_at && looking_at.group == "DataSource":
+				looking_at.set_value(parameter)
 
 func update_visual_rotation():
 	for arrow in $Visual/Arrows.get_children():
@@ -111,7 +125,8 @@ func check_objects():
 	standing_on = map.object_at(map_pos)
 	if standing_on && standing_on.group == "Exit":
 		emit_signal("on_exit_reached", self)
-		
+	
+	print("LOOKING AT: ", map_pos + directions[direction_idx])
 	# Object in front of me
 	looking_at = map.object_at(map_pos + directions[direction_idx])
 	

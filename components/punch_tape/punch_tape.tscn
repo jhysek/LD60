@@ -93,7 +93,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_do4f7"]
 resource_name = "Punch"
-length = 0.19999999999999998
+length = 0.2
 
 [sub_resource type="Animation" id="Animation_ce1p4"]
 length = 0.001

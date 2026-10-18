@@ -152,7 +152,6 @@ func punch():
 	emit_signal("on_program_updated", parsed_prog.size())
 	
 	
-
 func set_interpreted_line(line_number): 
 	interpreter_error.hide()
 	

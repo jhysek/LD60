@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 Transition="*uid://byy2cqtwibtxt"
 Instruction="*uid://nexilk8s0gmo"
+LevelSwitcher="*uid://bx31oumsk6j4o"
 
 [display]
 
@@ -33,6 +34,7 @@ window/stretch/scale_mode="integer"
 
 Actor=""
 Exit=""
+DataSource=""
 
 [input]
 

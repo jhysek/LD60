@@ -5,4 +5,4 @@ func _ready():
 
 
 func _on_button_pressed() -> void:
-	Transition.switchTo("res://scenes/game.tscn")
+	LevelSwitcher.start_level()

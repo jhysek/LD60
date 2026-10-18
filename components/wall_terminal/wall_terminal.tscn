@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bkwr8u1lrc32u"]
+
+[ext_resource type="Script" uid="uid://dhh805ayh67jq" path="res://components/wall_terminal/wall_terminal.gd" id="1_a5edh"]
+[ext_resource type="Texture2D" uid="uid://c1f6lj8bn6pis" path="res://components/wall_terminal/terminal.png" id="1_amu5g"]
+[ext_resource type="FontFile" uid="uid://wvb51chm01p6" path="res://assets/pixelmix.ttf" id="3_3tmvk"]
+[ext_resource type="Texture2D" uid="uid://h4m0b70n7huh" path="res://components/computer/comuter.png" id="4_mhkk8"]
+
+[node name="Terminal" type="Node2D" unique_id=1296731364 groups=["DataSource"]]
+script = ExtResource("1_a5edh")
+
+[node name="WallTerminal" type="Sprite2D" parent="." unique_id=1414253931]
+visible = false
+texture = ExtResource("1_amu5g")
+offset = Vector2(1, -49)
+
+[node name="Number" type="Label" parent="WallTerminal" unique_id=2030228362]
+offset_left = -52.0
+offset_top = -112.0
+offset_right = 13.0
+offset_bottom = -78.0
+theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
+theme_override_fonts/font = ExtResource("3_3tmvk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="Computer" type="Sprite2D" parent="." unique_id=1030972022]
+texture = ExtResource("4_mhkk8")
+offset = Vector2(1, -49)
+
+[node name="Number" type="Label" parent="Computer" unique_id=1109848338]
+offset_left = -30.0
+offset_top = -18.0
+offset_right = 25.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.85866666, 0.92, 0, 1)
+theme_override_fonts/font = ExtResource("3_3tmvk")
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 2
+
+[node name="Timer" type="Timer" parent="." unique_id=1306778027]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

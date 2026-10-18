@@ -2,7 +2,7 @@ extends TileMapLayer
 
 @onready var tile_size = Vector2(64, 52)
 
-var objects = {}
+var map_objects = {}
 	
 func _ready():
 	initialize_objects()
@@ -18,12 +18,12 @@ func update_mouse_pos(event):
 	
 func can_jump_to(map_position):
 	var cell_id = get_cell_source_id(map_position)
-	var blocking_object = objects.has(map_position) && objects[map_position].blocking
+	var blocking_object = map_objects.has(map_position) && map_objects[map_position].blocking
 	return cell_id >= 0 || blocking_object
 	
 func object_at(map_position):
-	if objects.has(map_position):
-		return objects[map_position]
+	if map_objects.has(map_position):
+		return map_objects[map_position]
 	
 	return null
 		
@@ -39,7 +39,7 @@ func map_to_world(map_position):
 
 func initialize_objects():
 	for object in $Objects.get_children():
-		objects[object.map_pos] = {
+		map_objects[object.map_pos] = {
 			node = object,
 			group = object.get_groups()[0],
 			blocking = object.blocking

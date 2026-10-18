@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://denue0mh3kp5k"]
 
 [ext_resource type="PackedScene" uid="uid://d4g312fn0bvrl" path="res://components/Vignette/vignette.tscn" id="1_1rerr"]
-[ext_resource type="Script" uid="uid://cr4lu0rx3wqnr" path="res://Scenes/menu.gd" id="1_xhh6f"]
+[ext_resource type="Script" uid="uid://cr4lu0rx3wqnr" path="res://scenes/menu.gd" id="1_xhh6f"]
 
 [node name="Menu" type="Node2D" unique_id=1735688023]
 script = ExtResource("1_xhh6f")

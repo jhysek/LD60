@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
 [ext_resource type="PackedScene" uid="uid://lboux55tewvh" path="res://components/printout/printout.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://dtfym3aw0fngi" path="res://components/exit/exit.tscn" id="12_rysoc"]
-[ext_resource type="Texture2D" uid="uid://cvmyuq2fni80p" path="res://components/objects/computer.png" id="12_trtic"]
+[ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m72si"]
 bg_color = Color(0.12, 0.11468, 0.0972, 1)
@@ -99,7 +100,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_m72si")
 layout_mode = 0
 offset_left = 10.0
 offset_top = 113.0
-offset_right = 99.0
+offset_right = 115.0
 offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_0acx5")
 
@@ -125,12 +126,34 @@ theme_override_fonts/font = ExtResource("4_u5sy4")
 theme_override_font_sizes/font_size = 8
 text = "START"
 
-[node name="BtnStop" type="TextureButton" parent="UI/ControlPanel" unique_id=1793955548]
-self_modulate = Color(1, 0.44, 0.44, 1)
+[node name="BtnStep" type="TextureButton" parent="UI/ControlPanel" unique_id=2133052946]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 110.0
 offset_right = 86.0
+offset_bottom = 150.0
+focus_mode = 0
+texture_normal = ExtResource("3_p57ef")
+texture_pressed = ExtResource("4_vtaks")
+
+[node name="RUN" type="Label" parent="UI/ControlPanel/BtnStep" unique_id=1960956233]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 6.0
+offset_top = -13.0
+offset_right = 38.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 8
+text = "STEP"
+
+[node name="BtnStop" type="TextureButton" parent="UI/ControlPanel" unique_id=1793955548]
+self_modulate = Color(1, 0.44, 0.44, 1)
+layout_mode = 0
+offset_left = 81.0
+offset_top = 110.0
+offset_right = 121.0
 offset_bottom = 150.0
 focus_mode = 0
 texture_normal = ExtResource("3_p57ef")
@@ -150,18 +173,18 @@ text = "STOP"
 
 [node name="Screen" type="Sprite2D" parent="UI/ControlPanel" unique_id=216671650]
 self_modulate = Color(0.2592937, 0.2592937, 0.25929365, 1)
-position = Vector2(89.1487, 40.082882)
+position = Vector2(80.000015, 40.000004)
 scale = Vector2(0.23518968, 0.24973758)
 texture = ExtResource("5_gee14")
 
 [node name="Stats" type="Label" parent="UI/ControlPanel/Screen" unique_id=1230117936]
-offset_left = -255.7454
-offset_top = -48.382317
-offset_right = 265.94012
-offset_bottom = 90.215065
+offset_left = -195.5868
+offset_top = -76.07988
+offset_right = 326.09875
+offset_bottom = 64.92012
 theme_override_colors/font_color = Color(0.48412004, 0.98, 0.33319998, 1)
 theme_override_fonts/font = ExtResource("6_0tnpc")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "LINES: 0
 
 TICKS: 0"
@@ -170,17 +193,115 @@ vertical_alignment = 2
 [node name="Controls" type="Label" parent="UI/ControlPanel" unique_id=459181723]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 0
-offset_left = 125.0
-offset_top = 102.0
-offset_right = 409.0
-offset_bottom = 177.0
+offset_left = 127.0
+offset_top = 113.0
+offset_right = 411.0
+offset_bottom = 188.0
 theme_override_fonts/font = ExtResource("4_u5sy4")
 theme_override_font_sizes/font_size = 10
-text = "controls:
-wasd  - move head
+text = "wasd  - move head
 space - (un)punch"
 
+[node name="Memory" type="Control" parent="UI/ControlPanel" unique_id=1539199030]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="UI/ControlPanel/Memory" unique_id=797477408]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 6.0
+offset_right = 199.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 10
+text = "MEMORY"
+
+[node name="00" type="Label" parent="UI/ControlPanel/Memory" unique_id=625253950]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 23.0
+offset_right = 198.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "00: 0"
+
+[node name="01" type="Label" parent="UI/ControlPanel/Memory" unique_id=487628314]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 37.0
+offset_right = 199.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "01: 0"
+
+[node name="02" type="Label" parent="UI/ControlPanel/Memory" unique_id=1832243321]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 51.0
+offset_right = 199.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "02: 0"
+
+[node name="03" type="Label" parent="UI/ControlPanel/Memory" unique_id=1235624270]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 63.0
+offset_right = 199.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "03: 0"
+
+[node name="04" type="Label" parent="UI/ControlPanel/Memory" unique_id=1028234334]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 23.0
+offset_right = 249.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "04: 0"
+
+[node name="05" type="Label" parent="UI/ControlPanel/Memory" unique_id=1023541669]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 36.0
+offset_right = 250.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "05: 0"
+
+[node name="06" type="Label" parent="UI/ControlPanel/Memory" unique_id=1505416661]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 49.0
+offset_right = 250.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "06: 0"
+
+[node name="07" type="Label" parent="UI/ControlPanel/Memory" unique_id=1358956392]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 63.0
+offset_right = 250.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("4_u5sy4")
+theme_override_font_sizes/font_size = 12
+text = "07: 0"
+
 [node name="Vignette" parent="UI" unique_id=543236073 instance=ExtResource("8_kvpfn")]
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
 
 [node name="Printout" parent="UI" unique_id=2071356177 instance=ExtResource("12_dinhu")]
 position = Vector2(545, 6)
@@ -246,14 +367,27 @@ layout_mode = 0
 offset_left = 17.0
 offset_top = 58.0
 offset_right = 181.0
-offset_bottom = 103.0
+offset_bottom = 322.0
 theme_override_colors/font_color = Color(0.1638613, 0.16386127, 0.16386127, 1)
 theme_override_constants/line_spacing = 4
 theme_override_fonts/font = ExtResource("4_u5sy4")
 theme_override_font_sizes/font_size = 8
-text = "STEP ....  ○○○●
-TURN ....  ○○●○
-JUMP ....  ●○○●"
+text = "STEP     ....  ○○○●
+TURN     ....  ○○●○
+READ     ....  ○○●●
+ADD      ....  ○●○○
+COPY     ....  ○●○●
+WRITE    ....  ○●●○
+ADD      ....  ○●●●
+COMPARE  ....  ●○○○
+JUMP_IF_EQ ..  ●○○●
+JUMP_NOT_EQ.. ●○●○
+JUMP_IF_GE .. ●○●●
+JUMP_IF_LESS .. ●●○○
+JUMP .. ●●○●
+CALL .. ●●●○
+RET .. ●●●●
+"
 
 [node name="descriptions" type="Label" parent="UI/Manual" unique_id=1626373812]
 layout_mode = 0
@@ -280,7 +414,7 @@ theme_override_constants/line_spacing = 4
 theme_override_fonts/font = ExtResource("4_u5sy4")
 theme_override_font_sizes/font_size = 8
 text = "no argument
-○○○● - left, ○○●○ - right
+○○○● - right, ○○●○ - left
 line number (binary)
 "
 
@@ -331,7 +465,7 @@ zoom = Vector2(0.8, 0.8)
 
 [node name="World" parent="." unique_id=1007485033 instance=ExtResource("7_0tnpc")]
 position = Vector2(-88, 114)
-tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+//7/AAACAAAAAAD9//3/AAACAAAAAAD8//z/AAACAAAAAAD8//7/AAACAAAAAAD+//z/AAACAAAAAAD9////AAACAAAAAAD///3/AAACAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD+//3/AAADAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAD9//7/AAADAAAAAAD+/wAAAAACAAAAAAD8/wAAAAACAAAAAAD7////AAACAAAAAAD7//3/AAACAAAAAAAAAP7/AAACAAAAAAABAPz/AAADAAAAAAAAAP3/AAADAAAAAAAAAP//AAADAAAAAAD//wAAAAADAAAAAAD9/wAAAAADAAAAAAD7//7/AAADAAAAAAD7/wAAAAADAAAAAAD7//z/AAADAAAAAAABAP3/AAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAADAAAAAAABAP7/AAADAAAAAAAAAPz/AAACAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAD/////AAACAAAAAAD+//7/AAACAAAAAAD9//3/AAACAAAAAAD8//z/AAACAAAAAAD8//7/AAACAAAAAAD+//z/AAACAAAAAAD9////AAACAAAAAAD///3/AAACAAAAAAD+////AAADAAAAAAD///7/AAADAAAAAAD+//3/AAADAAAAAAD///z/AAADAAAAAAD9//z/AAADAAAAAAD8//3/AAADAAAAAAD8////AAADAAAAAAD9//7/AAADAAAAAAD+/wAAAAACAAAAAAD8/wAAAAACAAAAAAD7////AAACAAAAAAD7//3/AAACAAAAAAAAAP7/AAACAAAAAAABAPz/AAADAAAAAAAAAP3/AAADAAAAAAAAAP//AAADAAAAAAD//wAAAAADAAAAAAD9/wAAAAADAAAAAAD7//7/AAADAAAAAAD7/wAAAAADAAAAAAD7//z/AAADAAAAAAABAP3/AAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAADAAAAAAABAP7/AAADAAAAAAAAAPz/AAACAAAAAAD9//v/AAAEAAAAAAACAAAAAAAGAAAAAAD6/wAAAAAHAAAAAAD6//z/AAAIAAAAAAD6//3/AAAIAAAAAAD6//7/AAAIAAAAAAD6////AAAIAAAAAAACAPz/AAAFAAAAAAACAP3/AAAFAAAAAAACAP7/AAAFAAAAAAACAP//AAAFAAAAAAABAP//AAACAAAAAAA=")
 
 [node name="Walls" type="TileMapLayer" parent="World" unique_id=2016904327]
 position = Vector2(0, -29.999996)
@@ -345,6 +479,15 @@ scale = Vector2(0.9999997, 0.9999997)
 [node name="Exit" parent="World/Objects" unique_id=1199357601 instance=ExtResource("12_rysoc")]
 position = Vector2(-157.50005, -236.25008)
 
+[node name="WallTerminal" parent="World/Objects" unique_id=1414253931 instance=ExtResource("14_264po")]
+position = Vector2(-34.00001, -228.00008)
+scale = Vector2(0.4, 0.4)
+
+[node name="Computer" parent="World/Objects" unique_id=1296731364 instance=ExtResource("14_264po")]
+position = Vector2(95.00003, -26.99997)
+scale = Vector2(0.4, 0.4)
+type = "Computer"
+
 [node name="Actors" type="Node2D" parent="World" unique_id=703376716]
 position = Vector2(0, 1)
 
@@ -354,6 +497,7 @@ scale = Vector2(0.3, 0.3)
 tie_color = Color(0.0009398108, 0.0021834557, 0.010275273, 1)
 
 [node name="Label" type="Label" parent="World" unique_id=1457106321]
+visible = false
 offset_left = -332.5
 offset_top = 118.74994
 offset_right = -134.5
@@ -371,10 +515,6 @@ theme_override_fonts/font = ExtResource("4_u5sy4")
 theme_override_font_sizes/font_size = 7
 text = "DATA ROOM"
 
-[node name="Computer" type="Sprite2D" parent="World" unique_id=895874745]
-position = Vector2(96.24999, -46.250004)
-texture = ExtResource("12_trtic")
-
 [node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
 position = Vector2(-157, -204.00002)
 rotation = -3.1415925
@@ -384,7 +524,15 @@ rotation = -3.1415925
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1802395953]
 environment = SubResource("Environment_m72si")
 
+[node name="TrackrPlayer" parent="." unique_id=166022097 instance=ExtResource("18_ssvqc")]
+sequence_file = "res://assets/run_music.zip"
+playback_mode = 1
+idle_timeout = 1.0
+idle_fade_duration = 1.0
+
 [connection signal="on_program_updated" from="UI/PunchTape" to="." method="_on_punch_tape_on_program_updated"]
 [connection signal="pressed" from="UI/ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="UI/ControlPanel/BtnStep" to="." method="_on_btn_step_pressed"]
 [connection signal="pressed" from="UI/ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]
+[connection signal="on_mid_tick" from="Clock" to="." method="_on_clock_on_mid_tick"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]

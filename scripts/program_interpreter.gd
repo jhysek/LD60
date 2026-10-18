@@ -5,17 +5,20 @@ signal on_program_error(line, message)
 signal on_actor_instruction(command, argument)
 signal on_program_ended
 
-const TOTAL_INSTRUCTIONS = 10
-const ACTOR_INTERPRETABLE = [Instruction.STEP, Instruction.TURN]
+const MAX_USER_MEM = 8
+const TOTAL_INSTRUCTIONS = 16
+const ACTOR_INTERPRETABLE = [Instruction.STEP, Instruction.TURN, Instruction.WRITE]
 
-var registry_a = 0
-var registry_b = 0
-var current_registry = 0
+var memory = [
+	0, 0, 0, 0,  0, 0, 0, 0,
+	0, 0, 0, 0,  0, 0, 0, 0
+]
 
 var current_line = 0
 var current_program = []
 
 var ended = true
+var last_memory_write_line = 0
 
 func init_program(program):
 	ended = false
@@ -29,7 +32,11 @@ func tick():
 		return
 	
 	interpret_current_line()
-
+	
+func store_to_memory(address, value):
+	if address >= MAX_USER_MEM:
+		emit_signal("on_program_error", last_memory_write_line, "OUT OF MEMORY - argument has to be less than 16")
+		return
 
 func interpret_current_line():
 	if ended:
@@ -73,6 +80,46 @@ func interpret_instruction(line, instruction, argument):
 				
 			current_line = argument
 	
+		Instruction.READ:
+			if argument >= MAX_USER_MEM:
+				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
+				return
+				
+			print("INTERPRETER: READING...")
+			# Can cause race conditions if we add multiple actors, 
+			# but I doubt I can do multiple actors during Compo, so screw it...
+			last_memory_write_line = current_line
+			emit_signal("on_actor_instruction", instruction, argument)
+			current_line += 1
+			
+		Instruction.ADD:
+			if argument >= MAX_USER_MEM:
+				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
+				return
+			
+			memory[0] = memory[argument] + memory[0]
+			current_line += 1
+			
+		Instruction.SET:
+			memory[0] = argument
+			current_line += 1
+			
+		Instruction.COPY:
+			if argument > MAX_USER_MEM:
+				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
+				return
+				
+			memory[argument] = memory[0]
+			current_line += 1
+			
+		Instruction.WRITE:
+			if argument > MAX_USER_MEM:
+				emit_signal("on_program_error", line, "OUT OF MEMORY - argument has to be less than 8")
+				return
+				
+			emit_signal("on_actor_instruction", instruction, memory[argument])
+			current_line += 1
+		
 		var other: 
 			print("other.. " + str(instruction))
 			current_line += 1
@@ -127,5 +174,6 @@ func argument_interpretation(instruction, argument):
 		if argument == 0:
 			return "FORWARD"
 		return "ERR"
+		
 		
 	return str(argument)

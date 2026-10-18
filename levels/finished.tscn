@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://40ww10u3tecu"]
+
+[ext_resource type="Script" uid="uid://crcmvxwkcs4if" path="res://levels/finished.gd" id="1_as455"]
+
+[node name="Finished" type="Node2D" unique_id=1277052595]
+script = ExtResource("1_as455")
+
+[node name="Label" type="Label" parent="." unique_id=316228322]
+offset_left = -64.0
+offset_top = -79.0
+offset_right = 260.0
+offset_bottom = -6.0
+text = "Finished"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=162990495]
