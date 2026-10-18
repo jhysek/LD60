@@ -223,6 +223,233 @@ theme_override_font_sizes/font_size = 8
 [node name="Printout" parent="." unique_id=383271323 instance=ExtResource("14_8ph6h")]
 position = Vector2(-2, -355)
 
+[node name="Levels" type="Node2D" parent="." unique_id=984492949]
+position = Vector2(-103, -191)
+
+[node name="Hole" type="Panel" parent="Levels" unique_id=40125541]
+custom_minimum_size = Vector2(40, 30)
+offset_left = 217.0
+offset_top = 47.0
+offset_right = 424.0
+offset_bottom = 79.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmwmt")
+
+[node name="BtnPlay0" type="TextureButton" parent="Levels" unique_id=396610613]
+offset_left = 219.0
+offset_top = 45.0
+offset_right = 259.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay0" unique_id=733564952]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "01"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay0" unique_id=305197799]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
+[node name="BtnPlay1" type="TextureButton" parent="Levels" unique_id=2112091678]
+offset_left = 253.0
+offset_top = 45.0
+offset_right = 293.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay1" unique_id=418685733]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "02"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay1" unique_id=1151441686]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
+[node name="BtnPlay2" type="TextureButton" parent="Levels" unique_id=1693671807]
+offset_left = 287.0
+offset_top = 45.0
+offset_right = 327.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay2" unique_id=1639603716]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "03"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay2" unique_id=1546734965]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
+[node name="BtnPlay3" type="TextureButton" parent="Levels" unique_id=966972911]
+offset_left = 321.0
+offset_top = 45.0
+offset_right = 361.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay3" unique_id=1161629045]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "04"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay3" unique_id=930451987]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
+[node name="BtnPlay4" type="TextureButton" parent="Levels" unique_id=1510746226]
+offset_left = 355.0
+offset_top = 45.0
+offset_right = 395.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay4" unique_id=1622861494]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "04"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay4" unique_id=489364237]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
+[node name="BtnPlay5" type="TextureButton" parent="Levels" unique_id=1816115324]
+offset_left = 389.0
+offset_top = 45.0
+offset_right = 429.0
+offset_bottom = 85.0
+focus_mode = 0
+texture_normal = ExtResource("11_23t3j")
+texture_pressed = ExtResource("12_8ph6h")
+
+[node name="RUN" type="Label" parent="Levels/BtnPlay5" unique_id=1705713129]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 3.0
+offset_top = -13.0
+offset_right = 35.36
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 8
+text = "05"
+
+[node name="Stats" type="Label" parent="Levels/BtnPlay5" unique_id=1575926273]
+self_modulate = Color(1, 1, 1, 0.7137255)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.216
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 34.36
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("13_5ti5v")
+theme_override_font_sizes/font_size = 7
+text = "L: 0
+T: 0"
+
 [connection signal="pressed" from="ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="ControlPanel/BtnStep" to="." method="_on_btn_step_pressed"]
 [connection signal="pressed" from="ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay0" to="." method="_on_btn_play_0_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay1" to="." method="_on_btn_play_1_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay2" to="." method="_on_btn_play_2_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay3" to="." method="_on_btn_play_3_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay4" to="." method="_on_btn_play_4_pressed"]
+[connection signal="pressed" from="Levels/BtnPlay5" to="." method="_on_btn_play_5_pressed"]
