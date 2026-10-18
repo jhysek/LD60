@@ -116,8 +116,9 @@ func check_objects():
 	looking_at = map.object_at(map_pos + directions[direction_idx])
 	
 func fade_out():
-	var tween = create_tween()
-	tween.tween_property(self, "opacity", Color(1,1,1,0), 2).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	hide()
+	#var tween = create_tween()
+	#tween.tween_property(self, "opacity", Color(1,1,1,0), 2).set_ease(Tween.EASE_OUT)
 	
 func turn_right():
 	direction_idx = (direction_idx + 1) % 4

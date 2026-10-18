@@ -149,20 +149,22 @@ theme_override_font_sizes/font_size = 8
 text = "STOP"
 
 [node name="Screen" type="Sprite2D" parent="UI/ControlPanel" unique_id=216671650]
-visible = false
-self_modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
-position = Vector2(130.3125, 13)
-scale = Vector2(0.37378836, 0.41847825)
+self_modulate = Color(0.2592937, 0.2592937, 0.25929365, 1)
+position = Vector2(89.1487, 40.082882)
+scale = Vector2(0.23518968, 0.24973758)
 texture = ExtResource("5_gee14")
 
-[node name="Label" type="Label" parent="UI/ControlPanel/Screen" unique_id=1230117936]
-offset_left = -254.99048
-offset_top = -133.81818
-offset_right = 266.69507
-offset_bottom = 4.7792053
+[node name="Stats" type="Label" parent="UI/ControlPanel/Screen" unique_id=1230117936]
+offset_left = -255.7454
+offset_top = -48.382317
+offset_right = 265.94012
+offset_bottom = 90.215065
 theme_override_colors/font_color = Color(0.48412004, 0.98, 0.33319998, 1)
 theme_override_fonts/font = ExtResource("6_0tnpc")
-text = ">  press start to run the simulation"
+theme_override_font_sizes/font_size = 40
+text = "LINES: 0
+
+TICKS: 0"
 vertical_alignment = 2
 
 [node name="Controls" type="Label" parent="UI/ControlPanel" unique_id=459181723]
@@ -382,6 +384,7 @@ rotation = -3.1415925
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1802395953]
 environment = SubResource("Environment_m72si")
 
+[connection signal="on_program_updated" from="UI/PunchTape" to="." method="_on_punch_tape_on_program_updated"]
 [connection signal="pressed" from="UI/ControlPanel/BtnPlay" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="UI/ControlPanel/BtnStop" to="." method="_on_btn_stop_pressed"]
 [connection signal="on_tick" from="Clock" to="." method="_on_clock_on_tick"]

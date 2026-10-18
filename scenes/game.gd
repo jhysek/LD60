@@ -3,6 +3,10 @@ extends Node2D
 var ProgramInterpreter = preload("res://scripts/program_interpreter.gd")
 var interpreter = null
 var parsed_program = []
+var stats = {
+	lines = 0,
+	ticks = 0
+}
 
 @onready var punch_tape = $UI/PunchTape
 @onready var clock = $Clock
@@ -33,6 +37,7 @@ func exit_reached(actor):
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:
 	punch_tape.set_interpreted_line(interpreter.current_line)
 	interpreter.tick()
+	update_stats_ticks()
 	print("TICK #" + str(ticks))
 	
 func _on_program_ended() -> void:
@@ -56,8 +61,24 @@ func _on_btn_play_pressed() -> void:
 	clock.start()
 
 
+func update_stats_lines(lines):
+	stats.lines = lines
+	refresh_stats()
+	
+func update_stats_ticks():
+	stats.ticks = clock.ticks
+	refresh_stats()
+	
+func refresh_stats():
+	$UI/ControlPanel/Screen/Stats.text = "LINES: " + str(stats.lines) + "\nTICKS: " + str(stats.ticks)
+
 func _on_btn_stop_pressed() -> void:
 	punch_tape.set_interpreted_line(null)
 	$World.reset()
 	clock.stop()
+	
+
+
+func _on_punch_tape_on_program_updated(lines: Variant) -> void:
+	update_stats_lines(lines)
 	

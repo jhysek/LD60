@@ -1,5 +1,7 @@
 extends TextureRect
 
+signal on_program_updated(lines)
+
 const ROW_HEIGHT = 26.5
 const COLUMN_WIDTH = 22.5
 const MAX_ROWS = 32
@@ -146,6 +148,8 @@ func punch():
 	
 	redraw_program()
 	update_compiler_info()
+	var parsed_prog = parse_program()
+	emit_signal("on_program_updated", parsed_prog.size())
 	
 	
 
