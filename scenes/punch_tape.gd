@@ -150,8 +150,15 @@ func punch():
 	redraw_program()
 	update_compiler_info()
 	var parsed_prog = parse_program()
-	emit_signal("on_program_updated", parsed_prog.size())
 	
+	emit_signal("on_program_updated", size_without_empty_lines(parsed_prog))
+	
+func size_without_empty_lines(prog):
+	var count = 0
+	for line in prog:
+		if prog.instruction != Instruction.NOOP:
+			count = count + 1
+	return count
 	
 func set_interpreted_line(line_number): 
 	interpreter_error.hide()

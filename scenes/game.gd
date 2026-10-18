@@ -18,7 +18,8 @@ func win_condition_satisfied():
 	match LevelSwitcher.current_level:
 		0: return false
 		1: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value
-		2: return $World/Objects/ComputerA.value + $World/Objects/ComputerB.value == $World/Objects/TargetComputer.value
+		2: return $World/Objects/WallTerminal.value == $World/Objects/Computer.value + 10
+		3: return $World/Objects/ComputerA.value + $World/Objects/ComputerB.value == $World/Objects/TargetComputer.value
 	return false
 	
 func _ready():

@@ -81,7 +81,7 @@ func interpret_instruction(line, instruction, argument):
 			
 		Instruction.JUMP: 
 			if argument > current_program.size():
-				emit_signal("on_program_error", line, "NO SUCH LINE: " + str(argument) + ". Total lines " + str(current_program.size()))
+				emit_signal("on_program_ended")
 				return
 				
 			current_line = argument
@@ -136,8 +136,9 @@ func interpret_instruction(line, instruction, argument):
 			current_line += 1
 			
 		Instruction.JEQ:
+			# exit
 			if argument > current_program.size():
-				emit_signal("on_program_error", line, "NO SUCH LINE: " + str(argument) + ". Total lines " + str(current_program.size()))
+				emit_signal("on_program_ended")
 				return
 				
 			if memory[COMPARE_RESULT_ADDRESS] == 0:
@@ -147,7 +148,7 @@ func interpret_instruction(line, instruction, argument):
 				
 		Instruction.JNE:
 			if argument > current_program.size():
-				emit_signal("on_program_error", line, "NO SUCH LINE: " + str(argument) + ". Total lines " + str(current_program.size()))
+				emit_signal("on_program_ended")
 				return
 				
 			if memory[COMPARE_RESULT_ADDRESS] != 0:
@@ -157,7 +158,7 @@ func interpret_instruction(line, instruction, argument):
 				
 		Instruction.JGE:
 			if argument > current_program.size():
-				emit_signal("on_program_error", line, "NO SUCH LINE: " + str(argument) + ". Total lines " + str(current_program.size()))
+				emit_signal("on_program_ended")
 				return
 				
 			if memory[COMPARE_RESULT_ADDRESS] == 0 || memory[COMPARE_RESULT_ADDRESS] == 2:
@@ -167,7 +168,7 @@ func interpret_instruction(line, instruction, argument):
 		
 		Instruction.JL:
 			if argument > current_program.size():
-				emit_signal("on_program_error", line, "NO SUCH LINE: " + str(argument) + ". Total lines " + str(current_program.size()))
+				emit_signal("on_program_ended")
 				return
 				
 			if memory[COMPARE_RESULT_ADDRESS] == 1:
