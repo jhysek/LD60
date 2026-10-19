@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://djpxrqvr405o2" path="res://components/world/wallstileset.png" id="11_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bkwr8u1lrc32u" path="res://components/wall_terminal/wall_terminal.tscn" id="14_264po"]
 [ext_resource type="PackedScene" uid="uid://symqg3qhdvv0" path="res://components/bouncing_arrow/arrow.tscn" id="16_ca42v"]
-[ext_resource type="PackedScene" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://bbtu817owtl7n" path="res://addons/trackr/trackr_player.tscn" id="18_ssvqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trtic"]
 texture = ExtResource("11_kvuet")
@@ -44,8 +44,8 @@ briefing = "DAY 5
 
 - Management wants to count our expences, they’re suspicious of something.
 - Sum up numbers from all computers and save it to the terminal 
-- Notice you can use procedures - check CALL and RET.
-  Who should read your spaghetti tape!"
+- Notice you can use procedures - check CALL and RETURN.
+  Who should read your spaghetti tapes!"
 metadata/_edit_horizontal_guides_ = [583.0]
 
 [node name="Bg" type="TextureRect" parent="." unique_id=948443508]
@@ -115,7 +115,7 @@ rnd_max = 15
 readonly = true
 
 [node name="Arrow" parent="World" unique_id=113796670 instance=ExtResource("16_ca42v")]
-position = Vector2(-33, -196)
+position = Vector2(-94, -196.99998)
 rotation = -3.1415925
 scale = Vector2(0.20968583, 0.3498135)
 

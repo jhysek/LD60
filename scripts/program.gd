@@ -9,6 +9,14 @@ func initialize_empty_program(_max_rows):
 		program.append([false, false, false, false, null, false, false, false, false, false])
 	print(program) 
 
+func load(_prog):
+	if _prog == null:
+		return
+	
+	for line in range(_prog.size()):
+		program[line] = _prog[line]
+		
+	
 func punch_at(column, row):
 	if column == 4:
 		print("ERROR: attempt to punch at column 4, ignoring...")

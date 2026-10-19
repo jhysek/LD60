@@ -53,11 +53,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7b8fv")
 layout_mode = 0
 offset_left = 1.0
 offset_top = 8.0
-offset_right = 136.0
+offset_right = 187.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_fg2ix")
 theme_override_font_sizes/font_size = 10
+text = "CLICK INSTRUCTION FOR DETAILS"
 
 [node name="Description" type="Label" parent="Panel" unique_id=1830146589]
 layout_mode = 0
@@ -78,7 +79,7 @@ offset_right = 189.0
 offset_bottom = 543.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hovered_color = Color(0.30588236, 0.105882354, 0.09803922, 1)
+theme_override_colors/font_hovered_color = Color(0.32491586, 0.403331, 0.14367232, 1)
 theme_override_colors/font_hovered_selected_color = Color(0.30588236, 0.105882354, 0.09803922, 1)
 theme_override_colors/font_selected_color = Color(0.30452645, 0.107751094, 0.09992244, 1)
 theme_override_colors/guide_color = Color(0.7, 0.7, 0.7, 0.25)

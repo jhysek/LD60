@@ -10,6 +10,9 @@ var stats = {
 	lines = 0
 }
 
+func _ready():
+	load_program()
+		
 func _on_btn_play_pressed() -> void:
 	Sfx.play("BtnClick")
 	hide_man()
@@ -33,6 +36,17 @@ func update_ticks_stats(ticks):
 	stats.ticks = ticks
 	refresh_stats()
 
+func raw_program():
+	return $PunchTape.program.program
+
+func load_program():
+	var best = LevelSwitcher.get_score_for(LevelSwitcher.current_level)
+	if best:
+		print("BEST for this level: ", best)
+		$PunchTape.load_program(best.program)
+	else:
+		print("not finished...")
+	
 func refresh_memory(memory, cmp, ret, cnt_idx):
 	for i in range(8):
 		var node_name = "%02d" % i

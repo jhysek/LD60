@@ -21,8 +21,8 @@ func start():
 	
 func stop():
 	running = false
-	time = 0
-	ticks = 0
+	# time = 0
+	# ticks = 0
 	set_process(false)
 	
 func pause():
@@ -50,5 +50,6 @@ func _process(delta):
 			tick_cooldown = 60.0 / float(bpm)
 
 func tick():
+	print("CLOCK TICK: ", ticks)
 	emit_signal("on_tick", time, ticks)
 	

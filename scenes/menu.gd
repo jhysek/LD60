@@ -33,15 +33,14 @@ func init_buttons():
 			btn.self_modulate = Color("ff7070")
 			btn.get_node("Stats").hide()
 			
-	
-func _on_button_pressed() -> void:
-	LevelSwitcher.start_level()
+
 
 func _process(delta):
 	$Bg.rotation += delta * 0.02
 
 
 func _on_btn_play_pressed() -> void:
+	print("START CLICKED")
 	Sfx.play("BtnClick")
 	LevelSwitcher.start_level()
 

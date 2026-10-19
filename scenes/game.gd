@@ -82,10 +82,13 @@ func failed():
 
 func won():
 	print("WON")
+	var ticks = clock.ticks
 	var stats = $UI.stats
 	clock.stop()
+		
 	Sfx.play("Finished")
-	LevelSwitcher.set_score(LevelSwitcher.current_level, stats.ticks, stats.lines)
+	LevelSwitcher.set_score(LevelSwitcher.current_level, ticks, stats.lines, $UI.raw_program())
+
 	$LeaveTimer.start()
 	
 func _on_clock_on_tick(time: Variant, ticks: Variant) -> void:

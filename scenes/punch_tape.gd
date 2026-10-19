@@ -42,6 +42,14 @@ func _ready():
 		$row_indicator.hide()
 		$column_indicator.hide()
 
+func load_program(_prog):
+	program.load(_prog)
+	redraw_program()
+	update_compiler_info()
+	var parsed_prog = parse_program()
+	emit_signal("on_program_updated", size_without_empty_lines(parsed_prog))
+
+	
 func parse_program():
 	var parsed = []
 	for i in range(MAX_ROWS):
@@ -118,6 +126,7 @@ func move_down():
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
 	Sfx.play("TapeMove", 1.1 - randf_range(0, 0.2))
+	show_editor_indicators()
 		
 func move_up():
 	row -= 1
@@ -128,6 +137,7 @@ func move_up():
 	tween.tween_property(compiler_panel, 'position', start_compiler_panel_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
 	update_compiler_info()
 	Sfx.play("TapeMove", 1.1 - randf_range(0, 0.2))
+	show_editor_indicators()
 		
 func init_column_indicator():
 	column = 3 
@@ -140,6 +150,7 @@ func move_left():
 	var diff = Vector2(column * COLUMN_WIDTH, 0)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(column_indicator, 'position', start_column_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
+	show_editor_indicators()
 
 func move_right():
 	column += 1
@@ -148,7 +159,8 @@ func move_right():
 	var diff = Vector2(column * COLUMN_WIDTH, 0)
 	var tween = get_tree().create_tween().set_parallel()
 	tween.tween_property(column_indicator, 'position', start_column_position + diff, 0.2).set_trans(Tween.TRANS_EXPO)
-
+	show_editor_indicators()
+	
 func punch():
 	program.punch_at(column, row)
 	
