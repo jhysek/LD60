@@ -42,7 +42,7 @@ const NAMES = {
 	COPY: "COPY",
 	WRITE: "WRITE",
 	SET: "SET",
-	SET_COUNTER: "SET COUNTER ADDR",
+	SET_COUNTER: "SET COUNTER",
 	CMP: "COMPARE",
 	JEQ: "JUMP IF EQUAL",
 	JL: "JUMP IF LESS",
@@ -69,5 +69,5 @@ const DESCRIPTIONS = {
 	JL: "If value on last compared address was smaller than value on mem 0, jump to MEM.\nArgument: MEM - address to jump.",
 	CALL: "Calls a procedure.\n\nArgument: MEM - address where procedure starts.",
 	RET: "Returns from procedure - to address after the CALL instruction.\nNo argument.",
-	REP: "If value in mem <COUNTER> is bigger than.\n\nArgument: MEM - address to jump.\n\nExample:\n1: SET 0100  ; save 4 to #0\n2: STEP\n3: REPEAT 0010  ; decrease counter and if counter > 0 go to line 2\n\nRepeats STEP 4x, using MEM #0 as counter.",
+	REP: "If value in mem <COUNTER> is bigger than 0, decrease it and jump to LINE.\n\nArgument: LINE - line to jump.\n\nExample:\n1: SET 0100  ; save 4 to #0\n2: STEP\n3: REPEAT 0010  ; decrease counter and if counter > 0 go to line 2\n\nRepeats STEP 4x, using MEM #0 as counter.",
 }

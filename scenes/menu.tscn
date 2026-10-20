@@ -393,7 +393,7 @@ offset_right = 35.36
 offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("13_5ti5v")
 theme_override_font_sizes/font_size = 8
-text = "04"
+text = "05"
 
 [node name="Stats" type="Label" parent="Levels/BtnPlay4" unique_id=489364237]
 self_modulate = Color(1, 1, 1, 0.7137255)
@@ -428,7 +428,7 @@ offset_right = 35.36
 offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("13_5ti5v")
 theme_override_font_sizes/font_size = 8
-text = "05"
+text = "06"
 
 [node name="Stats" type="Label" parent="Levels/BtnPlay5" unique_id=1575926273]
 self_modulate = Color(1, 1, 1, 0.7137255)

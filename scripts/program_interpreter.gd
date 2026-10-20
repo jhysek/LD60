@@ -165,9 +165,9 @@ func interpret_instruction(line, instruction, argument):
 				emit_signal("on_program_ended")
 				return
 				
-			update_memory(0, memory[counter_address] - 1, line)
+			update_memory(counter_address, memory[counter_address] - 1, line)
 			
-			if memory[0] == 0:
+			if memory[counter_address] <= 0:
 				current_line = current_line + 1
 			else:
 				current_line = argument
